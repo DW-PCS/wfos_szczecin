@@ -1,0 +1,10 @@
+export { FilesHeroSection } from './files-hero-section';
+export { FilesMainContent } from './files-main-content';
+export { FilesSidebar } from './files-sidebar';
+export { FilesContentArea } from './files-content-area';
+export { FilesSectionHeader } from './files-section-header';
+export { FilesList } from './files-list';
+export { FileCard } from './file-card';
+export { FileCardMeta } from './file-card-meta';
+export { FilesEmptyState } from './files-empty-state';
+export { FilesHelpSection } from './files-help-section';

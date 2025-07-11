@@ -1,3 +1,4 @@
+import { defaultFiles } from '@/constants/files';
 import { Building, LucideIcon, MapPin, Users } from 'lucide-react';
 
 const CATEGORY_COLORS = {
@@ -21,4 +22,6 @@ export const getContactIcon = (iconName: string): LucideIcon => {
   return icons[iconName] || Building;
 };
 
-
+export const getFilesByCategory = (categoryId: string) => {
+  return defaultFiles.filter(file => file.categoryId === categoryId);
+};

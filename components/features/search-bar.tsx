@@ -1,22 +1,24 @@
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 
-interface ProgramsSearchBarProps {
+interface SearchBarProps {
   searchTerm: string;
   onSearchChange: (term: string) => void;
   resultCount: number;
+  itemType: string;
 }
 
-export function ProgramsSearchBar({
-  searchTerm,
-  onSearchChange,
-  resultCount,
-}: ProgramsSearchBarProps) {
+export function SearchBar({ searchTerm, onSearchChange, resultCount, itemType }: SearchBarProps) {
   // TODO:: Convert to Server Component with URL-based search
   // - Implement server action for search with proper debouncing
   // - Move resultCount calculation to server-side
   // - Add search clear functionality via URL manipulation
   // - Add loading states during search transitions
+
+  const getResultLabel = (count: number, itemType: string) => {
+    return count === 1 ? itemType : `${itemType}ów`;
+  };
+  const label = getResultLabel(resultCount, itemType);
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
       <div className="flex items-center space-x-4">
@@ -31,7 +33,7 @@ export function ProgramsSearchBar({
           />
         </div>
         <div className="text-sm text-gray-600">
-          {resultCount} {resultCount === 1 ? 'program' : 'programów'}
+          {resultCount} {label}
         </div>
       </div>
     </div>
