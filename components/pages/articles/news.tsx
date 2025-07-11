@@ -1,6 +1,5 @@
 'use client';
 
-import { newsArticles } from '@/constants';
 import { useNewsFilters } from '@/hooks/use-news-filter';
 import { usePagination } from '@/hooks/use-pagination';
 import { Article } from '@/types/news';
@@ -25,7 +24,7 @@ export default function ArticlesPage({ articles }: ArticlesPageProps) {
     handleSearchChange,
     handleCategoryChange,
     resetFilters,
-  } = useNewsFilters(newsArticles);
+  } = useNewsFilters(articles);
 
   const {
     currentItems: currentArticles,
