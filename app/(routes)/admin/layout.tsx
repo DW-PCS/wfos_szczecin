@@ -1,4 +1,4 @@
-import AdminSidebar from '@/components/layout/admin-sidebar';
+import { AdminSidebar } from '@/components/layout/dashboard';
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return <AdminSidebar>{children}</AdminSidebar>;
