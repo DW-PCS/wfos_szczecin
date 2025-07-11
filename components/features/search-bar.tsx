@@ -1,5 +1,6 @@
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Search, X } from 'lucide-react';
 
 interface SearchBarProps {
   searchTerm: string;
@@ -18,6 +19,7 @@ export function SearchBar({ searchTerm, onSearchChange, resultCount, itemType }:
   const getResultLabel = (count: number, itemType: string) => {
     return count === 1 ? itemType : `${itemType}ów`;
   };
+
   const label = getResultLabel(resultCount, itemType);
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
@@ -30,6 +32,13 @@ export function SearchBar({ searchTerm, onSearchChange, resultCount, itemType }:
             value={searchTerm}
             onChange={e => onSearchChange(e.target.value)}
             className="pl-10 rounded-xl border-gray-200 focus:border-primary-green focus:ring-primary-green/20"
+          />
+          <X
+            className={cn(
+              'hidden absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 cursor-pointer',
+              searchTerm.length >= 1 && 'block'
+            )}
+            onClick={() => onSearchChange('')}
           />
         </div>
         <div className="text-sm text-gray-600">
