@@ -1,5 +1,7 @@
+import { AdminAboutPage } from '@/components/pages/admin/about';
+
 const page = () => {
-  return <div>o nas</div>;
+  return <AdminAboutPage />;
 };
 
 export default page;
