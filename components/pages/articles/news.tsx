@@ -17,6 +17,11 @@ interface ArticlesPageProps {
 export default function ArticlesPage({ articles }: ArticlesPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
 
+  // TODO: Move all client-side filtering and pagination logic to server-side API calls
+  // - Replace useState for currentPage with URL search params
+  // - Move filtering logic (searchTerm, selectedCategory, filteredArticles) to API endpoints
+  // - Replace handleSearchChange, handleCategoryChange, resetFilters with server actions
+  // - Update useNewsFilters to make API calls instead of client-side array manipulation
   const {
     searchTerm,
     selectedCategory,
