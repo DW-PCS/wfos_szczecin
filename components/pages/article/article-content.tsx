@@ -1,17 +1,33 @@
-import { cn } from '@/lib/cn';
+import ReactMarkdown from 'react-markdown';
 
-export const ArticleContent = ({ content }: { content: string }) => (
+interface ArticleContentProps {
+  content: string;
+  className?: string;
+}
+
+export const ArticleContent = ({ content, className }: ArticleContentProps) => (
   <section className="pb-12">
     <div className="container mx-auto px-4">
       <div className="max-w-4xl mx-auto">
-        <div
-          className={cn(
-            'prose sm:prose-lg max-w-none text-black',
-            'prose-headings:text-black',
-            'prose-a:text-primary-green hover:prose-a:text-primary-green/80'
-          )}
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        <ReactMarkdown
+          components={{
+            a: ({ href, children, ...props }) => (
+              <a
+                href={href}
+                target={href?.startsWith('http') ? '_blank' : undefined}
+                rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                {...props}
+              >
+                {children}
+              </a>
+            ),
+            img: ({ src, alt, ...props }) => (
+              <img src={src} alt={alt} loading="lazy" className="rounded-lg" {...props} />
+            ),
+          }}
+        >
+          {content}
+        </ReactMarkdown>
       </div>
     </div>
   </section>
