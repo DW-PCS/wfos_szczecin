@@ -1,0 +1,83 @@
+'use client';
+import { allPages, menuItems } from '@/constants';
+import { useClickOutside } from '@/hooks/useClickOutside';
+import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
+
+import { AccesibilityControlsDesktop } from './accesibility-controls';
+import { Logo } from './logo';
+import { Button } from '@/components/ui/button';
+
+export const DesktopNavigation = () => {
+  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
+  function handleMenuToggle() {
+    setIsDesktopMenuOpen(!isDesktopMenuOpen);
+  }
+  const triggerRef = useRef<HTMLElement>(null);
+
+  function handleMenuClose() {
+    setIsDesktopMenuOpen(false);
+  }
+
+  const dropdownRef = useClickOutside<HTMLDivElement>(() => setIsDesktopMenuOpen(false), {
+    enabled: isDesktopMenuOpen,
+    ignoredElements: [triggerRef],
+  });
+
+  return (
+    <div className="hidden lg:flex justify-between items-center">
+      <div className="flex items-center h-16 w-full">
+        <Logo />
+        <nav className="flex items-center space-x-8 m-auto">
+          {menuItems.map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-black hover:text-primary-green transition-colors font-medium"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+      <div className="flex">
+        <AccesibilityControlsDesktop />
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleMenuToggle}
+          className="text-gray-600 ml-2 hover:text-primary-green cursor-pointer hover:bg-white"
+          aria-label={isDesktopMenuOpen ? 'Zamknij menu' : 'Otwórz menu'}
+        >
+          {isDesktopMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
+      </div>
+
+      <div className="relative">
+        {isDesktopMenuOpen && (
+          <div
+            ref={dropdownRef}
+            className="absolute right-0 top-full mt-5 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+          >
+            <div className="px-4 py-2 border-b border-gray-100">
+              <h4 className="font-semibold text-gray-900">Wszystkie strony</h4>
+            </div>
+            <div className="max-h-96 overflow-y-auto">
+              {allPages.map((page, index) => (
+                <Link
+                  key={index}
+                  href={page.href}
+                  className="block px-4 py-2 text-sm text-gray-600 hover:text-primary-green hover:bg-gray-50 transition-colors"
+                  onClick={handleMenuClose}
+                >
+                  {page.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};

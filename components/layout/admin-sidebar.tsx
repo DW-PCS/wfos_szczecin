@@ -1,0 +1,44 @@
+'use client';
+import { Sidebar } from '@/components/features/dashboard';
+import { Button } from '@/components/ui/button';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
+
+const headerHeight = 81;
+
+const AdminSidebar = ({ children }: { children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleOpen = () => setIsOpen(prev => !prev);
+
+  return (
+    <SidebarProvider>
+      <Sidebar />
+      <div className="w-full">
+        <div
+          className={cn(
+            'flex shrink-0 items-center gap-2 border-b border-black/15 bg-white px-4 sidebarHeader',
+            isOpen ? 'sidebarHeader-open' : 'sidebarHeader-closed'
+          )}
+          style={{ height: `${headerHeight}px` }}
+        >
+          <SidebarTrigger onClick={toggleOpen} className="cursor-pointer" />
+
+          <div className="ml-auto flex items-center gap-x-4">
+            <span className="text-sm text-gray-500 hidden sm:inline">Ostatnie logowanie: </span>
+            <Button variant="outline" size="sm">
+              Wyloguj
+            </Button>
+          </div>
+        </div>
+
+        <SidebarInset className="p-6" style={{ marginTop: `${headerHeight}px` }}>
+          {children}
+        </SidebarInset>
+      </div>
+    </SidebarProvider>
+  );
+};
+
+export default AdminSidebar;
