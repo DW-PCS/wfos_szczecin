@@ -8,6 +8,7 @@ interface PopupPreviewCardProps {
 }
 
 export function PopupPreviewCard({ popupSettings }: PopupPreviewCardProps) {
+
   return (
     <Card>
       <CardHeader>
@@ -24,7 +25,11 @@ export function PopupPreviewCard({ popupSettings }: PopupPreviewCardProps) {
           </div>
           {popupSettings.image && (
             <div className="mb-4 rounded-md bg-gray-100 h-40 flex items-center justify-center">
-              <p className="text-sm text-gray-500">Podgląd obrazka: {popupSettings.image}</p>
+              <img
+                src={popupSettings.popupImage}
+                alt="Hero background preview"
+                className="max-w-full h-48 object-cover rounded-lg mx-auto"
+              />
             </div>
           )}
           <p className="text-sm text-gray-600 mb-4">{popupSettings.content || 'Treść popupu...'}</p>

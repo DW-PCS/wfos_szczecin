@@ -12,6 +12,7 @@ export function HeroImagePreview({
   onChangeImage,
   onRemoveImage,
 }: HeroImagePreviewProps) {
+
   return (
     <div className="space-y-4">
       <div className="relative">

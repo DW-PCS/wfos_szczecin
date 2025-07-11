@@ -12,5 +12,6 @@ export interface PopupSettings {
   image: string;
   showFrom?: Date;
   showUntil?: Date;
+  popupImage?: string;
   showOnce: boolean;
 }

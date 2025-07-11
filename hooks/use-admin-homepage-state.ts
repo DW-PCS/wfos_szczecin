@@ -16,6 +16,7 @@ const defaultPopupSettings: PopupSettings = {
   showFrom: undefined,
   showUntil: undefined,
   showOnce: false,
+  popupImage: undefined,
 };
 
 export function useAdminHomepageState() {
@@ -24,6 +25,10 @@ export function useAdminHomepageState() {
 
   const updateHeroSettings = (updates: Partial<HeroSettings>) => {
     setHeroSettings(prev => ({ ...prev, ...updates }));
+  };
+
+  const updatePopupSettings = (updates: Partial<PopupSettings>) => {
+    setPopupSettings(prev => ({ ...prev, ...updates }));
   };
 
   const handleSaveHeroContent = () => {
@@ -39,7 +44,6 @@ export function useAdminHomepageState() {
   const handleHeroImageUpload = (event: React.ChangeEvent<HTMLInputElement | null>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // TODO: Implement actual file upload
       const reader = new FileReader();
       reader.onload = e => {
         updateHeroSettings({ heroImage: e.target?.result as string });
@@ -51,8 +55,14 @@ export function useAdminHomepageState() {
   const handlePopupImageUpload = (event: React.ChangeEvent<HTMLInputElement | null>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // TODO: Implement actual file upload
-      setPopupSettings(prev => ({ ...prev, image: file.name }));
+      const reader = new FileReader();
+      reader.onload = e => {
+        updatePopupSettings({
+          popupImage: e.target?.result as string,
+          image: file.name,
+        });
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -60,15 +70,21 @@ export function useAdminHomepageState() {
     updateHeroSettings({ heroImage: undefined });
   };
 
+  const removePopupImage = () => {
+    updatePopupSettings({ popupImage: undefined, image: '' });
+  };
+
   return {
     heroSettings,
     popupSettings,
     updateHeroSettings,
-    setPopupSettings,
+    updatePopupSettings,
     handleSaveHeroContent,
     handleSavePopupSettings,
     handleHeroImageUpload,
     handlePopupImageUpload,
     removeHeroImage,
+    removePopupImage,
+    setPopupSettings,
   };
 }

@@ -11,16 +11,12 @@ import { Logo } from '../../features/navbar/logo';
 
 export const DesktopNavigation = () => {
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
-  function handleMenuToggle() {
-    setIsDesktopMenuOpen(!isDesktopMenuOpen);
-  }
-  const triggerRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
-  function handleMenuClose() {
-    setIsDesktopMenuOpen(false);
-  }
+  const toggleMenu = () => setIsDesktopMenuOpen(prev => !prev);
+  const closeMenu = () => setIsDesktopMenuOpen(false);
 
-  const dropdownRef = useClickOutside<HTMLDivElement>(() => setIsDesktopMenuOpen(false), {
+  const dropdownRef = useClickOutside<HTMLDivElement>(closeMenu, {
     enabled: isDesktopMenuOpen,
     ignoredElements: [triggerRef],
   });
@@ -41,20 +37,21 @@ export const DesktopNavigation = () => {
           ))}
         </nav>
       </div>
-      <div className="flex">
+
+      <div className="flex items-center">
         <AccesibilityControlsDesktop />
         <Button
+          ref={triggerRef}
           variant="ghost"
           size="sm"
-          onClick={handleMenuToggle}
+          onClick={toggleMenu}
           className="text-gray-600 ml-2 hover:text-primary-green cursor-pointer hover:bg-white"
           aria-label={isDesktopMenuOpen ? 'Zamknij menu' : 'Otwórz menu'}
+          aria-expanded={isDesktopMenuOpen}
         >
           {isDesktopMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
-      </div>
 
-      <div className="relative">
         {isDesktopMenuOpen && (
           <div
             ref={dropdownRef}
@@ -66,10 +63,10 @@ export const DesktopNavigation = () => {
             <div className="max-h-96 overflow-y-auto">
               {allPages.map((page, index) => (
                 <Link
-                  key={index}
+                  key={`${page.href}-${index}`}
                   href={page.href}
                   className="block px-4 py-2 text-sm text-gray-600 hover:text-primary-green hover:bg-gray-50 transition-colors"
-                  onClick={handleMenuClose}
+                  onClick={closeMenu}
                 >
                   {page.label}
                 </Link>

@@ -1,8 +1,8 @@
+import { DateRange } from '@/components/features';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PopupSettings } from '@/types/admin-homepage';
 import { PopupActiveToggle } from './popup-active-toggle';
 import { PopupContentField } from './popup-content-field';
-import { PopupDateRange } from './popup-date-range';
 import { PopupImageUpload } from './popup-image-upload';
 import { PopupShowOnceCheckbox } from './popup-show-once-checkbox';
 import { PopupTitleField } from './popup-title-field';
@@ -51,7 +51,7 @@ export function PopupSettingsCard({
           imageRef={popupImageRef}
         />
 
-        <PopupDateRange
+        <DateRange
           showFrom={popupSettings.showFrom}
           showUntil={popupSettings.showUntil}
           onShowFromChange={date =>

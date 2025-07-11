@@ -20,6 +20,7 @@ export const MobileNavigation = () => {
         <Button
           variant="ghost"
           size="sm"
+          className="cursor-pointer"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >

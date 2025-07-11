@@ -7,19 +7,19 @@ import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { CalendarIcon } from 'lucide-react';
 
-interface PopupDateRangeProps {
+interface DateRangeProps {
   showFrom?: Date;
   showUntil?: Date;
   onShowFromChange: (date: Date | undefined) => void;
   onShowUntilChange: (date: Date | undefined) => void;
 }
 
-export function PopupDateRange({
+export function DateRange({
   showFrom,
   showUntil,
   onShowFromChange,
   onShowUntilChange,
-}: PopupDateRangeProps) {
+}: DateRangeProps) {
   const handleStartDateChange = (date: Date | undefined) => {
     onShowFromChange(date);
 

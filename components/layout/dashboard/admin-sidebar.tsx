@@ -6,8 +6,11 @@ import { cn } from '@/lib/utils';
 import { useState } from 'react';
 
 const headerHeight = 81;
+interface AdminSidebarProps {
+  children: React.ReactNode;
+}
 
-const AdminSidebar = ({ children }: { children: React.ReactNode }) => {
+const AdminSidebar = ({ children }: AdminSidebarProps) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleOpen = () => setIsOpen(prev => !prev);
