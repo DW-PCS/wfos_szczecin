@@ -3,6 +3,7 @@
 import { newsArticles } from '@/constants';
 import { useNewsFilters } from '@/hooks/use-news-filter';
 import { usePagination } from '@/hooks/use-pagination';
+import { Article } from '@/types/news';
 import { useState } from 'react';
 import { NewsContentSection } from './news-content-section';
 import { NewsFiltersSection } from './news-filters-section';
@@ -10,7 +11,11 @@ import { NewsHeroSection } from './news-hero-section';
 
 const ITEMS_PER_PAGE = 6;
 
-export default function ArticlesPage() {
+interface ArticlesPageProps {
+  articles: Article[];
+}
+
+export default function ArticlesPage({ articles }: ArticlesPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const {
