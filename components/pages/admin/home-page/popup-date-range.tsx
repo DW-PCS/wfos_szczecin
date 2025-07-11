@@ -1,11 +1,11 @@
-import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
+import { Label } from '@/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
-import { cn } from '@/lib/utils';
+import { CalendarIcon } from 'lucide-react';
 
 interface PopupDateRangeProps {
   showFrom?: Date;
@@ -20,6 +20,22 @@ export function PopupDateRange({
   onShowFromChange,
   onShowUntilChange,
 }: PopupDateRangeProps) {
+  const handleStartDateChange = (date: Date | undefined) => {
+    onShowFromChange(date);
+
+    if (date && showUntil && showUntil < date) {
+      onShowUntilChange(undefined);
+    }
+  };
+
+  const getEndDateDisabled = (date: Date) => {
+    if (showFrom && date < showFrom) {
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
       <div className="space-y-2">
@@ -27,7 +43,7 @@ export function PopupDateRange({
         <Popover>
           <PopoverTrigger asChild>
             <Button
-              variant={'outline'}
+              variant="outline"
               className={cn(
                 'justify-start text-left font-normal w-full',
                 !showFrom && 'text-muted-foreground'
@@ -38,7 +54,7 @@ export function PopupDateRange({
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0">
-            <Calendar mode="single" selected={showFrom} onSelect={onShowFromChange} initialFocus />
+            <Calendar mode="single" selected={showFrom} onSelect={handleStartDateChange} />
           </PopoverContent>
         </Popover>
       </div>
@@ -48,22 +64,23 @@ export function PopupDateRange({
         <Popover>
           <PopoverTrigger asChild>
             <Button
-              variant={'outline'}
+              variant="outline"
               className={cn(
-                'justify-start text-left font-normal w-full',
+                'w-full justify-start text-left font-normal',
                 !showUntil && 'text-muted-foreground'
               )}
             >
-              <CalendarIcon className="mr-2 h-4 w-4" />
               {showUntil ? format(showUntil, 'PPP', { locale: pl }) : <span>Wybierz datę</span>}
+              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0">
+          <PopoverContent className="w-auto p-0" align="start">
             <Calendar
               mode="single"
               selected={showUntil}
               onSelect={onShowUntilChange}
-              initialFocus
+              disabled={getEndDateDisabled}
+              captionLayout="dropdown"
             />
           </PopoverContent>
         </Popover>
