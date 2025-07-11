@@ -20,3 +20,5 @@ export const getContactIcon = (iconName: string): LucideIcon => {
   };
   return icons[iconName] || Building;
 };
+
+
