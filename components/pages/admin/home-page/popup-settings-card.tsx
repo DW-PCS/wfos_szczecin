@@ -14,6 +14,7 @@ interface PopupSettingsCardProps {
   handleSavePopupSettings: () => void;
   handlePopupImageUpload: (event: React.ChangeEvent<HTMLInputElement | null>) => void;
   popupImageRef: React.RefObject<HTMLInputElement | null>;
+  removePopupImage: () => void;
 }
 
 export function PopupSettingsCard({
@@ -22,6 +23,7 @@ export function PopupSettingsCard({
   handleSavePopupSettings,
   handlePopupImageUpload,
   popupImageRef,
+  removePopupImage,
 }: PopupSettingsCardProps) {
   return (
     <Card>
@@ -47,7 +49,7 @@ export function PopupSettingsCard({
         <PopupImageUpload
           image={popupSettings.image}
           onImageUpload={handlePopupImageUpload}
-          onRemoveImage={() => setPopupSettings({ ...popupSettings, image: '' })}
+          onRemoveImage={removePopupImage}
           imageRef={popupImageRef}
         />
 

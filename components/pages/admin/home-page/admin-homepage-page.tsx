@@ -21,8 +21,22 @@ export function AdminHomepagePage() {
     handleHeroImageUpload,
     handlePopupImageUpload,
     removeHeroImage,
+    removePopupImage,
   } = useAdminHomepageState();
 
+  const handleRemovePopupImage = () => {
+    if (popupImageRef.current) {
+      popupImageRef.current.value = '';
+    }
+    removePopupImage();
+  };
+
+  const handleRemoveHeroImage = () => {
+    if (heroImageRef.current) {
+      heroImageRef.current.value = '';
+    }
+    removeHeroImage();
+  };
 
   return (
     <div className="space-y-6">
@@ -43,7 +57,7 @@ export function AdminHomepagePage() {
           updateHeroSettings={updateHeroSettings}
           handleSaveHeroContent={handleSaveHeroContent}
           handleHeroImageUpload={handleHeroImageUpload}
-          removeHeroImage={removeHeroImage}
+          removeHeroImage={handleRemoveHeroImage}
           heroImageRef={heroImageRef}
         />
 
@@ -53,6 +67,7 @@ export function AdminHomepagePage() {
           handleSavePopupSettings={handleSavePopupSettings}
           handlePopupImageUpload={handlePopupImageUpload}
           popupImageRef={popupImageRef}
+          removePopupImage={handleRemovePopupImage}
         />
       </Tabs>
     </div>
