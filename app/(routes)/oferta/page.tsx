@@ -1,4 +1,4 @@
-import ProgramsPage from '@/components/pages/programs/programs';
+import { ProgramsPage } from '@/components/pages/programs';
 
 import { initialPrograms } from '@/constants';
 

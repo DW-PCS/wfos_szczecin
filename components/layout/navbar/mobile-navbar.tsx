@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import { AccesibilityControlsMobile } from './accesibility-controls';
-import { Logo } from './logo';
+import { AccesibilityControlsMobile } from '../../features/navbar/accesibility-controls';
+import { Logo } from '../../features/navbar/logo';
 
 export const MobileNavigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

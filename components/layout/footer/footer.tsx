@@ -1,7 +1,11 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { CompanyInfo, Contact, FastLinks, LegalInfo, LegalLinks } from '../features';
+import CompanyInfo from './company-info';
+import { Contact } from './contact-info';
+import { FastLinks } from './fast-links';
+import { LegalInfo } from './legal-info';
+import LegalLinks from './legal-links';
 
 const Footer = () => {
   const pathname = usePathname();

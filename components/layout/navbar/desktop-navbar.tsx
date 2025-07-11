@@ -5,9 +5,9 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 
-import { AccesibilityControlsDesktop } from './accesibility-controls';
-import { Logo } from './logo';
 import { Button } from '@/components/ui/button';
+import { AccesibilityControlsDesktop } from '../../features/navbar/accesibility-controls';
+import { Logo } from '../../features/navbar/logo';
 
 export const DesktopNavigation = () => {
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);

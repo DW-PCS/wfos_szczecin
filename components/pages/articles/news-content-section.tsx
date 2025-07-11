@@ -1,4 +1,4 @@
-import { NewsEmptyState } from '@/components/features/news/news-empty-state';
+import { NewsEmptyState } from '@/components/pages/article/news-empty-state';
 import { Article } from '@/types/news';
 import { NewsGridWithPagination } from './news-grid-with-pagination';
 

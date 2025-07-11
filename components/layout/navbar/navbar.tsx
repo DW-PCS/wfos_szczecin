@@ -1,6 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import { DesktopNavigation, MobileNavigation } from '../features';
+import { DesktopNavigation } from './desktop-navbar';
+import { MobileNavigation } from './mobile-navbar';
 
 const Navbar = () => {
   const pathname = usePathname();

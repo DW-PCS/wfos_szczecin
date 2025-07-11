@@ -1,5 +1,8 @@
-import { ArticleContent, ArticleHeader, ArticleImage, Breadcrumbs } from '@/components/features';
+import { Breadcrumbs } from '@/components/features';
 import DOMPurify from 'isomorphic-dompurify';
+import { ArticleContent } from './article-content';
+import { ArticleHeader } from './article-header';
+import { ArticleImage } from './article-image';
 
 interface NewsProps {
   article: any;
@@ -10,7 +13,10 @@ const Article = ({ article }: NewsProps) => {
   return (
     <div className="min-h-screen bg-white">
       <main>
-        <Breadcrumbs title={article.title} />
+        <Breadcrumbs
+          title={article.title}
+          subtitle={{ title: 'Aktualności', href: 'aktualnosci' }}
+        />
 
         <section className="py-8">
           <div className="container mx-auto px-4">

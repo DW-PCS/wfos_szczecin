@@ -1,5 +1,5 @@
-import { NewsFilters } from '@/components/features';
 import type { Article } from '@/types/news';
+import { NewsFilters } from '../article/news-filters';
 
 interface NewsFiltersSectionProps {
   searchTerm: string;

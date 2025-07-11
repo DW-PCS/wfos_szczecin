@@ -1,7 +1,6 @@
-import { NewsCard } from '@/components/features/news/news-card';
 import { Pagination } from '@/components/features/news/pagination';
+import { NewsCard } from '@/components/pages/article/news-card';
 import { Article } from '@/types/news';
-
 
 interface NewsGridWithPaginationProps {
   articles: Article[];
