@@ -1,5 +1,5 @@
 'use client';
-import { Sidebar } from '@/components/features/dashboard';
+import { Sidebar } from '@/components/layout/dashboard';
 import { Button } from '@/components/ui/button';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
