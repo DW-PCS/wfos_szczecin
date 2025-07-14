@@ -1,5 +1,6 @@
 import { HeroSection, NewsShowcase, ProgramsSection, StatsSection } from '@/components/pages/home';
 import BenefitsSection from '@/components/pages/home/befefits/benefits-section';
+import FAQSection from '@/components/pages/home/faq/faq-section';
 
 const page = () => {
   return (
@@ -18,6 +19,9 @@ const page = () => {
       </section>
       <section aria-label="Korzyści z programów">
         <BenefitsSection />
+      </section>
+      <section aria-label="Najczęściej zadawane pytania">
+        <FAQSection />
       </section>
     </main>
   );
