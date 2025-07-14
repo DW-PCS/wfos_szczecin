@@ -1,0 +1,70 @@
+import {
+  Award,
+  BarChart3,
+  Building2,
+  Calendar,
+  CheckCircle,
+  Clock,
+  DollarSign,
+  Flag,
+  Globe,
+  Heart,
+  Leaf,
+  Lightbulb,
+  MapPin,
+  Recycle,
+  RefreshCw,
+  Shield,
+  Target,
+  TrendingDown,
+  TrendingUp,
+  Users,
+  X,
+  Zap,
+} from 'lucide-react';
+
+export const getIconComponent = (iconName: string) => {
+  const icons: { [key: string]: any } = {
+    DollarSign,
+    Calendar,
+    Clock,
+    X,
+    Target,
+    TrendingDown,
+    TrendingUp,
+    Building2,
+    Award,
+    MapPin,
+    RefreshCw,
+    Leaf,
+    Recycle,
+    Lightbulb,
+    Globe,
+    Flag,
+    Users,
+    Shield,
+    Zap,
+    Heart,
+    CheckCircle,
+    BarChart3,
+  };
+  return icons[iconName] || Target;
+};
+
+export const AVAILABLE_BENEFIT_ICONS = [
+  { value: 'DollarSign', label: '💰 Pieniądze', category: 'financial' },
+  { value: 'TrendingUp', label: '📈 Wzrost', category: 'financial' },
+  { value: 'BarChart3', label: '📊 Analityka', category: 'financial' },
+  { value: 'Target', label: '🎯 Cel', category: 'organizational' },
+  { value: 'Award', label: '🏆 Nagroda', category: 'organizational' },
+  { value: 'Users', label: '👥 Zespół', category: 'organizational' },
+  { value: 'Shield', label: '🛡️ Bezpieczeństwo', category: 'organizational' },
+  { value: 'Building2', label: '🏢 Organizacja', category: 'organizational' },
+  { value: 'Leaf', label: '🌿 Ekologia', category: 'environmental' },
+  { value: 'Recycle', label: '♻️ Recykling', category: 'environmental' },
+  { value: 'Globe', label: '🌍 Planeta', category: 'environmental' },
+  { value: 'Zap', label: '⚡ Energia', category: 'environmental' },
+  { value: 'Heart', label: '❤️ Zdrowie', category: 'environmental' },
+] as const;
+
+export type BenefitIconName = (typeof AVAILABLE_BENEFIT_ICONS)[number]['value'];
