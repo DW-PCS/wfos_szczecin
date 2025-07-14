@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
     const isAdmin = request.cookies.get('isAdmin')?.value === 'true';
 
     if (!isAdmin) {
-      return NextResponse.redirect(new URL('/aktualnosci', request.url));
+      return NextResponse.redirect(new URL('/', request.url));
     }
   }
 

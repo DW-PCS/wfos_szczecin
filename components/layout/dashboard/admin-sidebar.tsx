@@ -22,7 +22,7 @@ const AdminSidebar = ({ children }: AdminSidebarProps) => {
       <div className="w-full">
         <div
           className={cn(
-            'flex shrink-0 items-center gap-2 border-b border-black/15 bg-white px-4 sidebarHeader',
+            'flex shrink-0 items-center gap-2 border-b border-black/9 bg-white px-4 sidebarHeader',
             isOpen ? 'sidebarHeader-open' : 'sidebarHeader-closed'
           )}
           style={{ height: `${headerHeight}px` }}

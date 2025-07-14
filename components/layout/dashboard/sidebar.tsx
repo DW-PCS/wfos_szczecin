@@ -18,8 +18,8 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <SidebarUi className="border-black/15 w-[255px]">
-      <SidebarHeader className="border-b  border-black/15">
+    <SidebarUi className="border-black/9 w-[255px]">
+      <SidebarHeader className="border-b  border-black/9">
         <div className="flex items-center gap-2 px-4 py-2">
           <div className="w-8 h-8 bg-primary-green rounded-lg flex items-center justify-center">
             <Leaf className="h-5 w-5 text-white" />

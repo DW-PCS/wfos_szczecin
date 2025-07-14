@@ -74,3 +74,6 @@ export interface ContactPageState {
   removeOffice: (id: number) => void;
   updateOffice: (id: number, updates: Partial<ContactPageOffice>) => void;
 }
+
+
+export type ContactTabValue = 'hero' | 'form' | 'map' | 'headquarters' | 'offices';

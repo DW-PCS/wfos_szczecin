@@ -71,3 +71,4 @@ export interface AboutContent {
   updatedAt: Date | string;
   createdAt: Date | string;
 }
+export type AboutTabValue = 'hero' | 'intro' | 'mission' | 'stats' | 'structure' | 'teams' | 'cta';

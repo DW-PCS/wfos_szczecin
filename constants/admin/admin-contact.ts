@@ -1,4 +1,4 @@
-import { ContactPageContent } from '@/types/admin/admin-contact';
+import { ContactPageContent, ContactTabValue } from '@/types/admin/admin-contact';
 
 export const ICON_OPTIONS = [
   { value: 'Building', label: 'Budynek' },
@@ -103,3 +103,13 @@ export const INITIAL_CONTACT_PAGE_CONTENT: ContactPageContent = {
   createdAt: '2024-01-15T10:00:00Z',
   updatedAt: '2024-01-15T10:00:00Z',
 };
+
+export const VALID_TABS: readonly ContactTabValue[] = [
+  'hero',
+  'form',
+  'map',
+  'headquarters',
+  'offices',
+] as const;
+
+export const DEFAULT_TAB: ContactTabValue = 'hero';

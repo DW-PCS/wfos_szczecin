@@ -29,7 +29,7 @@ export const NewsFilters: FC<NewsFiltersProps> = ({
   filteredArticles,
 }) => {
   return (
-    <section className={cn('py-8 border-b border-black/15', className)}>
+    <section className={cn('py-8 border-b border-black/9', className)}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
@@ -39,14 +39,14 @@ export const NewsFilters: FC<NewsFiltersProps> = ({
                 placeholder="Szukaj aktualności..."
                 value={searchTerm}
                 onChange={e => handleSearchChange(e.target.value)}
-                className="pl-10 w-full sm:w-auto md:w-80 border-black/15"
+                className="pl-10 w-full sm:w-auto md:w-80 border-black/9"
               />
             </div>
             <Select value={selectedCategory} onValueChange={handleCategoryChange}>
-              <SelectTrigger className="w-full sm:w-auto md:w-48 cursor-pointer border-black/15">
+              <SelectTrigger className="w-full sm:w-auto md:w-48 cursor-pointer border-black/9">
                 <SelectValue placeholder="Kategoria" />
               </SelectTrigger>
-              <SelectContent className="bg-white border-black/15">
+              <SelectContent className="bg-white border-black/9">
                 {categories.map(category => (
                   <SelectItem className="cursor-pointer" key={category} value={category}>
                     {category}

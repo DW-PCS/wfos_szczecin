@@ -1,4 +1,5 @@
-import { AboutContent } from '@/types/admin/admin-about';
+import { AboutContent, AboutTabValue } from '@/types/admin/admin-about';
+import { ContactTabValue } from '@/types/admin/admin-contact';
 
 export const initialAboutPageContent: AboutContent = {
   hero: {
@@ -170,3 +171,16 @@ export const initialAboutPageContent: AboutContent = {
   createdAt: '2024-01-15T10:00:00Z',
   updatedAt: '2024-01-15T10:00:00Z',
 };
+
+
+
+export const VALID_TABS: readonly AboutTabValue[] = [
+  'hero',
+  'intro',
+  'mission',
+  'stats',
+  'structure',
+  'teams',
+  'cta',
+] as const;
+export const DEFAULT_TAB: AboutTabValue = 'hero';

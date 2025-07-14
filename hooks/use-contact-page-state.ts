@@ -20,6 +20,7 @@ export function useContactPageState(initialContent: ContactPageContent): Contact
 
   const handleSave = () => {
     const updatedContent = updateContentTimestamp(contactContent);
+    console.log(updatedContent, 'updatedContent');
     setContactContent(updatedContent);
     setOriginalContent(updatedContent);
     setIsEditing(false);

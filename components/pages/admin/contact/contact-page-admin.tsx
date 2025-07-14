@@ -1,16 +1,22 @@
 'use client';
 
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { INITIAL_CONTACT_PAGE_CONTENT } from '@/constants/admin/admin-contact';
+import {
+  DEFAULT_TAB,
+  INITIAL_CONTACT_PAGE_CONTENT,
+  VALID_TABS,
+} from '@/constants/admin/admin-contact';
 import { useContactPageState } from '@/hooks/use-contact-page-state';
+
+import { useTabSelection } from '@/hooks/use-tab-selection';
 import { Building, Edit, Map, MessageSquare, Users } from 'lucide-react';
-import { useState } from 'react';
 import { ContactPageHeader } from './contact-page-header';
 import { ContactPageInfo } from './contact-page-info';
 import { ContactPageTabs } from './contact-page-tabs';
 
+
 export default function ContactPageAdmin() {
-  const [activeTab, setActiveTab] = useState('hero');
+  const { activeTab, handleTabChange } = useTabSelection(VALID_TABS, DEFAULT_TAB);
 
   const {
     contactContent,
@@ -33,7 +39,7 @@ export default function ContactPageAdmin() {
         onCancel={handleCancel}
       />
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="hero" className="flex items-center gap-2">
             <MessageSquare className="h-4 w-4" />
