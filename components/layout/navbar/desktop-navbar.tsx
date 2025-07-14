@@ -22,7 +22,7 @@ export const DesktopNavigation = () => {
   });
 
   return (
-    <div className="hidden lg:flex justify-between items-center">
+    <div id="main-navigation" className="hidden lg:flex justify-between items-center">
       <div className="flex items-center h-16 w-full">
         <Logo />
         <nav className="flex items-center space-x-8 m-auto">

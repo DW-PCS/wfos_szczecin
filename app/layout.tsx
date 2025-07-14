@@ -1,3 +1,5 @@
+import ConditionalTextToSpeech from '@/components/features/conditional-text-to-speech';
+import SkipLinks from '@/components/features/skip-links';
 import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
 import type { Metadata } from 'next';
@@ -19,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className={`${inter.className} antialiased`}>
+        <SkipLinks />
         <Navbar />
         {children}
+        <ConditionalTextToSpeech />
         <Footer />
       </body>
     </html>

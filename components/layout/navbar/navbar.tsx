@@ -11,7 +11,7 @@ const Navbar = () => {
     return null;
   }
   return (
-    <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <header  className="bg-white border-b border-gray-100 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <DesktopNavigation />
         <MobileNavigation />

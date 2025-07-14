@@ -14,7 +14,7 @@ export const MobileNavigation = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div className="lg:hidden">
+    <div id="main-navigation" className="lg:hidden">
       <div className="flex items-center justify-between h-16 ">
         <Logo />
         <Button
