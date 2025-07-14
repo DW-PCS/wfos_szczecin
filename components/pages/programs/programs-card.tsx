@@ -1,9 +1,9 @@
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 import { getStatusColor, getStatusDisplay, getStatusLabel } from '@/lib/utils/program-helpers';
 import { Program } from '@/types/program';
-import { ProgramCardActions } from './program-card-actions';
-import { ProgramCardDetails } from './program-card-details';
+import { ProgramCardActions } from './programs-card-actions';
+import { ProgramCardDetails } from './programs-card-details';
 
 interface ProgramCardProps {
   program: Program;

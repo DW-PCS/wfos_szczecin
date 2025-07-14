@@ -1,3 +1,15 @@
+import { Droplets, Home, Leaf, Shield } from 'lucide-react';
+
+export const getIconForProgram = (programName: string) => {
+  const name = programName.toLowerCase();
+  if (name.includes('powietrze') || name.includes('ciepł')) return Home;
+  if (name.includes('woda') || name.includes('wodna')) return Droplets;
+  if (name.includes('strażak') || name.includes('bezpiecz')) return Shield;
+  if (name.includes('energia') || name.includes('zielona') || name.includes('słoneczna'))
+    return Leaf;
+  return Home;
+};
+
 export const getStatusDisplay = (status: string): string => {
   switch (status) {
     case 'otwarty':

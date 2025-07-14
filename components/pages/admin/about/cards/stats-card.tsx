@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { AboutContent, Achievement } from '@/types/admin-about';
+import { ChartColumnDecreasing, DollarSign, Leaf, Users } from 'lucide-react';
 
 interface StatsCardProps {
   stat: Achievement;
@@ -56,10 +57,29 @@ export function StatsCard({
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="BarChart3">Wykres</SelectItem>
-                <SelectItem value="DollarSign">Dolar</SelectItem>
-                <SelectItem value="Users">Użytkownicy</SelectItem>
-                <SelectItem value="Leaf">Liść</SelectItem>
+                <SelectItem value="ChartColumnDecreasing">
+                  <span className="inline-flex  gap-2 items-center">
+                    <ChartColumnDecreasing /> Wykres
+                  </span>
+                </SelectItem>
+                <SelectItem value="DollarSign">
+                  <span className="inline-flex  gap-2 items-center">
+                    <DollarSign />
+                    Dolar
+                  </span>
+                </SelectItem>
+                <SelectItem value="Users">
+                  <span className="inline-flex  gap-2 items-center">
+                    <Users />
+                    Użytkownicy
+                  </span>
+                </SelectItem>
+                <SelectItem value="Leaf">
+                  <span className="inline-flex  gap-2 items-center">
+                    <Leaf />
+                    Liść
+                  </span>
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>

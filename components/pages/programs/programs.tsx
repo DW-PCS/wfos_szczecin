@@ -16,7 +16,7 @@ export default function ProgramsPage({ programs }: ProgramsPageProps) {
   // - Update ProgramsMainContent to use server actions for filter changes
   // - Implement proper caching and revalidation for filtered program data
   // - Consider using Suspense boundaries for loading states during filter changes
-  
+
   const [activeCategory, setActiveCategory] = useState('osoba-fizyczna');
   const [searchTerm, setSearchTerm] = useState('');
 

@@ -2,14 +2,15 @@ export interface Program {
   id: number;
   name: string;
   description: string;
-  status: string;
-  maxSupport?: string;
+  status: 'otwarty' | 'planowany' | 'zakończony' | 'realizacja' | 'zamknięty';
   budget?: string;
   deadline?: string;
-  beneficiaryCategories?: string[];
-  linkedPageSlug?: string;
+  beneficiaryCategories: string[];
+  startDate?: Date;
+  endDate?: Date;
+  maxSupport?: string;
+  funding?: string;
   programLink?: string;
-  startDate: Date;
-  endDate: Date;
-  funding: string;
+  linkedPageSlug?: string;
+  showOnHomepage?: boolean;
 }

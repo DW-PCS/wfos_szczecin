@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 import { getStatusDisplay } from '@/lib/utils/program-helpers';
 import { Program } from '@/types/program';
 import { Download } from 'lucide-react';
@@ -61,7 +61,7 @@ export function ProgramCardActions({ program, isClosedOrFinished }: ProgramCardA
         disabled={isClosedOrFinished}
       >
         {isClosedOrFinished ? (
-          <span className="flex items-center">
+          <span className="inline-flex items-center">
             <Download className="mr-2 h-4 w-4" />
             Dokumenty
           </span>

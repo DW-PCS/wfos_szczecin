@@ -8,6 +8,8 @@ export const createNewMissionVisionItem = (
   description: '',
   icon: 'lightning',
   active: true,
+  order: 2,
+  gradient: '',
 });
 
 export const createNewAchievement = (existingAchievements: Achievement[]): Achievement => ({
@@ -16,6 +18,7 @@ export const createNewAchievement = (existingAchievements: Achievement[]): Achie
   label: '',
   icon: 'BarChart3',
   active: true,
+  order: 1,
 });
 
 export const createNewPerson = (existingPersons: Person[]): Person => ({

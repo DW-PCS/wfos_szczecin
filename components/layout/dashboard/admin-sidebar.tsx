@@ -2,7 +2,7 @@
 import { Sidebar } from '@/components/layout/dashboard';
 import { Button } from '@/components/ui/button';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 import { useState } from 'react';
 
 const headerHeight = 81;

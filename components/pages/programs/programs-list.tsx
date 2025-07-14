@@ -1,5 +1,5 @@
 import { Program } from '@/types/program';
-import { ProgramCard } from './program-card';
+import { ProgramCard } from './programs-card';
 import { ProgramsEmptyState } from './programs-empty-state';
 
 interface ProgramsListProps {
