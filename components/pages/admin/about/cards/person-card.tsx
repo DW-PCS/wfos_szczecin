@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import { Person } from '@/types/admin-about';
+import { Person } from '@/types/admin/admin-about';
 import { Trash2 } from 'lucide-react';
 
 interface PersonCardProps {

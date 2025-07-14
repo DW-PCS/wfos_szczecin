@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { TabsContent } from '@/components/ui/tabs';
-import { AboutContent } from '@/types/admin-about';
+import { AboutContent } from '@/types/admin/admin-about';
 
 interface HeroTabProps {
   aboutContent: AboutContent;

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { PopupSettings } from '@/types/admin-homepage';
+import { PopupSettings } from '@/types/admin/admin-homepage';
 import { X } from 'lucide-react';
 
 interface PopupPreviewCardProps {
@@ -8,7 +8,6 @@ interface PopupPreviewCardProps {
 }
 
 export function PopupPreviewCard({ popupSettings }: PopupPreviewCardProps) {
-
   return (
     <Card>
       <CardHeader>

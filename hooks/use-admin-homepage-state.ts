@@ -1,4 +1,4 @@
-import { HeroSettings, PopupSettings } from '@/types/admin-homepage';
+import { HeroSettings, PopupSettings } from '@/types/admin/admin-homepage';
 import { useState } from 'react';
 
 const defaultHeroSettings: HeroSettings = {

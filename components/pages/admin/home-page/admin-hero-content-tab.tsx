@@ -1,6 +1,6 @@
 import { TabsContent } from '@/components/ui/tabs';
+import { HeroSettings } from '@/types/admin/admin-homepage';
 import { HeroContentCard } from './hero-content-card';
-import { HeroSettings } from '@/types/admin-homepage';
 
 interface AdminHeroContentTabProps {
   heroSettings: HeroSettings;

@@ -1,4 +1,4 @@
-import { AboutContent } from '@/types/admin-about';
+import { AboutContent } from '@/types/admin/admin-about';
 
 export const initialAboutPageContent: AboutContent = {
   hero: {

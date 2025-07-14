@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { TabsContent } from '@/components/ui/tabs';
-import { AboutContent } from '@/types/admin-about';
+import { AboutContent } from '@/types/admin/admin-about';
 import { StatsCard } from '../cards/stats-card';
 
 interface StatsTabProps {

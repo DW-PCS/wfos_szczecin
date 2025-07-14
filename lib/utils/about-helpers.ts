@@ -1,4 +1,10 @@
-import { AboutContent, Achievement, MissionVisionItem, Person, Team } from '@/types/admin-about';
+import {
+  AboutContent,
+  Achievement,
+  MissionVisionItem,
+  Person,
+  Team,
+} from '@/types/admin/admin-about';
 
 export const createNewMissionVisionItem = (
   existingItems: MissionVisionItem[]

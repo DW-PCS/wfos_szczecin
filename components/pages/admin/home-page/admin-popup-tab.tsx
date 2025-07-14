@@ -1,5 +1,5 @@
 import { TabsContent } from '@/components/ui/tabs';
-import { PopupSettings } from '@/types/admin-homepage';
+import { PopupSettings } from '@/types/admin/admin-homepage';
 import { PopupPreviewCard } from './popup-preview-card';
 import { PopupSettingsCard } from './popup-settings-card';
 

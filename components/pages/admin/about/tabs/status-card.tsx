@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AboutContent } from '@/types/admin-about';
+import { AboutContent } from '@/types/admin/admin-about';
 import { format } from 'date-fns';
 
 interface StatusCardProps {

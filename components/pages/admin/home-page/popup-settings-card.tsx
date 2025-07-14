@@ -1,6 +1,6 @@
 import { DateRange } from '@/components/features';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PopupSettings } from '@/types/admin-homepage';
+import { PopupSettings } from '@/types/admin/admin-homepage';
 import { PopupActiveToggle } from './popup-active-toggle';
 import { PopupContentField } from './popup-content-field';
 import { PopupImageUpload } from './popup-image-upload';

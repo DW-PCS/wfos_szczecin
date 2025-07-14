@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import { AboutContent, Achievement } from '@/types/admin-about';
+import { AboutContent, Achievement } from '@/types/admin/admin-about';
 import { ChartColumnDecreasing, DollarSign, Leaf, Users } from 'lucide-react';
 
 interface StatsCardProps {

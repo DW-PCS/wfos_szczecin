@@ -1,11 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { HeroSettings } from '@/types/admin-homepage';
-import { HeroTitleField } from './hero-title-field';
-import { HeroSubtitleField } from './hero-subtitle-field';
-import { HeroSearchPlaceholderField } from './hero-search-placeholder-field';
+import { HeroSettings } from '@/types/admin/admin-homepage';
 import { HeroImageUpload } from './hero-image-upload';
+import { HeroSearchPlaceholderField } from './hero-search-placeholder-field';
+import { HeroSubtitleField } from './hero-subtitle-field';
+import { HeroTitleField } from './hero-title-field';
 import { SaveButton } from './save-button';
-
 
 interface HeroContentCardProps {
   heroSettings: HeroSettings;

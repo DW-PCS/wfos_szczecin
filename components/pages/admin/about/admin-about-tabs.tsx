@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AboutContent } from '@/types/admin-about';
+import { AboutContent } from '@/types/admin/admin-about';
 import { BarChart3, Building, Image, MessageSquare, Plus, Target, Users } from 'lucide-react';
 import {
   CtaTab,

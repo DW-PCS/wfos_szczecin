@@ -1,5 +1,5 @@
 import { TabsContent } from '@/components/ui/tabs';
-import { AboutContent } from '@/types/admin-about';
+import { AboutContent } from '@/types/admin/admin-about';
 import { ManagementBoardCard, SupervisoryBoardCard } from '../cards';
 
 interface StructureTabProps {

@@ -1,5 +1,5 @@
-import { initialAboutPageContent } from '@/constants/admin-about';
-import { AboutContent } from '@/types/admin-about';
+import { initialAboutPageContent } from '@/constants/admin/admin-about';
+import { AboutContent } from '@/types/admin/admin-about';
 import { useState } from 'react';
 
 export function useAdminAboutState() {

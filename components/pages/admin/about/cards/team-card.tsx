@@ -1,8 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -10,9 +8,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Switch } from '@/components/ui/switch';
+import { Textarea } from '@/components/ui/textarea';
+import { AboutContent, Team } from '@/types/admin/admin-about';
 import { Trash2 } from 'lucide-react';
-import { AboutContent, Team } from '@/types/admin-about';
-
 
 interface TeamCardProps {
   team: Team;

@@ -1,9 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { AboutContent } from '@/types/admin/admin-about';
 import { Plus, Users } from 'lucide-react';
 import { PersonCard } from './person-card';
-import { AboutContent } from '@/types/admin-about';
-
 
 interface SupervisoryBoardCardProps {
   aboutContent: AboutContent;
