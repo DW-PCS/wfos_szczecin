@@ -1,4 +1,4 @@
-import { HeroSection, NewsShowcase, ProgramsSection } from '@/components/pages/home';
+import { HeroSection, NewsShowcase, ProgramsSection, StatsSection } from '@/components/pages/home';
 
 const page = () => {
   return (
@@ -12,7 +12,9 @@ const page = () => {
       <section aria-label="Aktualności i informacje">
         <NewsShowcase />
       </section>
-      <section aria-label="Statystyki funduszu"></section>
+      <section aria-label="Statystyki funduszu">
+        <StatsSection />
+      </section>
     </main>
   );
 };
