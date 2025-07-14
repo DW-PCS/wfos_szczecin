@@ -1,12 +1,17 @@
-export type Article = {
-  id: number;
+export interface Article {
+  id: string;
   title: string;
+  slug: string;
   excerpt: string;
   content: string;
+  imageUrl?: string;
   category: string;
+  tags?: string[];
   author: string;
-  publishedAt: Date;
-  image?: string;
+  published: boolean;
+  publishedAt?: string;
   featured: boolean;
-  readTime: string;
-};
+  readTime?: string;
+  createdAt: string;
+  updatedAt: string;
+}

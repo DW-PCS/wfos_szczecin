@@ -1,4 +1,5 @@
 import HeroSection from '@/components/pages/home/hero-section';
+import NewsShowcase from '@/components/pages/home/product-showcase/news-showcase';
 import ProgramsSection from '@/components/pages/home/programs/programs-section';
 
 const page = () => {
@@ -11,6 +12,9 @@ const page = () => {
         <ProgramsSection />
       </section>
       <section aria-label="Aktualności i informacje">
+        <NewsShowcase />
+      </section>
+      <section aria-label="Statystyki funduszu">
 
       </section>
     </main>

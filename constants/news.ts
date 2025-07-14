@@ -1,162 +1,64 @@
-export const newsArticles = [
+import { Article } from '@/types/news';
+
+export const newsArticles: Article[] = [
   {
-    id: 1,
+    id: '1',
     title: 'Nowy nabór wniosków w programie Czyste Powietrze 2024',
+    slug: 'nowy-nabor-wnioskow-w-programie-czyste-powietrze-2024',
     excerpt:
       'Informujemy o rozpoczęciu nowego naboru wniosków w programie Czyste Powietrze. Wnioski można składać od 15 stycznia 2024 roku.',
-    content: 'Szczegółowe informacje o nowym naborze...',
+    content:
+      '<h2>Rozpoczęcie nowego naboru</h2><p>Z radością informujemy, że od 15 stycznia 2024 roku rozpoczyna się nowy nabór wniosków w ramach programu Czyste Powietrze. Program ten umożliwia mieszkańcom województwa zachodniopomorskiego uzyskanie dofinansowania na wymianę starych źródeł ciepła oraz termomodernizację budynków mieszkalnych.</p><h3>Najważniejsze zmiany</h3><ul><li>Zwiększone kwoty dofinansowania do 135 000 zł</li><li>Uproszczone procedury składania wniosków</li><li>Nowe kategorie kwalifikowanych inwestycji</li></ul><p>Szczegółowe informacje dostępne są na stronie programu oraz w naszym biurze obsługi klienta.</p>',
+    imageUrl: '/placeholder.svg?height=300&width=400&text=Czyste+Powietrze',
     category: 'Programy dofinansowania',
+    tags: ['Czyste Powietrze', 'dofinansowanie', 'nabór'],
     author: 'Anna Kowalska',
-    publishedAt: new Date('2024-01-15'),
-    image: '/placeholder.svg?height=300&width=400&text=Czyste+Powietrze',
+    published: true,
+    publishedAt: '2024-01-15T10:00:00Z',
     featured: true,
     readTime: '3 min',
+    createdAt: '2024-01-15T10:00:00Z',
+    updatedAt: '2024-01-15T10:00:00Z',
   },
   {
-    id: 2,
+    id: '2',
     title: 'Zmiany w regulaminie programu Moja Woda',
+    slug: 'zmiany-w-regulaminie-programu-moja-woda',
     excerpt:
       'W związku z nowelizacją przepisów wprowadzamy zmiany w regulaminie programu Moja Woda obowiązujące od 1 lutego 2024.',
-    content: 'Szczegółowe informacje o zmianach...',
+    content:
+      '<h2>Aktualizacja regulaminu</h2><p>W związku z nowelizacją przepisów dotyczących gospodarki wodnej, wprowadzamy istotne zmiany w regulaminie programu Moja Woda. Zmiany wchodzą w życie z dniem 1 lutego 2024 roku.</p><h3>Główne zmiany</h3><ul><li>Rozszerzenie katalogu kwalifikowanych inwestycji</li><li>Zwiększenie maksymalnej kwoty dofinansowania</li><li>Nowe wymagania dotyczące dokumentacji technicznej</li></ul>',
+    imageUrl: '/placeholder.svg?height=300&width=400&text=Moja+Woda',
     category: 'Aktualności prawne',
+    tags: ['Moja Woda', 'regulamin', 'zmiany'],
     author: 'Piotr Nowak',
-    publishedAt: new Date('2024-01-10'),
-    image: '/placeholder.svg?height=300&width=400&text=Moja+Woda',
+    published: true,
+    publishedAt: '2024-01-10T14:30:00Z',
     featured: false,
     readTime: '5 min',
+    createdAt: '2024-01-10T14:30:00Z',
+    updatedAt: '2024-01-10T14:30:00Z',
   },
   {
-    id: 3,
+    id: '3',
     title: 'Konkurs na najlepszy projekt ekologiczny 2024',
+    slug: 'konkurs-na-najlepszy-projekt-ekologiczny-2024',
     excerpt:
       'Zapraszamy do udziału w konkursie na najlepszy projekt ekologiczny. Zgłoszenia przyjmujemy do 31 marca 2024 roku.',
-    content: 'Szczegółowe informacje o konkursie...',
+    content:
+      '<h2>Konkurs ekologiczny</h2><p>Wojewódzki Fundusz Ochrony Środowiska i Gospodarki Wodnej w Szczecinie ogłasza konkurs na najlepszy projekt ekologiczny realizowany w 2023 roku. Konkurs skierowany jest do wszystkich beneficjentów naszych programów.</p><h3>Kategorie konkursu</h3><ul><li>Najlepszy projekt z zakresu odnawialnych źródeł energii</li><li>Najlepszy projekt edukacji ekologicznej</li><li>Najlepszy projekt ochrony przyrody</li></ul>',
+    imageUrl: '/placeholder.svg?height=300&width=400&text=Konkurs+Ekologiczny',
     category: 'Konkursy',
+    tags: ['konkurs', 'ekologia', 'projekty'],
     author: 'Maria Wiśniewska',
-    publishedAt: new Date('2024-01-08'),
-    image: '/placeholder.svg?height=300&width=400&text=Konkurs+Ekologiczny',
+    published: true,
+    publishedAt: '2024-01-08T09:00:00Z',
     featured: false,
     readTime: '4 min',
-  },
-  {
-    id: 4,
-    title: 'Dotacje na instalacje fotowoltaiczne - nowe możliwości',
-    excerpt:
-      'Przedstawiamy nowe możliwości dofinansowania instalacji fotowoltaicznych dla mieszkańców województwa zachodniopomorskiego.',
-    content: 'Szczegółowe informacje o dotacjach...',
-    category: 'Programy dofinansowania',
-    author: 'Tomasz Kowalczyk',
-    publishedAt: new Date('2024-01-05'),
-    image: '/placeholder.svg?height=300&width=400&text=Fotowoltaika',
-    featured: true,
-    readTime: '6 min',
-  },
-  {
-    id: 5,
-    title: 'Raport roczny WFOŚiGW za 2023 rok',
-    excerpt:
-      'Publikujemy raport roczny z działalności Wojewódzkiego Funduszu Ochrony Środowiska i Gospodarki Wodnej za 2023 rok.',
-    content: 'Szczegółowe informacje o raporcie...',
-    category: 'Informacje',
-    author: 'Katarzyna Nowak',
-    publishedAt: new Date('2024-01-03'),
-    image: '/placeholder.svg?height=300&width=400&text=Raport+2023',
-    featured: false,
-    readTime: '8 min',
-  },
-  {
-    id: 6,
-    title: 'Nowe wytyczne dotyczące ochrony powietrza',
-    excerpt:
-      'Ministerstwo Klimatu i Środowiska opublikowało nowe wytyczne dotyczące ochrony powietrza, które wchodzą w życie od 1 marca 2024.',
-    content: 'Szczegółowe informacje o wytycznych...',
-    category: 'Aktualności prawne',
-    author: 'Michał Zieliński',
-    publishedAt: new Date('2023-12-28'),
-    image: '/placeholder.svg?height=300&width=400&text=Ochrona+Powietrza',
-    featured: false,
-    readTime: '7 min',
-  },
-  {
-    id: 7,
-    title: 'Warsztaty ekologiczne dla szkół - zapisy otwarte',
-    excerpt:
-      'Zapraszamy szkoły do udziału w warsztatach ekologicznych organizowanych przez WFOŚiGW. Zapisy trwają do końca lutego.',
-    content: 'Szczegółowe informacje o warsztatach...',
-    category: 'Informacje',
-    author: 'Agnieszka Kowal',
-    publishedAt: new Date('2023-12-20'),
-    image: '/placeholder.svg?height=300&width=400&text=Warsztaty+Ekologiczne',
-    featured: false,
-    readTime: '4 min',
-  },
-  {
-    id: 8,
-    title: 'Modernizacja systemu ogrzewania - nowe dofinansowania',
-    excerpt:
-      'Uruchamiamy nowy program dofinansowania modernizacji systemów ogrzewania w budynkach publicznych.',
-    content: 'Szczegółowe informacje o modernizacji...',
-    category: 'Programy dofinansowania',
-    author: 'Robert Lewandowski',
-    publishedAt: new Date('2023-12-15'),
-    image: '/placeholder.svg?height=300&width=400&text=Modernizacja+Ogrzewania',
-    featured: false,
-    readTime: '5 min',
-  },
-  {
-    id: 9,
-    title: "Konferencja 'Zielona Przyszłość Pomorza' - relacja",
-    excerpt:
-      "Relacja z konferencji 'Zielona Przyszłość Pomorza', która odbyła się 10 grudnia w Szczecinie.",
-    content: 'Szczegółowe informacje o konferencji...',
-    category: 'Informacje',
-    author: 'Ewa Mazur',
-    publishedAt: new Date('2023-12-12'),
-    image: '/placeholder.svg?height=300&width=400&text=Konferencja+Pomorze',
-    featured: false,
-    readTime: '6 min',
-  },
-  {
-    id: 10,
-    title: 'Nowe przepisy dotyczące gospodarki odpadami',
-    excerpt:
-      'Od 1 stycznia 2024 roku wchodzą w życie nowe przepisy dotyczące gospodarki odpadami w województwie zachodniopomorskim.',
-    content: 'Szczegółowe informacje o przepisach...',
-    category: 'Aktualności prawne',
-    author: 'Paweł Kowalski',
-    publishedAt: new Date('2023-12-08'),
-    image: '/placeholder.svg?height=300&width=400&text=Gospodarka+Odpadami',
-    featured: false,
-    readTime: '7 min',
-  },
-  {
-    id: 11,
-    title: "Program 'Zielone Dachy' - pierwsze rezultaty",
-    excerpt:
-      "Przedstawiamy pierwsze rezultaty programu 'Zielone Dachy' realizowanego w ramach inicjatyw ekologicznych.",
-    content: 'Szczegółowe informacje o programie...',
-    category: 'Programy dofinansowania',
-    author: 'Magdalena Wójcik',
-    publishedAt: new Date('2023-12-05'),
-    image: '/placeholder.svg?height=300&width=400&text=Zielone+Dachy',
-    featured: false,
-    readTime: '5 min',
-  },
-  {
-    id: 12,
-    title: 'Edukacja ekologiczna w przedszkolach - nowy projekt',
-    excerpt:
-      'Startuje nowy projekt edukacji ekologicznej skierowany do przedszkoli w województwie zachodniopomorskim.',
-    content: 'Szczegółowe informacje o projekcie...',
-    category: 'Informacje',
-    author: 'Joanna Krawczyk',
-    publishedAt: new Date('2023-12-01'),
-    image: '/placeholder.svg?height=300&width=400&text=Edukacja+Ekologiczna',
-    featured: false,
-    readTime: '4 min',
+    createdAt: '2024-01-08T09:00:00Z',
+    updatedAt: '2024-01-08T09:00:00Z',
   },
 ];
-
 export const categories = [
   'Wszystkie',
   'Programy dofinansowania',
@@ -167,3 +69,12 @@ export const categories = [
 ];
 
 export const FALLBACK_IMAGE = '/placeholder.svg?height=384&width=768&query=article+image';
+
+export interface CarouselState {
+  currentSlide: number;
+  itemsPerSlide: number;
+  totalSlides: number;
+  nextSlide: () => void;
+  prevSlide: () => void;
+  goToSlide: (index: number) => void;
+}
