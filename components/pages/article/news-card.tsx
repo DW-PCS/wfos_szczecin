@@ -18,7 +18,8 @@ interface NewsCardProps {
 }
 
 export const NewsCard: FC<NewsCardProps> = ({ className, article }) => {
-  const formattedDate = format(article.publishedAt, 'dd MMMM yyyy', { locale: pl });
+  const formattedDate =
+    article.publishedAt && format(article.publishedAt, 'dd MMMM yyyy', { locale: pl });
   const categoryColor = getCategoryColor(article.category);
 
   return (
@@ -30,7 +31,7 @@ export const NewsCard: FC<NewsCardProps> = ({ className, article }) => {
     >
       <div className="relative h-48">
         <Image
-          src={article.image || FALLBACK_IMAGE}
+          src={article.imageUrl || FALLBACK_IMAGE}
           alt={article.title}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -46,7 +47,7 @@ export const NewsCard: FC<NewsCardProps> = ({ className, article }) => {
         <div className="mb-3 flex items-center gap-4 text-sm text-gray-600">
           <div className="flex items-center gap-1">
             <CalendarIcon className="h-4 w-4" />
-            <time dateTime={article.publishedAt.toISOString()}>{formattedDate}</time>
+            <time dateTime={article.publishedAt}>{formattedDate}</time>
           </div>
           <div className="flex items-center gap-1">
             <Clock className="h-4 w-4" />
