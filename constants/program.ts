@@ -1,180 +1,152 @@
-import { Program } from '@/types/program';
-import { Building, Home, Leaf, Shield, Users } from 'lucide-react';
+import { ProgramPageType } from '@/types/program';
 
-export const programCategories = [
-  {
-    id: 'osoba-fizyczna',
-    title: 'Osoba fizyczna',
-    icon: Users,
+export const CONTACT_INFO = {
+  institution: 'Wojewódzki Fundusz Ochrony Środowiska i Gospodarki Wodnej w Szczecinie',
+  address: {
+    street: 'ul. Wały Chrobrego 4',
+    city: '70-500 Szczecin',
   },
-  {
-    id: 'przedsiebiorca',
-    title: 'Przedsiębiorca',
-    icon: Building,
-  },
-  {
-    id: 'jst',
-    title: 'Jednostka samorządu terytorialnego',
-    icon: Home,
-  },
-  {
-    id: 'pjb',
-    title: 'Państwowe jednostki budżetowe',
-    icon: Shield,
-  },
-  {
-    id: 'pozostale',
-    title: 'Pozostałe podmioty i organizacje',
-    icon: Leaf,
-  },
-] as const;
+  phone: '+48 91 484 67 00',
+  email: 'wfos@wfos.szczecin.pl',
+} as const;
 
-export const initialPrograms: Program[] = [
+export const PROGRAM_STATUS_MAPPING = {
+  otwarty: 'Nabór otwarty',
+  planowany: 'Planowany',
+  zakończony: 'Zakończony',
+  realizacja: 'W realizacji',
+  zamknięty: 'Nabór zamknięty',
+} as const;
+
+export const CATEGORY_DISPLAY_MAPPING = {
+  'Osoba fizyczna': 'Mieszkańcy',
+  Przedsiębiorca: 'Przedsiębiorcy',
+  'Jednostka samorządu terytorialnego': 'Jednostki publiczne',
+  'Państwowe jednostki budżetowe': 'Instytucje',
+} as const;
+
+export const initialProgramPages: ProgramPageType[] = [
   {
-    id: 1,
-    name: 'Czyste Powietrze',
-    description:
-      'Program dofinansowania wymiany źródeł ciepła i termomodernizacji budynków mieszkalnych',
-    status: 'otwarty',
-    budget: '500 000 000 zł',
-    deadline: '31.12.2024',
-    beneficiaryCategories: ['osoba-fizyczna'],
-    startDate: new Date('2023-01-01'),
-    endDate: new Date('2024-12-31'),
-    maxSupport: 'do 135 000 zł',
-    funding: 'do 100%',
-    programLink: 'https://czystepowietrze.gov.pl',
-  },
-  {
-    id: 2,
-    name: 'Moja Woda',
-    description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
-    status: 'otwarty',
-    budget: '100 000 000 zł',
-    deadline: '30.06.2024',
-    beneficiaryCategories: ['osoba-fizyczna', 'przedsiebiorca'],
-    startDate: new Date('2023-03-15'),
-    endDate: new Date('2024-06-30'),
-    maxSupport: 'do 6 000 zł',
-    funding: 'do 80%',
+    id: '1',
     programLink: 'https://example.com/moja-woda',
-  },
-  {
-    id: 3,
-    name: 'Bezpieczny Strażak',
-    description:
-      'Dofinansowanie zakupu sprzętu i wyposażenia dla jednostek Ochotniczych Straży Pożarnych',
-    status: 'planowany',
-    budget: '50 000 000 zł',
-    deadline: 'I kwartał 2025',
-    beneficiaryCategories: ['jst'],
-    startDate: new Date('2025-01-01'),
-    endDate: new Date('2025-12-31'),
-    maxSupport: 'do 20 000 zł',
-    funding: 'do 90%',
-  },
-  {
-    id: 4,
-    name: 'Zielona Energia',
-    description: 'Program wsparcia instalacji odnawialnych źródeł energii dla gospodarstw domowych',
-    status: 'zakończony',
-    budget: '200 000 000 zł',
-    deadline: 'Zakończony',
-    beneficiaryCategories: ['osoba-fizyczna'],
-    startDate: new Date('2022-01-01'),
-    endDate: new Date('2023-12-31'),
-    maxSupport: 'do 15 000 zł',
-    funding: 'do 70%',
-  },
-  {
-    id: 5,
-    name: 'Ekologiczny Transport',
-    description: 'Wsparcie dla zakupu pojazdów elektrycznych i hybrydowych',
-    status: 'otwarty',
-    budget: '150 000 000 zł',
-    deadline: '30.09.2025',
-    beneficiaryCategories: ['osoba-fizyczna', 'przedsiebiorca'],
-    startDate: new Date('2024-01-01'),
-    endDate: new Date('2025-09-30'),
-    maxSupport: 'do 25 000 zł',
-    funding: 'do 60%',
-  },
-  {
-    id: 6,
-    name: 'Odnawialne Źródła',
-    description: 'Program instalacji paneli fotowoltaicznych i pomp ciepła',
-    status: 'planowany',
-    budget: '300 000 000 zł',
-    deadline: 'II kwartał 2025',
-    beneficiaryCategories: ['osoba-fizyczna', 'przedsiebiorca'],
-    startDate: new Date('2025-04-01'),
-    endDate: new Date('2026-03-31'),
-    maxSupport: 'do 30 000 zł',
-    funding: 'do 85%',
-  },
-  {
-    id: 7,
-    name: 'Termomodernizacja',
-    description: 'Kompleksowa termomodernizacja budynków mieszkalnych i użyteczności publicznej',
-    status: 'otwarty',
-    budget: '400 000 000 zł',
-    deadline: '31.12.2025',
-    beneficiaryCategories: ['osoba-fizyczna', 'jst'],
-    startDate: new Date('2024-01-01'),
-    endDate: new Date('2025-12-31'),
-    maxSupport: 'do 40 000 zł',
-    funding: 'do 75%',
-  },
-  {
-    id: 8,
-    name: 'Gospodarka Wodna',
-    description: 'Modernizacja systemów wodociągowych i kanalizacyjnych',
-    status: 'otwarty',
-    budget: '250 000 000 zł',
-    deadline: '30.06.2025',
-    beneficiaryCategories: ['jst'],
-    startDate: new Date('2024-01-01'),
-    endDate: new Date('2025-06-30'),
-    maxSupport: 'do 12 000 zł',
+    name: 'Przykładowa Strona Tekstowa',
+    slug: 'przykladowa-strona-tekstowa',
+    maxSupport: 'od 6 000',
     funding: 'do 80%',
-  },
-  {
-    id: 9,
-    name: 'Ochrona Powietrza',
-    description: 'Projekty związane z poprawą jakości powietrza i redukcją emisji',
-    status: 'planowany',
-    budget: '180 000 000 zł',
-    deadline: 'III kwartał 2025',
-    beneficiaryCategories: ['przedsiebiorca', 'jst'],
-    startDate: new Date('2025-07-01'),
-    endDate: new Date('2026-06-30'),
-    maxSupport: 'do 18 000 zł',
-    funding: 'do 70%',
-  },
-  {
-    id: 10,
-    name: 'Energia Słoneczna',
-    description: 'Wsparcie dla instalacji fotowoltaicznych w sektorze publicznym',
+    deadline: '30.06.2024',
+    budget: '100 000 000 zł',
+    description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
+
+    content:
+      "<h2>Witamy na przykładowej stronie</h2><p>To jest przykładowa treść strony utworzonej w panelu administracyjnym. Możesz edytować tę treść w panelu admina w sekcji 'Strony'.</p><p>Strona obsługuje pełną funkcjonalność WYSIWYG, komponenty, SEO i media.</p><h3>Obsługa filmów YouTube</h3><p>Możesz teraz dodawać filmy YouTube po prostu wklejając link:</p><p>https://www.youtube.com/watch?v=hzDpKD1e9HI</p><p>Link automatycznie zamieni się w odtwarzacz wideo!</p>",
+    metaTitle: 'Przykładowa Strona Tekstowa - WFOŚiGW',
+    metaDescription:
+      'Przykładowa strona tekstowa utworzona w panelu administracyjnym Wojewódzkiego Funduszu Ochrony Środowiska',
+    uploadedImages: [],
+    pdfFiles: [
+      {
+        id: 'pdf-1',
+        fileName: 'przykladowy-dokument.pdf',
+        displayName: 'Przykładowy dokument PDF z podglądem',
+      },
+    ],
+    selectedComponents: [],
+    author: 'Admin',
+    dateAdded: new Date().toISOString(),
+    published: true,
+    type: 'general',
+    beneficiaryCategories: ['Osoba fizyczna', 'Przedsiębiorca'],
     status: 'otwarty',
-    budget: '120 000 000 zł',
-    deadline: '31.08.2025',
-    beneficiaryCategories: ['pjb'],
-    startDate: new Date('2024-01-01'),
-    endDate: new Date('2025-08-31'),
-    maxSupport: 'do 22 000 zł',
-    funding: 'do 90%',
+    startDate: '15.03.2023',
+    endDate: '30.06.2024',
+  },
+  {
+    id: '2',
+    name: 'Test plików PDF ze spacjami',
+    description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
+
+    slug: 'test',
+    programLink: 'https://example.com/moja-woda',
+    content:
+      "<h2>Testowanie plików PDF</h2><p>Ta strona testuje obsługę plików PDF z różnymi nazwami, w tym ze spacjami.</p><p>Sprawdź poniżej sekcję 'Pliki do pobrania' - wszystkie pliki powinny działać poprawnie:</p><ul><li>Podgląd w modalnym oknie</li><li>Pobieranie plików</li><li>Obsługa nazw ze spacjami</li></ul><h3>Instrukcje obsługi</h3><p>Poniżej znajdziesz instrukcje w formacie PDF. Każdy plik można obejrzeć w podglądzie lub pobrać bezpośrednio.</p>",
+    metaTitle: 'Test plików PDF - WFOŚiGW',
+    metaDescription: 'Strona testowa do sprawdzania obsługi plików PDF z różnymi nazwami',
+    uploadedImages: [],
+    pdfFiles: [
+      {
+        id: 'pdf-2',
+        fileName: 'Instrukcja TRANZYT i PCS 14.06.2025.pdf',
+        displayName: 'Instrukcja obsługi systemu TRANZYT i PCS',
+      },
+      {
+        id: 'pdf-3',
+        fileName: 'instrukcja dla AIS PLUS i PCS 14.06.2025.pdf',
+        displayName: 'Instrukcja dla systemu AIS PLUS i PCS',
+      },
+      {
+        id: 'pdf-4',
+        fileName: 'przykladowy-dokument.pdf',
+        displayName: 'Przykładowy dokument (bez spacji w nazwie)',
+      },
+    ],
+    selectedComponents: [],
+    author: 'Admin',
+    dateAdded: new Date().toISOString(),
+    published: true,
+    type: 'general',
+    beneficiaryCategories: ['Osoba fizyczna', 'Przedsiębiorca'],
+  },
+  {
+    id: '3',
+    name: 'Polityka Prywatności',
+    description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
+
+    slug: 'polityka-prywatnosci',
+    programLink: 'https://example.com/moja-woda',
+    content:
+      '<h2>Polityka Prywatności</h2><p>Niniejsza polityka prywatności określa zasady przetwarzania danych osobowych przez Wojewódzki Fundusz Ochrony Środowiska i Gospodarki Wodnej w Szczecinie.</p><h3>Administrator danych</h3><p>Administratorem Państwa danych osobowych jest Wojewódzki Fundusz Ochrony Środowiska i Gospodarki Wodnej w Szczecinie.</p>',
+    metaTitle: 'Polityka Prywatności - WFOŚiGW',
+    metaDescription:
+      'Polityka prywatności Wojewódzkiego Funduszu Ochrony Środowiska i Gospodarki Wodnej w Szczecinie',
+    uploadedImages: [],
+    pdfFiles: [],
+    selectedComponents: [],
+    author: 'Admin',
+    dateAdded: new Date().toISOString(),
+    published: true,
+    type: 'general',
+    beneficiaryCategories: ['Osoba fizyczna', 'Jednostka samorządu terytorialnego'],
+  },
+  {
+    id: '4',
+    beneficiaryCategories: ['Przedsiębiorca', 'Jednostka samorządu terytorialnego'],
+    name: 'Program Czyste Powietrze - Szczegóły',
+    description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
+
+    slug: 'czyste-powietrze-szczegoly',
+    programLink: 'https://example.com/moja-woda',
+    content:
+      '<h2>Program Czyste Powietrze</h2><p>Program Czyste Powietrze to kompleksowy system wsparcia dla właścicieli domów jednorodzinnych w Polsce, mający na celu poprawę jakości powietrza poprzez wymianę starych, nieekologicznych źródeł ciepła na nowoczesne, ekologiczne systemy grzewcze.</p><h3>Cele programu</h3><ul><li>Poprawa jakości powietrza w Polsce</li><li>Redukcja emisji pyłów i gazów cieplarnianych</li><li>Zwiększenie efektywności energetycznej budynków</li><li>Rozwój rynku technologii przyjaznych środowisku</li></ul><h3>Kto może skorzystać?</h3><p>Program skierowany jest do właścicieli domów jednorodzinnych, którzy chcą wymienić stare źródła ciepła na nowoczesne, ekologiczne systemy grzewcze.</p><h3>Rodzaje dofinansowania</h3><p>W ramach programu można otrzymać dofinansowanie na:</p><ul><li>Wymianę źródła ciepła</li><li>Termomodernizację budynku</li><li>Instalację odnawialnych źródeł energii</li></ul><h3>Wysokość dofinansowania</h3><p>Maksymalna kwota dofinansowania wynosi <strong>135 000 zł</strong> i może pokryć do <strong>100%</strong> kosztów inwestycji w przypadku gospodarstw domowych o najniższych dochodach.</p>',
+    metaTitle: 'Program Czyste Powietrze - Szczegóły | WFOŚiGW',
+    metaDescription:
+      'Szczegółowe informacje o programie Czyste Powietrze - cele, beneficjenci, wysokość dofinansowania i procedury.',
+    uploadedImages: [],
+    pdfFiles: [
+      {
+        id: 'pdf-czyste-powietrze-1',
+        fileName: 'regulamin-czyste-powietrze.pdf',
+        displayName: 'Regulamin programu Czyste Powietrze',
+      },
+      {
+        id: 'pdf-czyste-powietrze-2',
+        fileName: 'wniosek-czyste-powietrze.pdf',
+        displayName: 'Formularz wniosku o dofinansowanie',
+      },
+    ],
+    selectedComponents: [],
+    author: 'Admin',
+    dateAdded: new Date().toISOString(),
+    published: true,
+    type: 'program',
   },
 ];
-
-
-export const getCategoryById = (categoryId: string) => {
-  return programCategories.find(category => category.id === categoryId);
-};
-
-
-export const getCategoriesByIds = (categoryIds: string[]) => {
-  return categoryIds.map(id => getCategoryById(id)).filter(Boolean);
-};
-
-
-export type CategoryId = (typeof programCategories)[number]['id'];

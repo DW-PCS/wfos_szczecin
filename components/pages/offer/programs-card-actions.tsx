@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/cn';
-import { getStatusDisplay } from '@/lib/utils/program-helpers';
+import { getStatusDisplay } from '@/lib/utils/offer';
 import { Program } from '@/types/program';
 import { Download } from 'lucide-react';
 import Link from 'next/link';

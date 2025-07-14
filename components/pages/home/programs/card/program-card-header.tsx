@@ -1,6 +1,5 @@
 import { CardHeader, CardTitle } from '@/components/ui/card';
-import { getIconForProgram } from '@/lib/utils/program-helpers';
-
+import { getIconForProgram } from '@/lib/utils/offer';
 
 import { Program } from '@/types/program';
 

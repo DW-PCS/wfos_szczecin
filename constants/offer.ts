@@ -1,4 +1,33 @@
-import { Program, ProgramCategory } from '@/types/program';
+import { Program } from '@/types/program';
+import { Building, Home, Leaf, Shield, Users } from 'lucide-react';
+
+export const programCategories = [
+  {
+    id: 'osoba-fizyczna',
+    title: 'Osoba fizyczna',
+    icon: Users,
+  },
+  {
+    id: 'przedsiebiorca',
+    title: 'Przedsiębiorca',
+    icon: Building,
+  },
+  {
+    id: 'jst',
+    title: 'Jednostka samorządu terytorialnego',
+    icon: Home,
+  },
+  {
+    id: 'pjb',
+    title: 'Państwowe jednostki budżetowe',
+    icon: Shield,
+  },
+  {
+    id: 'pozostale',
+    title: 'Pozostałe podmioty i organizacje',
+    icon: Leaf,
+  },
+] as const;
 
 export const initialPrograms: Program[] = [
   {
@@ -9,13 +38,12 @@ export const initialPrograms: Program[] = [
     status: 'otwarty',
     budget: '500 000 000 zł',
     deadline: '31.12.2024',
-    beneficiaryCategories: ['Osoba fizyczna'],
+    beneficiaryCategories: ['osoba-fizyczna'],
     startDate: new Date('2023-01-01'),
     endDate: new Date('2024-12-31'),
     maxSupport: 'do 135 000 zł',
     funding: 'do 100%',
     programLink: 'https://czystepowietrze.gov.pl',
-    showOnHomepage: true,
   },
   {
     id: 2,
@@ -24,7 +52,7 @@ export const initialPrograms: Program[] = [
     status: 'otwarty',
     budget: '100 000 000 zł',
     deadline: '30.06.2024',
-    beneficiaryCategories: ['Osoba fizyczna', 'Przedsiębiorca'],
+    beneficiaryCategories: ['osoba-fizyczna', 'przedsiebiorca'],
     startDate: new Date('2023-03-15'),
     endDate: new Date('2024-06-30'),
     maxSupport: 'do 6 000 zł',
@@ -39,7 +67,7 @@ export const initialPrograms: Program[] = [
     status: 'planowany',
     budget: '50 000 000 zł',
     deadline: 'I kwartał 2025',
-    beneficiaryCategories: ['Jednostka samorządu terytorialnego'],
+    beneficiaryCategories: ['jst'],
     startDate: new Date('2025-01-01'),
     endDate: new Date('2025-12-31'),
     maxSupport: 'do 20 000 zł',
@@ -52,7 +80,7 @@ export const initialPrograms: Program[] = [
     status: 'zakończony',
     budget: '200 000 000 zł',
     deadline: 'Zakończony',
-    beneficiaryCategories: ['Osoba fizyczna'],
+    beneficiaryCategories: ['osoba-fizyczna'],
     startDate: new Date('2022-01-01'),
     endDate: new Date('2023-12-31'),
     maxSupport: 'do 15 000 zł',
@@ -65,12 +93,11 @@ export const initialPrograms: Program[] = [
     status: 'otwarty',
     budget: '150 000 000 zł',
     deadline: '30.09.2025',
-    beneficiaryCategories: ['Osoba fizyczna', 'Przedsiębiorca'],
+    beneficiaryCategories: ['osoba-fizyczna', 'przedsiebiorca'],
     startDate: new Date('2024-01-01'),
     endDate: new Date('2025-09-30'),
     maxSupport: 'do 25 000 zł',
     funding: 'do 60%',
-    showOnHomepage: true,
   },
   {
     id: 6,
@@ -79,7 +106,7 @@ export const initialPrograms: Program[] = [
     status: 'planowany',
     budget: '300 000 000 zł',
     deadline: 'II kwartał 2025',
-    beneficiaryCategories: ['Osoba fizyczna', 'Przedsiębiorca'],
+    beneficiaryCategories: ['osoba-fizyczna', 'przedsiebiorca'],
     startDate: new Date('2025-04-01'),
     endDate: new Date('2026-03-31'),
     maxSupport: 'do 30 000 zł',
@@ -92,12 +119,11 @@ export const initialPrograms: Program[] = [
     status: 'otwarty',
     budget: '400 000 000 zł',
     deadline: '31.12.2025',
-    beneficiaryCategories: ['Osoba fizyczna', 'Jednostka samorządu terytorialnego'],
+    beneficiaryCategories: ['osoba-fizyczna', 'jst'],
     startDate: new Date('2024-01-01'),
     endDate: new Date('2025-12-31'),
     maxSupport: 'do 40 000 zł',
     funding: 'do 75%',
-    showOnHomepage: true,
   },
   {
     id: 8,
@@ -106,7 +132,7 @@ export const initialPrograms: Program[] = [
     status: 'otwarty',
     budget: '250 000 000 zł',
     deadline: '30.06.2025',
-    beneficiaryCategories: ['Jednostka samorządu terytorialnego'],
+    beneficiaryCategories: ['jst'],
     startDate: new Date('2024-01-01'),
     endDate: new Date('2025-06-30'),
     maxSupport: 'do 12 000 zł',
@@ -119,7 +145,7 @@ export const initialPrograms: Program[] = [
     status: 'planowany',
     budget: '180 000 000 zł',
     deadline: 'III kwartał 2025',
-    beneficiaryCategories: ['Przedsiębiorca', 'Jednostka samorządu terytorialnego'],
+    beneficiaryCategories: ['przedsiebiorca', 'jst'],
     startDate: new Date('2025-07-01'),
     endDate: new Date('2026-06-30'),
     maxSupport: 'do 18 000 zł',
@@ -132,7 +158,7 @@ export const initialPrograms: Program[] = [
     status: 'otwarty',
     budget: '120 000 000 zł',
     deadline: '31.08.2025',
-    beneficiaryCategories: ['Państwowe jednostki budżetowe'],
+    beneficiaryCategories: ['pjb'],
     startDate: new Date('2024-01-01'),
     endDate: new Date('2025-08-31'),
     maxSupport: 'do 22 000 zł',
@@ -140,24 +166,15 @@ export const initialPrograms: Program[] = [
   },
 ];
 
-export const PROGRAM_CATEGORIES: ProgramCategory[] = [
-  { id: 'all', label: 'Wszystkie' },
-  { id: 'Osoba fizyczna', label: 'Mieszkańcy' },
-  { id: 'Przedsiębiorca', label: 'Przedsiębiorcy' },
-  { id: 'Jednostka samorządu terytorialnego', label: 'Jednostki publiczne' },
-  { id: 'Państwowe jednostki budżetowe', label: 'Instytucje' },
-];
 
-export const PROGRAM_STATUS = {
-  OPEN: 'otwarty',
-  PLANNED: 'planowany',
-  FINISHED: 'zakończony',
-} as const;
+export const getCategoryById = (categoryId: string) => {
+  return programCategories.find(category => category.id === categoryId);
+};
 
-export const PROGRAM_STATUS_COLORS = {
-  [PROGRAM_STATUS.OPEN]: 'bg-green-100 text-green-800',
-  [PROGRAM_STATUS.PLANNED]: 'bg-blue-100 text-blue-800',
-  [PROGRAM_STATUS.FINISHED]: 'bg-gray-100 text-gray-800',
-} as const;
 
-export const SKELETON_ITEMS_COUNT = 6;
+export const getCategoriesByIds = (categoryIds: string[]) => {
+  return categoryIds.map(id => getCategoryById(id)).filter(Boolean);
+};
+
+
+export type CategoryId = (typeof programCategories)[number]['id'];

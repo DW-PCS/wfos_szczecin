@@ -1,7 +1,6 @@
 import { CardContent, CardDescription } from '@/components/ui/card';
 import { Program } from '@/types/program';
-import { ProgramDetails } from '../program-details';
-
+import { ProgramDetails } from '../../../program/card/program-details';
 
 interface ProgramCardContentProps {
   program: Program;

@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { getStatusColor } from '@/lib/utils/program-helpers';
+import { getStatusColor } from '@/lib/utils/offer';
 
 interface ProgramStatusBadgeProps {
   status: string;

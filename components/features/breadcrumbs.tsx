@@ -9,9 +9,18 @@ interface BreadcrumbsProps {
     title: string;
     href: string;
   };
+  subtitle_next?: {
+    title: string;
+    href: string;
+  };
 }
 
-export const Breadcrumbs: FC<BreadcrumbsProps> = ({ className = '', title, subtitle }) => {
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({
+  className = '',
+  title,
+  subtitle,
+  subtitle_next,
+}) => {
   return (
     <section className={cn('py-4 border-b', className)}>
       <div className="container mx-auto px-4">
@@ -24,6 +33,17 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({ className = '', title, subti
             {subtitle.title}
           </Link>
           <span>/</span>
+          {subtitle_next && (
+            <>
+              <Link
+                href={`/${subtitle.href}/${subtitle_next.href}`}
+                className="hover:text-primary-green transition-colors"
+              >
+                {subtitle_next.title}
+              </Link>
+              <span>/</span>
+            </>
+          )}
           <span className="text-black">{title}</span>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Breadcrumbs } from '@/components/features';
+import { Breadcrumbs } from '@/components/features/breadcrumbs';
 import DOMPurify from 'isomorphic-dompurify';
 import { ArticleContent } from './article-content';
 import { ArticleHeader } from './article-header';

@@ -1,12 +1,12 @@
 import { Card } from '@/components/ui/card';
-import { ProgramStatusBadge } from '../program-status-badge';
 
-import { ProgramCardHeader } from './program-card-header';
-
-import { getStatusDisplay } from '@/lib/utils/program-helpers';
+import { getStatusDisplay } from '@/lib/utils/offer';
 import { Program } from '@/types/program';
+
 import { ProgramCardActions } from './program-card-actions';
 import { ProgramCardContent } from './program-card-content';
+import { ProgramCardHeader } from './program-card-header';
+import { ProgramStatusBadge } from './program-status-badge';
 
 interface ProgramCardProps {
   program: Program;
@@ -30,9 +30,7 @@ export function ProgramCard({ program }: ProgramCardProps) {
         programId={program.id}
         statusDisplay={statusDisplay}
       />
-
       <ProgramCardHeader program={program} />
-
       <ProgramCardContent program={program} />
 
       <ProgramCardActions program={program} isClosedOrFinished={isClosedOrFinished} />

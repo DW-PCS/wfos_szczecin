@@ -10,7 +10,7 @@ export const getIconForProgram = (programName: string) => {
   return Home;
 };
 
-export const getStatusDisplay = (status: string): string => {
+export const getStatusDisplay = (status: string | undefined): string => {
   switch (status) {
     case 'otwarty':
       return 'Otwarty';
@@ -23,7 +23,7 @@ export const getStatusDisplay = (status: string): string => {
     case 'zamknięty':
       return 'Nabór zamknięty';
     default:
-      return status;
+      return status ?? 'Nieznany';
   }
 };
 

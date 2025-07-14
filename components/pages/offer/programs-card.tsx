@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/cn';
-import { getStatusColor, getStatusDisplay, getStatusLabel } from '@/lib/utils/program-helpers';
+import { getStatusColor, getStatusDisplay, getStatusLabel } from '@/lib/utils/offer';
 import { Program } from '@/types/program';
 import { ProgramCardActions } from './programs-card-actions';
 import { ProgramCardDetails } from './programs-card-details';
