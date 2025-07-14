@@ -14,8 +14,8 @@ const Article = ({ article }: NewsProps) => {
     <div className="min-h-screen bg-white">
       <main>
         <Breadcrumbs
-          title={article.title}
-          subtitle={{ title: 'Aktualności', href: 'aktualnosci' }}
+          currentPageTitle={article.title}
+          parentPage={{ title: 'Aktualności', href: 'aktualnosci' }}
         />
 
         <section className="py-8">

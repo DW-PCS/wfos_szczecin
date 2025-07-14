@@ -2,50 +2,64 @@ import { cn } from '@/lib/cn';
 import Link from 'next/link';
 import { FC } from 'react';
 
+interface BreadcrumbItem {
+  title: string;
+  href: string;
+}
+
 interface BreadcrumbsProps {
   className?: string;
-  title: string;
-  subtitle: {
-    title: string;
-    href: string;
-  };
-  subtitle_next?: {
-    title: string;
-    href: string;
-  };
+  currentPageTitle: string;
+  parentPage: BreadcrumbItem;
+  grandparentPage?: BreadcrumbItem;
 }
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   className = '',
-  title,
-  subtitle,
-  subtitle_next,
+  currentPageTitle,
+  parentPage,
+  grandparentPage,
 }) => {
+  const buildHref = (baseHref: string, additionalHref?: string) => {
+    if (!additionalHref) return `/${baseHref}`;
+    return `/${baseHref}/${additionalHref}`;
+  };
+
   return (
     <section className={cn('py-4 border-b', className)}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center gap-2 text-sm text-gray-600">
+        <nav className="flex items-center gap-2 text-sm text-gray-600" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-primary-green transition-colors">
             Strona główna
           </Link>
-          <span>/</span>
-          <Link href={`/${subtitle.href}`} className="hover:text-primary-green transition-colors">
-            {subtitle.title}
+
+          <span aria-hidden="true">/</span>
+
+          <Link
+            href={buildHref(parentPage.href)}
+            className="hover:text-primary-green transition-colors"
+          >
+            {parentPage.title}
           </Link>
-          <span>/</span>
-          {subtitle_next && (
+
+          <span aria-hidden="true">/</span>
+
+          {grandparentPage && (
             <>
               <Link
-                href={`/${subtitle.href}/${subtitle_next.href}`}
+                href={buildHref(parentPage.href, grandparentPage.href)}
                 className="hover:text-primary-green transition-colors"
               >
-                {subtitle_next.title}
+                {grandparentPage.title}
               </Link>
-              <span>/</span>
+              <span aria-hidden="true">/</span>
             </>
           )}
-          <span className="text-black">{title}</span>
-        </div>
+
+          <span className="text-black" aria-current="page">
+            {currentPageTitle}
+          </span>
+        </nav>
       </div>
     </section>
   );

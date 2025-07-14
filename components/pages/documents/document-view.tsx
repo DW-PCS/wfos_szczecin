@@ -21,9 +21,9 @@ export default function DocumentsPage({ id }: DocumentsPageProps) {
     <div className="min-h-screen bg-white">
       <main>
         <Breadcrumbs
-          subtitle={{ title: ' Programy', href: 'programy' }}
-          title="Dokumenty"
-          subtitle_next={{ title: programData.name, href: id }}
+          parentPage={{ title: ' Programy', href: 'programy' }}
+          currentPageTitle="Dokumenty"
+          grandparentPage={{ title: programData.name, href: id }}
         />
 
         <DocumentsHeader programId={id} programName={programData.name} />

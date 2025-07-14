@@ -1,19 +1,22 @@
 import { getStatusDisplay } from '@/lib/utils/offer';
 import { getCategoryDisplayName, getStatusColor } from '@/lib/utils/programs';
 
+import { ProgramPageType } from '@/types/program';
 import { ArrowLeft, Download, ExternalLink, MapPin, Users } from 'lucide-react';
 import Link from 'next/link';
 import { Breadcrumbs } from '../features/breadcrumbs';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { ProgramPageType } from '@/types/program';
 
 const ProgramPage = ({ program }: { program: ProgramPageType }) => {
   return (
     <div className="min-h-screen bg-white">
       <main>
-        <Breadcrumbs subtitle={{ title: 'Programy', href: 'programy' }} title={program.name} />
+        <Breadcrumbs
+          parentPage={{ title: 'Programy', href: 'programy' }}
+          currentPageTitle={program.name}
+        />
 
         {/* Program Header */}
         <section className="py-8">

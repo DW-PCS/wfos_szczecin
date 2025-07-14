@@ -11,7 +11,10 @@ const ProgramPage = ({ program }: ProgramPageProps) => {
   return (
     <div className="min-h-screen bg-white">
       <main>
-        <Breadcrumbs subtitle={{ title: 'Programy', href: 'programy' }} title={program.name} />
+        <Breadcrumbs
+          parentPage={{ title: 'Programy', href: 'programy' }}
+          currentPageTitle={program.name}
+        />
 
         <ProgramHeader program={program} />
         <ProgramImage program={program} />
