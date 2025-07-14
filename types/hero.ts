@@ -1,4 +1,4 @@
-interface HeroSlide {
+export interface HeroSlide {
   id: string;
   title: string;
   subtitle: string;
@@ -18,4 +18,14 @@ export interface HeroSettings {
   autoPlayInterval: number;
   showNavigation: boolean;
   showIndicators: boolean;
+}
+
+export interface SliderState {
+  currentSlide: number;
+  isAutoPlaying: boolean;
+  nextSlide: () => void;
+  prevSlide: () => void;
+  goToSlide: (index: number) => void;
+  handleMouseEnter: () => void;
+  handleMouseLeave: () => void;
 }

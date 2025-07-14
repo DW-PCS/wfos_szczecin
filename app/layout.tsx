@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Wojewódzki Fundusz Ochrony Środowiska i Gospodarki Wodnej w Szczecinie wfos.szczecin.pl',
+  title: 'WFOŚiGW w Szczecinie',
+  description: 'Wojewódzki Fundusz Ochrony Środowiska i Gospodarki Wodnej w Szczecinie',
 };
 
 export default function RootLayout({

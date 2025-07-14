@@ -1,5 +1,5 @@
 import { Program } from '@/types/program';
-import ProgramsSectionSkeleton from '../programs-section-skeleton';
+import ProgramsSectionSkeleton from './programs-section-skeleton';
 import { ProgramCard } from './card/program-card';
 
 interface ProgramsListProps {

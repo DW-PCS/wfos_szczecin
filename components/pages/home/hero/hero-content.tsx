@@ -20,7 +20,6 @@ export function HeroContent({
   secondaryButtonUrl,
   hasBackgroundImage = false,
 }: HeroContentProps) {
-  // Adjust text colors based on background image - improved mobile sizing
   const titleClasses = hasBackgroundImage
     ? 'text-[28px] xs:text-[32px] sm:text-[45px] lg:text-[57px] font-bold text-white leading-tight px-2 sm:px-0'
     : 'text-[28px] xs:text-[32px] sm:text-[45px] lg:text-[57px] font-bold text-gray-900 leading-tight px-2 sm:px-0';

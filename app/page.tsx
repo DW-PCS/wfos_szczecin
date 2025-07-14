@@ -1,6 +1,4 @@
-import HeroSection from '@/components/pages/home/hero-section';
-import NewsShowcase from '@/components/pages/home/product-showcase/news-showcase';
-import ProgramsSection from '@/components/pages/home/programs/programs-section';
+import { HeroSection, NewsShowcase, ProgramsSection } from '@/components/pages/home';
 
 const page = () => {
   return (
@@ -14,9 +12,7 @@ const page = () => {
       <section aria-label="Aktualności i informacje">
         <NewsShowcase />
       </section>
-      <section aria-label="Statystyki funduszu">
-
-      </section>
+      <section aria-label="Statystyki funduszu"></section>
     </main>
   );
 };
