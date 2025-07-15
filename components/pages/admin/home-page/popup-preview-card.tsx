@@ -19,7 +19,7 @@ export function PopupPreviewCard({ popupSettings }: PopupPreviewCardProps) {
           <div className="flex justify-between items-start mb-4">
             <h3 className="text-lg font-bold">{popupSettings.title || 'Tytuł popupu'}</h3>
             <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-              <X className="h-4 w-4" />
+            <X className="h-4 w-4" />
             </Button>
           </div>
           {popupSettings.image && (

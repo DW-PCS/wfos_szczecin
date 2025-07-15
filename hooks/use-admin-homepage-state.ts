@@ -6,6 +6,11 @@ const defaultHeroSettings: HeroSettings = {
   subtitle: '',
   searchPlaceholder: '',
   heroImage: undefined,
+  sliderEnabled: true,
+  showNavigation: true,
+  showIndicators: true,
+  autoPlayInterval: 5,
+  slides: [],
 };
 
 const defaultPopupSettings: PopupSettings = {

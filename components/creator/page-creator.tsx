@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { BENEFICIARY_CATEGORIES } from '@/constants/admin/admin-program-creator';
 import { initialProgramPages } from '@/constants/program';
 import { cn } from '@/lib/cn';
 import { Program } from '@/types/admin/admin-programs';
@@ -24,14 +25,6 @@ import { pl } from 'date-fns/locale';
 import { ArrowLeft, CalendarIcon, Save, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-
-const beneficiaryCategoriesList = [
-  'Osoba fizyczna',
-  'Przedsiębiorca',
-  'Jednostka samorządu terytorialnego',
-  'Państwowe jednostki budżetowe',
-  'Pozostałe podmioty i organizacje',
-];
 
 const statusOptions = [
   { value: 'otwarty', label: 'Otwarty', color: 'bg-green-100 text-green-800' },
@@ -461,7 +454,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
               <CardDescription>Wybierz grupy docelowe programu</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {beneficiaryCategoriesList.map(category => (
+              {BENEFICIARY_CATEGORIES.map(category => (
                 <div key={category} className="flex items-center space-x-2">
                   <Checkbox
                     id={`category-${category}`}

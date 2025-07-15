@@ -1,4 +1,6 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { DEFAULT_TAB, VALID_TABS } from '@/constants/admin/admin-about';
+import { useTabSelection } from '@/hooks/use-tab-selection';
 import { AboutContent } from '@/types/admin/admin-about';
 import { BarChart3, Building, Image, MessageSquare, Plus, Target, Users } from 'lucide-react';
 import {
@@ -13,23 +15,16 @@ import {
 } from './tabs';
 
 interface AdminAboutTabsProps {
-  activeTab: string;
-  onTabChange: (tab: string) => void;
   aboutContent: AboutContent;
   setAboutContent: (content: AboutContent) => void;
   isEditing: boolean;
 }
 
-export function AdminAboutTabs({
-  activeTab,
-  onTabChange,
-  aboutContent,
-  setAboutContent,
-  isEditing,
-}: AdminAboutTabsProps) {
+export function AdminAboutTabs({ aboutContent, setAboutContent, isEditing }: AdminAboutTabsProps) {
+  const { activeTab, handleTabChange } = useTabSelection(VALID_TABS, DEFAULT_TAB);
   return (
     <>
-      <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
+      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
         <TabsList className="grid w-full grid-cols-7">
           <TabsTrigger value="hero" className="flex items-center gap-2">
             <Image className="h-4 w-4" />
