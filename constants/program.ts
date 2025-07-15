@@ -27,7 +27,7 @@ export const CATEGORY_DISPLAY_MAPPING = {
 
 export const initialProgramPages: ProgramPageType[] = [
   {
-    id: '1',
+    id: 1,
     programLink: 'https://example.com/moja-woda',
     name: 'Przykładowa Strona Tekstowa',
     slug: 'przykladowa-strona-tekstowa',
@@ -57,11 +57,11 @@ export const initialProgramPages: ProgramPageType[] = [
     type: 'general',
     beneficiaryCategories: ['Osoba fizyczna', 'Przedsiębiorca'],
     status: 'otwarty',
-    startDate: '15.03.2023',
-    endDate: '30.06.2024',
+    startDate: new Date('2023-03-15'),
+    endDate: new Date('2024-06-30'),
   },
   {
-    id: '2',
+    id: 2,
     name: 'Test plików PDF ze spacjami',
     description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
 
@@ -97,7 +97,7 @@ export const initialProgramPages: ProgramPageType[] = [
     beneficiaryCategories: ['Osoba fizyczna', 'Przedsiębiorca'],
   },
   {
-    id: '3',
+    id: 3,
     name: 'Polityka Prywatności',
     description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
 
@@ -118,7 +118,7 @@ export const initialProgramPages: ProgramPageType[] = [
     beneficiaryCategories: ['Osoba fizyczna', 'Jednostka samorządu terytorialnego'],
   },
   {
-    id: '4',
+    id: 4,
     beneficiaryCategories: ['Przedsiębiorca', 'Jednostka samorządu terytorialnego'],
     name: 'Program Czyste Powietrze - Szczegóły',
     description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',

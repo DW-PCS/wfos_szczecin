@@ -1,6 +1,6 @@
 import { CardContent, CardDescription } from '@/components/ui/card';
 import { Program } from '@/types/program';
-import { ProgramDetails } from '../../../program/card/program-details';
+import ProgramCardDetails from './program-card-details';
 
 interface ProgramCardContentProps {
   program: Program;
@@ -16,7 +16,7 @@ export function ProgramCardContent({ program }: ProgramCardContentProps) {
         {program.description}
       </CardDescription>
 
-      <ProgramDetails program={program} />
+      <ProgramCardDetails program={program} />
     </CardContent>
   );
 }

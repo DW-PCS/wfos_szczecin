@@ -27,6 +27,25 @@ export const getStatusDisplay = (status: string | undefined): string => {
   }
 };
 
+export const getProgramStatusVariant = (
+  status: string
+): 'default' | 'secondary' | 'outline' | 'destructive' => {
+  switch (status) {
+    case 'otwarty':
+      return 'default';
+    case 'planowany':
+      return 'secondary';
+    case 'zakończony':
+      return 'outline';
+    case 'realizacja':
+      return 'secondary';
+    case 'zamknięty':
+      return 'destructive';
+    default:
+      return 'secondary';
+  }
+};
+
 export const getStatusColor = (status: string): string => {
   const displayStatus = getStatusDisplay(status);
   switch (displayStatus) {

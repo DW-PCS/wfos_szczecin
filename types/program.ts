@@ -35,7 +35,7 @@ export interface ProgramDetailState {
 }
 
 export interface ProgramPageType {
-  id: string;
+  id: number;
   name: string;
   content: string;
   pdfFiles?: PdfFile[];
@@ -55,9 +55,11 @@ export interface ProgramPageType {
   deadline?: string;
   status?: string;
   budget?: string;
-  startDate?: string;
-  endDate?: string;
+  startDate?: Date;
+  endDate?: Date;
   programLink: string;
+  linkedPageSlug?: string;
+  showOnHomepage?: boolean;
 }
 export interface PdfFile {
   id: string;
