@@ -25,3 +25,17 @@ export const getContactIcon = (iconName: string): LucideIcon => {
 export const getFilesByCategory = (categoryId: string) => {
   return defaultFiles.filter(file => file.categoryId === categoryId);
 };
+
+
+export function generateSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-');
+}
+
+export function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '');
+}

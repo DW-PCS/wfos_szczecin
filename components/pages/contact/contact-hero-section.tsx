@@ -36,7 +36,7 @@ export function ContactHeroSection({
             <p className="text-lg md:text-xl text-slate-600 max-w-2xl mb-8">{description}</p>
             <button
               onClick={scrollToOffices}
-              className="inline-flex items-center px-6 py-3 border-2 border-primary-navy text-primary-navy font-semibold rounded-lg hover:bg-primary-navy hover:text-white transition-colors duration-300"
+              className="inline-flex items-center px-6 py-3 border-2 border-primary-navy text-primary-navy font-semibold rounded-lg hover:bg-primary-navy cursor-pointer hover:text-white transition-colors duration-300"
             >
               {buttonText}
             </button>

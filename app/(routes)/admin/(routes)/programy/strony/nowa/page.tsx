@@ -1,5 +1,7 @@
-const page = () => {
-  return <div>page</div>;
+import { PageCreator } from '@/components/pages/admin/pages/page-creator';
+
+const NewProgramPage = () => {
+  return <PageCreator />;
 };
 
-export default page;
+export default NewProgramPage;

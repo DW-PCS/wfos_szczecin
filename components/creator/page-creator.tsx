@@ -154,7 +154,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm" onClick={handleClose}>
+          <Button variant="outline" size="sm" className="py-5" onClick={handleClose}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Powrót
           </Button>

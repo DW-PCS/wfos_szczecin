@@ -24,6 +24,7 @@ export function FilesContentArea({
         onSearchChange={onSearchChange}
         resultCount={filteredFiles.length}
         itemType="plik"
+        placeholder="Szukaj plików..."
       />
 
       {currentSection && (

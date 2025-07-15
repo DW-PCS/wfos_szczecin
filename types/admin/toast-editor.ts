@@ -6,12 +6,3 @@ export interface EditorInstance {
     setMarkdown(markdown: string): void;
   };
 }
-
-export interface ToastEditorProps {
-  initialValue?: string;
-  placeholder?: string;
-  className?: string;
-  minHeight?: string;
-  mode?: 'wysiwyg' | 'markdown';
-  disabled?: boolean;
-}

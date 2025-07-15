@@ -11,9 +11,9 @@ export const ProgramFormHeader = ({ isEdit, onSave, onClose }: ProgramFormHeader
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-4">
-        <Button variant="ghost" size="sm" onClick={onClose}>
+        <Button variant="outline" size="sm" className="py-5" onClick={onClose}>
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Powrót
+          Powrót do stron
         </Button>
         <div>
           <h1 className="text-2xl font-bold text-gray-900">

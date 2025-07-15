@@ -1,17 +1,18 @@
-import { initialProgramPages } from '@/constants/program';
+import PageCreator from '@/components/pages/admin/pages/page-creator/page-creator';
+import { initialPages } from '@/constants/page';
 import { notFound } from 'next/navigation';
 
-interface EditProgramPageRouteProps {
+interface EditPageProps {
   params: {
     id: string;
   };
 }
 
-export default async function EditProgramPageRoute({ params }: EditProgramPageRouteProps) {
+export default async function EditPage({ params }: EditPageProps) {
   const resolvedParams = await params;
 
   const getPage = (programId: number) => {
-    return initialProgramPages.find(page => Number(page.id) === programId);
+    return initialPages.find(page => Number(page.id) === programId);
   };
   const page = getPage(Number(resolvedParams.id));
 
@@ -19,5 +20,5 @@ export default async function EditProgramPageRoute({ params }: EditProgramPageRo
     notFound();
   }
 
-  <>div</>;
+  return <PageCreator initialPageData={page} />;
 }

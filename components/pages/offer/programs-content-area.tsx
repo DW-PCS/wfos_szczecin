@@ -24,6 +24,7 @@ export function ProgramsContentArea({
         onSearchChange={onSearchChange}
         resultCount={filteredPrograms.length}
         itemType="program"
+
       />
 
       <ProgramsCategoryHeader

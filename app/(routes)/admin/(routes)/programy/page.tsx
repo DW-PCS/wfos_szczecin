@@ -150,7 +150,7 @@ export default function ProgramsPage() {
                 <CardContent className="pt-6">
                   <div className="flex flex-col space-y-3">
                     <div className="flex justify-between items-start">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="text-lg font-semibold">{program.name}</h3>
                         <Badge variant={getProgramStatusVariant(program.status)}>
                           {getStatusDisplay(program.status)}
@@ -183,7 +183,7 @@ export default function ProgramsPage() {
                               <Trash2 className="h-4 w-4" />
                             </Button>
                           </AlertDialogTrigger>
-                          <AlertDialogContent>
+                          <AlertDialogContent className="bg-white">
                             <AlertDialogHeader>
                               <AlertDialogTitle>
                                 Czy na pewno chcesz usunąć program?
@@ -259,7 +259,7 @@ export default function ProgramsPage() {
                   <CardContent className="pt-6">
                     <div className="flex flex-col space-y-3">
                       <div className="flex justify-between items-start">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <h3 className="text-lg font-semibold">{page.title}</h3>
                           <Badge variant="outline" className="text-xs">
                             Strona programu
@@ -284,7 +284,7 @@ export default function ProgramsPage() {
                                 <Trash2 className="h-4 w-4" />
                               </Button>
                             </AlertDialogTrigger>
-                            <AlertDialogContent>
+                            <AlertDialogContent className="bg-white">
                               <AlertDialogHeader>
                                 <AlertDialogTitle>
                                   Czy na pewno chcesz usunąć stronę programu?

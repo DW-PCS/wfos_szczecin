@@ -171,7 +171,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
 
   return (
     <div className={`fixed bottom-4 right-4 z-50 ${className}`}>
-      {/* Expanded controls */}
+
       {isExpanded && (
         <Card className="mb-4 w-80 shadow-lg">
           <CardContent className="p-4 space-y-4">
@@ -182,7 +182,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               </Button>
             </div>
 
-            {/* Voice info */}
+
             {currentVoice && (
               <div className="space-y-2">
                 <label className="text-sm font-medium">Głos polski</label>
@@ -192,7 +192,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               </div>
             )}
 
-            {/* Speed control */}
+
             <div className="space-y-2">
               <label className="text-sm font-medium">Szybkość: {rate.toFixed(1)}x</label>
               <Slider
@@ -205,7 +205,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               />
             </div>
 
-            {/* Volume control */}
+
             <div className="space-y-2">
               <label className="text-sm font-medium">Głośność: {Math.round(volume * 100)}%</label>
               <Slider
@@ -218,7 +218,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               />
             </div>
 
-            {/* Pitch control */}
+
             <div className="space-y-2">
               <label className="text-sm font-medium">Wysokość: {pitch.toFixed(1)}</label>
               <Slider
@@ -231,7 +231,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               />
             </div>
 
-            {/* Reading progress */}
+
             {contentToRead && (
               <div className="text-xs text-gray-600 bg-gray-50 p-2 rounded">
                 <p className="font-medium">Czytam:</p>
@@ -242,26 +242,24 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
         </Card>
       )}
 
-      {/* Main controls */}
+
       <div className="flex items-center space-x-2">
-        {/* Settings button */}
+
         <Button
           variant="outline"
           size="sm"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="shadow-lg"
+          className="shadow-lg bg-white"
         >
           <Settings className="h-4 w-4" />
         </Button>
 
-        {/* Stop button (only when speaking) */}
         {isSpeaking && (
-          <Button variant="outline" size="sm" onClick={handleStop} className="shadow-lg">
+          <Button variant="outline" size="sm" className="py-5 shadow-lg" onClick={handleStop}>
             <Square className="h-4 w-4" />
           </Button>
         )}
 
-        {/* Main TTS button */}
         <Button onClick={handleReadPage} className="shadow-lg" disabled={!isSupported}>
           {isSpeaking && !isPaused ? (
             <>

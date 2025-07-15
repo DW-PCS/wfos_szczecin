@@ -7,9 +7,16 @@ interface SearchBarProps {
   onSearchChange: (term: string) => void;
   resultCount: number;
   itemType: string;
+  placeholder?: string;
 }
 
-export function SearchBar({ searchTerm, onSearchChange, resultCount, itemType }: SearchBarProps) {
+export function SearchBar({
+  searchTerm,
+  onSearchChange,
+  resultCount,
+  itemType,
+  placeholder = 'Szukaj programów...',
+}: SearchBarProps) {
   // TODO:: Convert to Server Component with URL-based search
   // - Implement server action for search with proper debouncing
   // - Move resultCount calculation to server-side
@@ -28,7 +35,7 @@ export function SearchBar({ searchTerm, onSearchChange, resultCount, itemType }:
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
           <Input
             type="text"
-            placeholder="Szukaj programów..."
+            placeholder={placeholder}
             value={searchTerm}
             onChange={e => onSearchChange(e.target.value)}
             className="pl-10 rounded-xl border-gray-200 focus:border-primary-green focus:ring-primary-green/20"

@@ -82,7 +82,9 @@ export const ProgramPreview = ({ formData }: ProgramPreviewProps) => {
                       <span className="px-2 py-1 bg-green-100 text-green-800 rounded">
                         Wewnętrzny
                       </span>
-                      <span className="text-gray-600">/programy/{formData.linkedPageSlug}</span>
+                      <span className="text-gray-600">
+                        /programy/szczegoly/{formData.linkedPageSlug}
+                      </span>
                     </div>
                   )}
                 </div>
