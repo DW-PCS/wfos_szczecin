@@ -25,6 +25,8 @@
     "@radix-ui/react-tabs": "^1.1.12",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tailwindcss/postcss": "^4",
+    "@toast-ui/editor": "^3.2.2",
+    "@toast-ui/react-editor": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",

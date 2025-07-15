@@ -1,3 +1,5 @@
+import Foo from './Foo';
+
 interface PageProps {
   params: {
     slug: string;
@@ -7,7 +9,11 @@ interface PageProps {
 const ProgramDetailsPage = async ({ params }: PageProps) => {
   const resolvedParams = await params;
 
-  return <div>123 {resolvedParams.slug}</div>;
+  return (
+    <div>
+      <Foo slug={resolvedParams.slug} />
+    </div>
+  );
 };
 
 export default ProgramDetailsPage;
