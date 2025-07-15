@@ -123,7 +123,7 @@ export const initialProgramPages: ProgramPageType[] = [
     name: 'Program Czyste Powietrze - Szczegóły',
     description: 'Dofinansowanie systemów retencji wody deszczowej i systemów gospodarowania wodą',
 
-    slug: 'czyste-powietrze-szczegoly',
+    slug: 'czyste-powietrze',
     programLink: 'https://example.com/moja-woda',
     content:
       '<h2>Program Czyste Powietrze</h2><p>Program Czyste Powietrze to kompleksowy system wsparcia dla właścicieli domów jednorodzinnych w Polsce, mający na celu poprawę jakości powietrza poprzez wymianę starych, nieekologicznych źródeł ciepła na nowoczesne, ekologiczne systemy grzewcze.</p><h3>Cele programu</h3><ul><li>Poprawa jakości powietrza w Polsce</li><li>Redukcja emisji pyłów i gazów cieplarnianych</li><li>Zwiększenie efektywności energetycznej budynków</li><li>Rozwój rynku technologii przyjaznych środowisku</li></ul><h3>Kto może skorzystać?</h3><p>Program skierowany jest do właścicieli domów jednorodzinnych, którzy chcą wymienić stare źródła ciepła na nowoczesne, ekologiczne systemy grzewcze.</p><h3>Rodzaje dofinansowania</h3><p>W ramach programu można otrzymać dofinansowanie na:</p><ul><li>Wymianę źródła ciepła</li><li>Termomodernizację budynku</li><li>Instalację odnawialnych źródeł energii</li></ul><h3>Wysokość dofinansowania</h3><p>Maksymalna kwota dofinansowania wynosi <strong>135 000 zł</strong> i może pokryć do <strong>100%</strong> kosztów inwestycji w przypadku gospodarstw domowych o najniższych dochodach.</p>',

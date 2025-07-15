@@ -42,7 +42,6 @@ export default function ProgramsPage() {
   const programs = initialPrograms;
   const [activeTab, setActiveTab] = useState('programs');
 
-  // Set active tab from URL params
   useEffect(() => {
     const tab = searchParams.get('tab');
     if (tab) {
@@ -50,7 +49,6 @@ export default function ProgramsPage() {
     }
   }, [searchParams]);
 
-  // Update URL when tab changes
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     const url = new URL(window.location.href);
@@ -311,7 +309,7 @@ export default function ProgramsPage() {
                       </div>
 
                       <div className="text-sm text-gray-500">
-                        <span className="font-medium">URL:</span> /programy/{page.slug}
+                        <span className="font-medium">URL:</span> /programy/szczegoly/{page.slug}
                       </div>
 
                       <div className="text-xs text-gray-500">
