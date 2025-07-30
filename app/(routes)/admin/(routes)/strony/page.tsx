@@ -1,5 +1,8 @@
+import PagesView from '@/components/pages/pages/pages-admin-page';
+import { initialPages } from '@/constants/page';
+
 const page = () => {
-  return <div>page</div>;
+  return <PagesView pages={initialPages} />;
 };
 
 export default page;

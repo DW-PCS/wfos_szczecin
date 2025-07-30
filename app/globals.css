@@ -81,7 +81,7 @@
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(240 10% 3.9%);
 
-  /* Colors from :root */
+ 
   --color-card: oklch(1 0 0);
   --color-card-foreground: oklch(0.145 0 0);
   --color-popover: oklch(1 0 0);
