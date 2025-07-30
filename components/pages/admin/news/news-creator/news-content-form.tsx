@@ -1,11 +1,13 @@
 'use client';
-
-import QuillEditor from '@/components/features/quill-editor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import dynamic from 'next/dynamic';
 import { NewsImageUpload } from './news-image-upload';
+const TinyMCEEditor = dynamic(() => import('@/components/features/tinyMCE-editor'), {
+  ssr: false,
+});
 
 interface NewsData {
   title: string;
@@ -63,12 +65,8 @@ export function NewsContentForm({
 
         <div className="grid gap-2">
           <Label htmlFor="news-content">Treść artykułu *</Label>
-          <QuillEditor
-            initialValue={content}
-            onChange={onContentChange}
-            placeholder="Wprowadź treść artykułu..."
-            minHeight="400px"
-          />
+
+          <TinyMCEEditor initialValue={content} height={500} onEditorChange={onContentChange} />
         </div>
       </CardContent>
     </Card>

@@ -1,7 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import QuillEditor from '@/components/features/quill-editor';
+import dynamic from 'next/dynamic';
+const TinyMCEEditor = dynamic(() => import('@/components/features/tinyMCE-editor'), {
+  ssr: false,
+});
 
 interface ContentTabProps {
   title: string;
@@ -39,12 +42,8 @@ export const ContentTab = ({
 
         <div className="grid gap-2">
           <Label htmlFor="page-content">Treść strony *</Label>
-          <QuillEditor
-            initialValue={content}
-            onChange={onContentChange}
-            placeholder="Wprowadź treść strony..."
-            minHeight="500px"
-          />
+
+          <TinyMCEEditor initialValue={content} onEditorChange={onContentChange} />
         </div>
       </CardContent>
     </Card>
