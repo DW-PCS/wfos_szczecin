@@ -44,3 +44,11 @@ export const isFormValid = (content: string, newsData: Partial<Article>) => {
   const contentText = stripHtml(content).trim();
   return newsData.title?.trim() !== '' && newsData.excerpt?.trim() !== '' && contentText !== '';
 };
+
+export   const formatFileSize = (bytes: number): string => {
+  if (bytes === 0) return '0 B';
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+};
