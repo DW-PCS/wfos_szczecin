@@ -1,17 +1,17 @@
 import { EditorInstance } from '@/types/admin/toast-editor';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-interface UseToastEditorProps {
+interface UseQuillEditorProps {
   initialValue?: string;
   disabled?: boolean;
   onChange?: (content: string) => void;
 }
 
-export function useToastEditor({
+export function useQuillEditor({
   initialValue = '',
   disabled = false,
   onChange,
-}: UseToastEditorProps = {}) {
+}: UseQuillEditorProps = {}) {
   const [content, setContent] = useState<string>(initialValue);
   const editorRef = useRef<EditorInstance>(null);
   const isInitialMount = useRef(true);

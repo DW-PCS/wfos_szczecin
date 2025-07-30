@@ -1,7 +1,7 @@
 'use client';
 
 import { TOOLBAR_ITEMS } from '@/constants/editor';
-import { useToastEditor } from '@/hooks/use-toast-editor';
+import { useQuillEditor } from '@/hooks/use-toast-editor';
 import { cn } from '@/lib/cn';
 
 import dynamic from 'next/dynamic';
@@ -15,7 +15,7 @@ const Editor = dynamic(() => import('@toast-ui/react-editor').then(mod => mod.Ed
   ),
 });
 
-export interface ToastEditorProps {
+export interface QuillEditorProps {
   initialValue?: string;
   placeholder?: string;
   className?: string;
@@ -25,7 +25,7 @@ export interface ToastEditorProps {
   onChange?: (content: string) => void;
 }
 
-export default function ToastEditor({
+export default function QuillEditor({
   initialValue = '',
   placeholder = 'Wprowadź treść...',
   className,
@@ -33,15 +33,15 @@ export default function ToastEditor({
   mode = 'wysiwyg',
   disabled = false,
   onChange,
-}: ToastEditorProps) {
-  const { content, editorRef, handleChange } = useToastEditor({
+}: QuillEditorProps) {
+  const { content, editorRef, handleChange } = useQuillEditor({
     initialValue,
     disabled,
     onChange,
   });
 
   return (
-    <div className={cn('toastEditor', className)}>
+    <div className={cn('QuillEditor', className)}>
       <Editor
         ref={editorRef}
         initialValue={content}

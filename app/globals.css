@@ -5,6 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-primary: #18181b;
   --color-primary-50: #f8fafc;
   --color-primary-100: #f1f5f9;
   --color-primary-200: #e2e8f0;
@@ -20,6 +21,8 @@
   --color-primary-navy: #312783;
   --color-primary-blue: #83d0f5;
   --color-primary-gray: #878787;
+
+  --color-primary-foreground: oklch(0.985 0 0);
 
   --color-secondary-50: #f8f9fa;
   --color-secondary-100: #f1f3f4;
@@ -69,9 +72,48 @@
   --color-sidebar-border: #e5e5e5;
   --color-sidebar-ring: #93c5fd;
 
+  --color-input: oklch(0.922 0 0);
+
   /* Border colors */
   --color-border: #e5e5e5;
   --default-border-color: var(--color-border);
+
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(240 10% 3.9%);
+
+  /* Colors from :root */
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.145 0 0);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.145 0 0);
+  --color-primary: oklch(0.205 0 0);
+
+  --color-secondary: oklch(0.97 0 0);
+  --color-secondary-foreground: oklch(0.205 0 0);
+  --color-muted: oklch(0.97 0 0);
+  --color-muted-foreground: oklch(0.556 0 0);
+  --color-accent: oklch(0.97 0 0);
+  --color-accent-foreground: oklch(0.205 0 0);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: #fafafa;
+  --color-border: hsl(240 5.9% 90%);
+
+  --color-ring: oklch(0.708 0 0);
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.145 0 0);
+  --color-chart-1: oklch(0.646 0.222 41.116);
+  --color-chart-2: oklch(0.6 0.118 184.704);
+  --color-chart-3: oklch(0.398 0.07 227.392);
+  --color-chart-4: oklch(0.828 0.189 84.429);
+  --color-chart-5: oklch(0.769 0.188 70.08);
+  --color-sidebar: oklch(0.985 0 0);
+  --color-sidebar-foreground: oklch(0.145 0 0);
+  --color-sidebar-primary: oklch(0.205 0 0);
+  --color-sidebar-primary-foreground: oklch(0.985 0 0);
+  --color-sidebar-accent: oklch(0.97 0 0);
+  --color-sidebar-accent-foreground: oklch(0.205 0 0);
+  --color-sidebar-border: oklch(0.922 0 0);
+  --color-sidebar-ring: oklch(0.708 0 0);
 }
 
 @layer utilities {
@@ -102,7 +144,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -112,7 +154,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: #fafafa;
   --border: hsl(240 5.9% 90%);
-  --input: oklch(0.922 0 0);
+
   --ring: oklch(0.708 0 0);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -206,4 +248,13 @@ div[data-radix-popper-content-wrapper] span {
 button[role="checkbox"] {
   border: 1px solid rgba(0, 0, 0, 0.5);
   cursor: pointer;
+}
+
+
+.text-muted-foreground{
+  color: var(--muted-foreground);
+}
+
+.bg-muted {
+    background-color: var(--muted);
 }

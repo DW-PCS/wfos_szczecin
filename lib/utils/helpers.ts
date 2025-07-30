@@ -1,4 +1,5 @@
 import { defaultFiles } from '@/constants/files';
+import { Article } from '@/types/news';
 import { Building, LucideIcon, MapPin, Users } from 'lucide-react';
 
 const CATEGORY_COLORS = {
@@ -26,7 +27,6 @@ export const getFilesByCategory = (categoryId: string) => {
   return defaultFiles.filter(file => file.categoryId === categoryId);
 };
 
-
 export function generateSlug(text: string): string {
   return text
     .toLowerCase()
@@ -39,3 +39,8 @@ export function generateSlug(text: string): string {
 export function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '');
 }
+
+export const isFormValid = (content: string, newsData: Partial<Article>) => {
+  const contentText = stripHtml(content).trim();
+  return newsData.title?.trim() !== '' && newsData.excerpt?.trim() !== '' && contentText !== '';
+};
