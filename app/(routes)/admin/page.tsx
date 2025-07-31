@@ -1,5 +1,9 @@
+import DashboardView from '@/components/pages/dashboard/dashboard-admin-page';
+import { newsArticles } from '@/constants';
+import { initialPrograms } from '@/constants/programs';
+
 const page = () => {
-  return <div className="h-screen">admin</div>;
+  return <DashboardView programs={initialPrograms} articles={newsArticles} activeUsersCount={0} />;
 };
 
 export default page;

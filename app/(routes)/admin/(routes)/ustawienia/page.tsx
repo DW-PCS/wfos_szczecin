@@ -1,9 +1,7 @@
-import React from 'react'
+import SettingsView from '@/components/pages/admin/settings/settings-admin-page';
 
 const page = () => {
-  return (
-    <div>page</div>
-  )
-}
+  return <SettingsView />;
+};
 
-export default page
+export default page;
