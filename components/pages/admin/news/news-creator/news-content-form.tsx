@@ -1,11 +1,19 @@
 'use client';
 
-import { TinyMCEEditor } from '@/components/features';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import dynamic from 'next/dynamic';
 import { NewsImageUpload } from './news-image-upload';
+
+const TinyMCEEditor = dynamic(
+  () => import('@/components/features').then(mod => ({ default: mod.TinyMCEEditor })),
+  {
+    loading: () => <div className="h-[500px]" />,
+    ssr: false,
+  }
+);
 
 interface NewsData {
   title: string;
@@ -26,6 +34,7 @@ export function NewsContentForm({
   content,
   onNewsDataChange,
   onContentChange,
+  disabled = false,
 }: NewsContentFormProps) {
   return (
     <Card>
@@ -42,6 +51,7 @@ export function NewsContentForm({
             onChange={e => onNewsDataChange({ title: e.target.value })}
             placeholder="Wprowadź tytuł artykułu"
             className="text-lg font-medium"
+            disabled={disabled}
           />
         </div>
 
@@ -53,6 +63,7 @@ export function NewsContentForm({
             onChange={e => onNewsDataChange({ excerpt: e.target.value })}
             placeholder="Wprowadź krótki opis artykułu (wyświetlany na liście aktualności)"
             rows={3}
+            disabled={disabled}
           />
         </div>
 
@@ -63,7 +74,6 @@ export function NewsContentForm({
 
         <div className="grid gap-2">
           <Label htmlFor="news-content">Treść artykułu *</Label>
-
           <TinyMCEEditor initialValue={content} height={500} onEditorChange={onContentChange} />
         </div>
       </CardContent>
