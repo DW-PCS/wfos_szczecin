@@ -27,8 +27,12 @@ export interface Achievement {
   number: string;
   label: string;
   icon: string;
+  placement: string;
   active: boolean;
   order: number;
+  color?: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 }
 
 export interface Person {
