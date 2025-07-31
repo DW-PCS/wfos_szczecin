@@ -1,9 +1,9 @@
 export interface Benefit {
-  id: string | number;
+  id: number;
   title: string;
   description: string;
   icon: string;
-  category: 'financial' | 'organizational' | 'environmental';
+  category: 'financial' | 'organizational' | 'environmental' | string;
   isActive: boolean;
   order: number;
   createdAt: string;

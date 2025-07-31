@@ -1,7 +1,6 @@
-import { Achievement } from "@/types/admin/admin-about";
+import { Achievement } from '@/types/admin/admin-about';
 
 export const initialAchievements: Achievement[] = [
-  // Homepage hero stats (diagonal-hero.tsx)
   {
     id: 1,
     number: '30+',

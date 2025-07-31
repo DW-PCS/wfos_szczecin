@@ -8,9 +8,7 @@ export function useAchievementsForm() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState('homepage');
 
-  const [newAchievement, setNewAchievement] = useState<
-    Omit<Achievement, 'createdAt' | 'updatedAt'>
-  >({
+  const [newAchievement, setNewAchievement] = useState<Achievement>({
     id: 0,
     number: '',
     label: '',
@@ -19,6 +17,8 @@ export function useAchievementsForm() {
     active: true,
     order: 1,
     color: '',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   });
 
   const resetNewAchievement = () => {
@@ -31,6 +31,8 @@ export function useAchievementsForm() {
       active: true,
       order: 1,
       color: '',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     });
   };
 
