@@ -39,10 +39,10 @@ export default function NewsCreator({ article }: NewsCreatorProps) {
         <div className="lg:col-span-3 space-y-6">
           <NewsContentForm
             newsData={newsData}
-            content={content}
             onNewsDataChange={handleNewsDataChange}
             onContentChange={setContent}
             disabled={isPending}
+            content={content}
           />
         </div>
 

@@ -1,13 +1,11 @@
 'use client';
+
+import { TinyMCEEditor } from '@/components/features';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import dynamic from 'next/dynamic';
 import { NewsImageUpload } from './news-image-upload';
-const TinyMCEEditor = dynamic(() => import('@/components/features/tinyMCE-editor'), {
-  ssr: false,
-});
 
 interface NewsData {
   title: string;

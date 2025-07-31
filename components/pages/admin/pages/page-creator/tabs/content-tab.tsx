@@ -1,10 +1,7 @@
+import { TinyMCEEditor } from '@/components/features';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import dynamic from 'next/dynamic';
-const TinyMCEEditor = dynamic(() => import('@/components/features/tinyMCE-editor'), {
-  ssr: false,
-});
 
 interface ContentTabProps {
   title: string;
