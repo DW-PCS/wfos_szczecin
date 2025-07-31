@@ -5,7 +5,6 @@ export interface FAQItemType {
   category: string;
   popular?: boolean;
   isActive: boolean;
-
   order: number;
   createdAt: string;
   updatedAt: string;

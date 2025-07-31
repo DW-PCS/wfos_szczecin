@@ -136,7 +136,7 @@ export const mockContactTeams: ContactTeam[] = [
     address: 'ul. Solskiego 3',
     city: 'Szczecin',
     placement: 'contact',
-    active: true,
+    isActive: true,
     order: 1,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z',

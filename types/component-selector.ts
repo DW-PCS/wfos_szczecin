@@ -5,28 +5,6 @@ export interface SelectedPageComponent {
   order: number;
   active: boolean;
 }
-export interface FAQComponent {
-  id: number;
-  name: string;
-  description: string;
-  faqItems: FAQItem[];
-  placement: 'homepage' | 'contact' | 'programs' | 'about' | 'custom';
-  customPlacement?: string;
-  active: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-export interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-  category: string;
-  popular: boolean;
-  active: boolean;
-  order: number;
-  createdAt: string;
-  updatedAt: string;
-}
 
 export interface ContactTeam {
   id: number;
@@ -37,7 +15,7 @@ export interface ContactTeam {
   contactPersons: ContactPerson[];
   placement: 'homepage' | 'contact' | 'programs' | 'about' | 'custom';
   customPlacement?: string;
-  active: boolean;
+  isActive: boolean;
   order: number;
   createdAt: string;
   updatedAt: string;
