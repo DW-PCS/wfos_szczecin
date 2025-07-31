@@ -16,7 +16,7 @@ export default function TinyMCEEditor({
   return (
     <Editor
       onEditorChange={onEditorChange}
-      apiKey="gb4sl43mtq7izw3fv49nripd2kzqm3k1ye7xsznh1ltqg3ko"
+      apiKey={process.env.NEXT_PUBLIC_TINY_MCE_API_KEY}
       initialValue={initialValue}
       init={{
         height,
