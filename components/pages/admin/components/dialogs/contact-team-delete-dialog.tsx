@@ -35,8 +35,8 @@ export function ContactTeamDeleteDialog({ teamName, onConfirm }: ContactTeamDele
         <AlertDialogHeader>
           <AlertDialogTitle>Czy na pewno chcesz usunąć zespół?</AlertDialogTitle>
           <AlertDialogDescription>
-            Tej akcji nie można cofnąć. Zespół "{teamName}" zostanie trwale usunięty wraz ze
-            wszystkimi osobami kontaktowymi.
+            Tej akcji nie można cofnąć. Zespół &ldquo;{teamName}&rdquo; zostanie trwale usunięty
+            wraz ze wszystkimi osobami kontaktowymi.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

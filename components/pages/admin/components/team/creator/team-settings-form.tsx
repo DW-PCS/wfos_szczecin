@@ -24,7 +24,7 @@ const placementOptions = [
 
 const cityOptions = ['Szczecin', 'Koszalin', 'Gorzów Wielkopolski', 'Zielona Góra', 'Inne'];
 
- interface TeamFormData {
+interface TeamFormData {
   name?: string;
   description?: string;
   address?: string;
@@ -99,7 +99,9 @@ export function TeamSettingsForm({ formData, onFormDataChange }: TeamSettingsFor
           <Label htmlFor="placement">Miejsce wyświetlania</Label>
           <Select
             value={formData.placement}
-            onValueChange={(value: any) => onFormDataChange({ placement: value })}
+            onValueChange={value =>
+              onFormDataChange({ placement: value as TeamFormData['placement'] })
+            }
           >
             <SelectTrigger>
               <SelectValue />

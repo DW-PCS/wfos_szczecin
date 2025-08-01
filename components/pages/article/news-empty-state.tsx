@@ -12,9 +12,7 @@ interface NewsEmptyStateProps {
 
 export const NewsEmptyState: FC<NewsEmptyStateProps> = ({
   className = '',
-  setSearchTerm,
-  setSelectedCategory,
-  setCurrentPage,
+
   onResetFilters,
 }) => {
   return (

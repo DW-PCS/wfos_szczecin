@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getStatusDisplay } from '@/lib/utils/offer';
-import { Program } from '@/types/program';
+import { Program, ProgramPageType } from '@/types/program';
 import { Users } from 'lucide-react';
 
 interface ProgramInfoCardProps {
-  program: Program;
+  program: ProgramPageType;
 }
 
 export function ProgramInfoCard({ program }: ProgramInfoCardProps) {

@@ -1,10 +1,9 @@
 import { FileCategory } from '@/types/file';
 import { CategoryItem } from '../category-item';
 
-
 interface CategoriesTabProps {
   categories: FileCategory[];
-  getFilesByCategory: (categoryId: string) => any[];
+  getFilesByCategory: (categoryId: string) => FileCategory[];
   onEditCategory: (category: FileCategory) => void;
   onDeleteCategory: (categoryId: string) => void;
 }

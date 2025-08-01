@@ -35,7 +35,8 @@ export function NewsDeleteDialog({ articleTitle, onConfirm }: NewsDeleteDialogPr
         <AlertDialogHeader>
           <AlertDialogTitle>Czy na pewno chcesz usunąć artykuł?</AlertDialogTitle>
           <AlertDialogDescription>
-            Tej akcji nie można cofnąć. Artykuł "{articleTitle}" zostanie trwale usunięty.
+            Tej akcji nie można cofnąć. Artykuł &ldquo;{articleTitle}&rdquo; zostanie trwale
+            usunięty.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

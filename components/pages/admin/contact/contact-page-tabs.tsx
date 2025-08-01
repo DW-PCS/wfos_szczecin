@@ -16,7 +16,6 @@ interface ContactPageTabsProps {
 }
 
 export function ContactPageTabs({
-  activeTab,
   contactContent,
   setContactContent,
   isEditing,

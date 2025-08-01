@@ -53,16 +53,21 @@ export function HelpSectionEditor({ helpSection, onSave, onCancel }: HelpSection
     { value: 'custom', label: 'Niestandardowe' },
   ];
 
-  const handlePlacementChange = (placement: string, checked: boolean) => {
+  const handlePlacementChange = (
+    placement: 'homepage' | 'contact' | 'programs' | 'about' | 'custom',
+    checked: boolean
+  ) => {
     if (checked) {
       setFormData({
         ...formData,
-        placements: [...formData.placements, placement as any],
+        placements: [...formData.placements, placement],
       });
     } else {
       setFormData({
         ...formData,
-        placements: formData.placements.filter((p: string) => p !== placement),
+        placements: formData.placements.filter(
+          (p: 'homepage' | 'contact' | 'programs' | 'about' | 'custom') => p !== placement
+        ),
       });
     }
   };
@@ -170,9 +175,14 @@ export function HelpSectionEditor({ helpSection, onSave, onCancel }: HelpSection
                   <div key={option.value} className="flex items-center space-x-2">
                     <Checkbox
                       id={`placement-${option.value}`}
-                      checked={formData.placements.includes(option.value as any)}
+                      checked={formData.placements.includes(
+                        option.value as 'homepage' | 'contact' | 'programs' | 'about' | 'custom'
+                      )}
                       onCheckedChange={checked =>
-                        handlePlacementChange(option.value, checked as boolean)
+                        handlePlacementChange(
+                          option.value as 'homepage' | 'contact' | 'programs' | 'about' | 'custom',
+                          checked as boolean
+                        )
                       }
                     />
                     <Label htmlFor={`placement-${option.value}`}>{option.label}</Label>
@@ -203,11 +213,11 @@ export function HelpSectionEditor({ helpSection, onSave, onCancel }: HelpSection
               <Label htmlFor="contactType">Typ kontaktu</Label>
               <Select
                 value={currentContact.type}
-                onValueChange={(value: any) => {
+                onValueChange={(value) => {
                   const selectedType = contactTypeOptions.find(opt => opt.value === value);
                   setCurrentContact({
                     ...currentContact,
-                    type: value,
+                    type: value as 'phone' | 'email' | 'chat',
                     icon: selectedType?.icon || 'Phone',
                   });
                 }}
@@ -309,7 +319,7 @@ export function HelpSectionEditor({ helpSection, onSave, onCancel }: HelpSection
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {formData.contacts.map((contact: any, index: number) => (
+              {formData.contacts.map((contact, index: number) => (
                 <div key={contact.id} className="border rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
                     {contact.icon === 'Phone' && <Phone className="h-4 w-4 text-primary-green" />}

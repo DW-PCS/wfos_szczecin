@@ -36,7 +36,8 @@ export function ProgramDeleteDialog({ programName, onConfirm }: ProgramDeleteDia
         <AlertDialogHeader>
           <AlertDialogTitle>Czy na pewno chcesz usunąć program?</AlertDialogTitle>
           <AlertDialogDescription>
-            Tej akcji nie można cofnąć. Program "{programName}" zostanie trwale usunięty.
+            Tej akcji nie można cofnąć. Program &ldquo;{programName}&rdquo; zostanie trwale
+            usunięty.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

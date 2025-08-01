@@ -1,9 +1,8 @@
-import React from 'react';
-import { HeroContent } from './hero-content';
-import { HeroSettings, HeroSlide } from '@/types/hero';
-import { HeroScreenReaderContent } from './hero-screen-reader-content';
-import { HeroContentWrapper } from './hero-content-wrapper';
 import { getBackgroundStyle, getSectionClasses } from '@/lib/utils/hero';
+import { HeroSettings, HeroSlide } from '@/types/hero';
+import React from 'react';
+import { HeroContentWrapper } from './hero-content-wrapper';
+import { HeroScreenReaderContent } from './hero-screen-reader-content';
 
 interface HeroContainerProps {
   slideData: HeroSlide;

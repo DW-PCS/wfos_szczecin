@@ -1,8 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Trash2 } from 'lucide-react';
-import { cn } from '@/lib/cn';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,6 +11,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/cn';
+import { Trash2 } from 'lucide-react';
 
 interface ProgramPageDeleteDialogProps {
   pageTitle: string;
@@ -36,7 +36,7 @@ export function ProgramPageDeleteDialog({ pageTitle, onConfirm }: ProgramPageDel
         <AlertDialogHeader>
           <AlertDialogTitle>Czy na pewno chcesz usunąć stronę programu?</AlertDialogTitle>
           <AlertDialogDescription>
-            Tej akcji nie można cofnąć. Strona "{pageTitle}" zostanie trwale usunięta.
+            Tej akcji nie można cofnąć. Strona &ldquo;{pageTitle}&rdquo; zostanie trwale usunięta.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

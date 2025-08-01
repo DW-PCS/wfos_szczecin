@@ -20,9 +20,15 @@ const categoryOptions = [
 ];
 
 export default function BenefitsView({ benefits }: BenefitsViewProps) {
-  const addBenefit = (category: Benefit) => {};
-  const updateBenefit = (id: number, data: Partial<Benefit>) => {};
-  const deleteBenefit = (id: number) => {};
+  const addBenefit = (category: Benefit) => {
+    console.log('Adding new benefit:', category);
+  };
+  const updateBenefit = (id: number, data: Partial<Benefit>) => {
+    console.log('Updating benefit:', id, data);
+  };
+  const deleteBenefit = (id: number) => {
+    console.log('Deleting benefit:', id);
+  };
   const getBenefitsByCategory = (category: string) => {
     return benefits.filter(benefit => benefit.category === category);
   };

@@ -7,19 +7,17 @@ import { Edit, HelpCircle, Settings, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import { ComponentsHeader } from './components-header';
-import { FAQSectionHeader } from './faq/faq-section-header';
-
-import { ContactTeamSectionHeader } from './team/contact-team-section-header';
-import { FAQEmptyState } from './faq/faq-empty-state';
-
 import { ContactTeam, HelpSectionComponent } from '@/types/component-selector';
 import { FAQComponent } from '@/types/faq';
 import { ContactTeamCard } from './cards/contact-team-card';
 import { FAQComponentCard } from './cards/faq-component-card';
-import { ContactTeamEmptyState } from './team/contact-team-empty-state';
+import { ComponentsHeader } from './components-header';
+import { FAQEmptyState } from './faq/faq-empty-state';
+import { FAQSectionHeader } from './faq/faq-section-header';
 import { HelpSectionDisplay } from './help-section-display';
 import { HelpSectionEditor } from './help-section-editor';
+import { ContactTeamEmptyState } from './team/contact-team-empty-state';
+import { ContactTeamSectionHeader } from './team/contact-team-section-header';
 
 interface ComponentsViewProps {
   faqComponents: FAQComponent[];
@@ -38,10 +36,22 @@ export default function ComponentsView({
   const [activeTab, setActiveTab] = useState('faq');
   const [isEditingHelpSection, setIsEditingHelpSection] = useState(false);
 
-  const deleteFAQComponent = async (componentId: number) => {};
-  const deleteContactTeam = async (teamId: number) => {};
-  const toggleFAQComponentActive = async (componentId: number) => {};
-  const toggleContactTeamActive = async (teamId: number) => {};
+  const deleteFAQComponent = async (componentId: number) => {
+    console.log('Deleting FAQ component:', componentId);
+  };
+
+  const deleteContactTeam = async (teamId: number) => {
+    console.log('Deleting contact team:', teamId);
+  };
+
+  const toggleFAQComponentActive = async (componentId: number) => {
+    console.log('Toggling FAQ component active status:', componentId);
+  };
+
+  const toggleContactTeamActive = async (teamId: number) => {
+    console.log('Toggling contact team active status:', teamId);
+  };
+
   const updateHelpSection = async (
     updatedSection: HelpSectionComponent
   ): Promise<HelpSectionComponent> => {
@@ -125,7 +135,6 @@ export default function ComponentsView({
 
   const handleDuplicateContactTeam = async (team: ContactTeam) => {
     console.log('Duplicating contact team:', team.id);
-    // Navigate to create new contact team with duplicated data in URL params
     const params = new URLSearchParams({
       duplicate: team.id.toString(),
       name: `${team.name} (kopia)`,
@@ -238,7 +247,7 @@ export default function ComponentsView({
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Sekcja pomocy "Nie znalazłeś odpowiedzi?"</CardTitle>
+                  <CardTitle>Sekcja pomocy &ldquo;Nie znalazłeś odpowiedzi?&rdquo;</CardTitle>
                   <CardDescription>
                     Zarządzaj sekcją pomocy wyświetlaną pod FAQ z informacjami kontaktowymi
                   </CardDescription>

@@ -1,10 +1,11 @@
 import { FAQHelpSectionHeader } from './faq-help-section-header';
 import { FAQContactOptions } from './faq-contact-options';
+import { ContactOption } from '@/types/faq';
 
 interface FAQHelpSectionProps {
   title?: string;
   subtitle?: string;
-  contactOptions?: any[];
+  contactOptions?: ContactOption[];
 }
 
 export function FAQHelpSection({

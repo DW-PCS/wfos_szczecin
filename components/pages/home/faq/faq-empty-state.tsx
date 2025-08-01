@@ -1,5 +1,5 @@
-import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Search } from 'lucide-react';
 
 interface FAQEmptyStateProps {
   searchQuery: string;
@@ -13,7 +13,9 @@ export function FAQEmptyState({ searchQuery, onClearSearch }: FAQEmptyStateProps
         <Search className="h-8 w-8 text-gray-400" />
       </div>
       <h3 className="text-xl font-semibold text-gray-900 mb-2">Brak wyników</h3>
-      <p className="text-gray-600 mb-6">Nie znaleziono pytań pasujących do frazy "{searchQuery}"</p>
+      <p className="text-gray-600 mb-6">
+        Nie znaleziono pytań pasujących do frazy &ldquo;{searchQuery}&rdquo;
+      </p>
       <Button
         onClick={onClearSearch}
         variant="outline"

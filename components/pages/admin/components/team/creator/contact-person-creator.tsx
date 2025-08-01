@@ -14,7 +14,8 @@ interface ContactTeamCreatorProps {
 
 export default function ContactTeamCreator({ initialData }: ContactTeamCreatorProps) {
   const router = useRouter();
-  const saveContactTeam = (teamData: any) => {
+
+  const saveContactTeam = (teamData: ContactTeam): void => {
     console.log('Saving contact team:', teamData);
   };
 

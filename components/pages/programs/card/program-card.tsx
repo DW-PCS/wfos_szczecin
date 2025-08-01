@@ -1,9 +1,8 @@
 import { Card } from '@/components/ui/card';
-import { ProgramCardHeader } from './program-card-header';
-import { ProgramCardContent } from './program-card-content';
-import { ProgramCardActions } from './program-card-actions';
 import { Program } from '@/types/program';
-
+import { ProgramCardActions } from './program-card-actions';
+import { ProgramCardContent } from './program-card-content';
+import { ProgramCardHeader } from './program-card-header';
 
 interface ProgramCardProps {
   program: Program;

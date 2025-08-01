@@ -33,7 +33,7 @@ interface AddCategoryDialogProps {
   categoryForm: CategoryFormData;
   onCategoryFormChange: (data: Partial<CategoryFormData>) => void;
   onSubmit: () => void;
-  editingCategory: any;
+  editingCategory?: boolean;
 }
 
 export function AddCategoryDialog({

@@ -25,9 +25,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
     isSpeaking,
     isPaused,
     isSupported,
-    voices,
     currentVoice,
-    setVoice,
     rate,
     setRate,
     volume,
@@ -171,7 +169,6 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
 
   return (
     <div className={`fixed bottom-4 right-4 z-50 ${className}`}>
-
       {isExpanded && (
         <Card className="mb-4 w-80 shadow-lg">
           <CardContent className="p-4 space-y-4">
@@ -182,7 +179,6 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               </Button>
             </div>
 
-
             {currentVoice && (
               <div className="space-y-2">
                 <label className="text-sm font-medium">Głos polski</label>
@@ -191,7 +187,6 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
                 </div>
               </div>
             )}
-
 
             <div className="space-y-2">
               <label className="text-sm font-medium">Szybkość: {rate.toFixed(1)}x</label>
@@ -205,7 +200,6 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               />
             </div>
 
-
             <div className="space-y-2">
               <label className="text-sm font-medium">Głośność: {Math.round(volume * 100)}%</label>
               <Slider
@@ -217,7 +211,6 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
                 className="w-full"
               />
             </div>
-
 
             <div className="space-y-2">
               <label className="text-sm font-medium">Wysokość: {pitch.toFixed(1)}</label>
@@ -231,7 +224,6 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
               />
             </div>
 
-
             {contentToRead && (
               <div className="text-xs text-gray-600 bg-gray-50 p-2 rounded">
                 <p className="font-medium">Czytam:</p>
@@ -242,9 +234,7 @@ export default function TextToSpeechButton({ className }: TextToSpeechButtonProp
         </Card>
       )}
 
-
       <div className="flex items-center space-x-2">
-
         <Button
           variant="outline"
           size="sm"

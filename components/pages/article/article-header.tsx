@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/cn';
 import { getCategoryColor } from '@/lib/utils/helpers';
+import { Article } from '@/types/news';
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import {
@@ -16,8 +17,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
-
-export const ArticleHeader = ({ article }: { article: any }) => (
+export const ArticleHeader = ({ article }: { article: Article }) => (
   <div className="max-w-4xl mx-auto">
     <Link href="/aktualnosci">
       <Button variant="outline" className="mb-6">
@@ -40,7 +40,7 @@ export const ArticleHeader = ({ article }: { article: any }) => (
   </div>
 );
 
-const ArticleMeta = ({ article }: { article: any }) => (
+const ArticleMeta = ({ article }: { article: Article }) => (
   <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-600 mb-8">
     <div className="flex items-center gap-2">
       <User className="h-4 w-4" />
@@ -48,7 +48,7 @@ const ArticleMeta = ({ article }: { article: any }) => (
     </div>
     <div className="flex items-center gap-2">
       <CalendarIcon className="h-4 w-4" />
-      {format(article.publishedAt, 'dd MMMM yyyy', { locale: pl })}
+      {format(new Date(article.publishedAt!), 'dd MMMM yyyy', { locale: pl })}
     </div>
     <div className="flex items-center gap-2">
       <Clock className="h-4 w-4" />

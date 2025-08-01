@@ -37,8 +37,8 @@ export function CategoryDeleteDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>Usuń kategorię</AlertDialogTitle>
           <AlertDialogDescription>
-            Czy na pewno chcesz usunąć kategorię "{categoryTitle}"? Wszystkie pliki w tej kategorii
-            ({filesCount}) również zostaną usunięte. Ta akcja jest nieodwracalna.
+            Czy na pewno chcesz usunąć kategorię &ldquo;{categoryTitle}&rdquo;? Wszystkie pliki w
+            tej kategorii ({filesCount}) również zostaną usunięte. Ta akcja jest nieodwracalna.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

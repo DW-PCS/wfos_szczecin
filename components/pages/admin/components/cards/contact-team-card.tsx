@@ -61,7 +61,7 @@ export function ContactTeamCard({
           <div className="flex items-center justify-between text-sm">
             <span className="text-gray-600">Aktywne:</span>
             <span className="font-medium">
-              {team.contactPersons.filter((person: any) => person.active).length}
+              {team.contactPersons.filter(person => person.active).length}
             </span>
           </div>
           <div className="flex items-center justify-between text-sm">

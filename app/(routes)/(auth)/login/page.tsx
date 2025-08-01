@@ -48,7 +48,7 @@ const LoginForm = () => {
         setError('Invalid credentials');
       }
     } catch (err) {
-      setError('Login failed. Please try again.');
+      setError('Login failed. Please try again.' + err);
     } finally {
       setIsLoading(false);
     }

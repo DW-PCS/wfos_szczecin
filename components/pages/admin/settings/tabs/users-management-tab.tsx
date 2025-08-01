@@ -13,7 +13,6 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -24,7 +23,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { User, UserFormData, UserRoleDefinition } from '@/types/user';
-
 import { format } from 'date-fns';
 import { Edit, Plus, Trash2 } from 'lucide-react';
 import { useState } from 'react';
@@ -83,9 +81,10 @@ export default function UsersManagementTab() {
     setIsEditUserMode(false);
     setEditingUserId(null);
   };
+
   const isUserFormValid = () => {
-    /* ... validation logic ... */ return true;
-  }; // Simplified
+    return true;
+  };
 
   const handleAddUser = () => {
     if (!isUserFormValid()) return;
@@ -117,6 +116,7 @@ export default function UsersManagementTab() {
     setIsAddUserOpen(false);
     resetUserForm();
   };
+
   const handleEditUser = (user: User) => {
     setUserFormData({
       firstName: user.firstName,
@@ -131,7 +131,9 @@ export default function UsersManagementTab() {
     setEditingUserId(user.id);
     setIsAddUserOpen(true);
   };
+
   const handleDeleteUser = (userId: number) => setUsers(users.filter(u => u.id !== userId));
+
   const handleToggleUserStatus = (userId: number) =>
     setUsers(
       users.map(u =>
@@ -139,9 +141,20 @@ export default function UsersManagementTab() {
       )
     );
 
-  const getRoleVariant = (role: string) =>
-    (({ admin: 'destructive', editor: 'default', user: 'secondary' }[role] || 'secondary') as any);
-  const getStatusVariant = (status: string) => (status === 'active' ? 'default' : 'outline') as any;
+  const getRoleVariant = (role: string): 'destructive' | 'default' | 'secondary' | 'outline' => {
+    switch (role) {
+      case 'admin':
+        return 'destructive';
+      case 'editor':
+        return 'default';
+      case 'user':
+        return 'secondary';
+      default:
+        return 'secondary';
+    }
+  };
+
+  const getStatusVariant = (status: string) => (status === 'active' ? 'default' : 'outline');
 
   const filteredUsers = users.filter(
     user =>
@@ -180,7 +193,6 @@ export default function UsersManagementTab() {
               <AlertDialogDescription>Wypełnij formularz.</AlertDialogDescription>
             </AlertDialogHeader>
             <div className="grid gap-4 py-4">
-              {/* User Form Fields (condensed for brevity) */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
                   <Label htmlFor="firstName">Imię *</Label>
@@ -344,7 +356,7 @@ export default function UsersManagementTab() {
                     <AlertDialogHeader>
                       <AlertDialogTitle>Usunąć użytkownika?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        "{user.firstName} {user.lastName}" zostanie usunięty.
+                        &ldquo;{user.firstName} {user.lastName}&rdquo; zostanie usunięty.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>

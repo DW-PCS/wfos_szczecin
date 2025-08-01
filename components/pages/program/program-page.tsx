@@ -2,9 +2,10 @@ import { Breadcrumbs } from '@/components/features/breadcrumbs';
 import { ProgramDetails } from './card/program-details';
 import { ProgramHeader } from './program-header';
 import { ProgramImage } from './program-image';
+import { Program, ProgramPageType } from '@/types/program';
 
 interface ProgramPageProps {
-  program: any;
+  program: ProgramPageType;
 }
 
 const ProgramPage = ({ program }: ProgramPageProps) => {

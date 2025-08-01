@@ -62,7 +62,9 @@ export function TeamsTab({ aboutContent, setAboutContent, isEditing }: TeamsTabP
               <Building className="h-16 w-16 mx-auto mb-4 text-gray-300" />
               <p className="text-lg font-medium mb-2">Brak zespołów</p>
               {isEditing && (
-                <p className="text-sm">Kliknij "Dodaj zespół" aby dodać pierwszy zespół</p>
+                <p className="text-sm">
+                  Kliknij &ldquo;Dodaj zespół&rdquo; aby dodać pierwszy zespół
+                </p>
               )}
             </div>
           )}

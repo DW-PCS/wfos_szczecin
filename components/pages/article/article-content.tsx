@@ -1,10 +1,12 @@
+import { cn } from '@/lib/cn';
+
 interface ArticleContentProps {
   content: string;
   className?: string;
 }
 
 export const ArticleContent = ({ content, className }: ArticleContentProps) => (
-  <section className="pb-12">
+  <section className={cn('pb-12', className)}>
     <div className="container mx-auto px-4">
       <div className="max-w-4xl mx-auto">
         <div

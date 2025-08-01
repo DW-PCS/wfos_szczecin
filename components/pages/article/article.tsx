@@ -1,11 +1,12 @@
 import { Breadcrumbs } from '@/components/features/breadcrumbs';
+import type { Article } from '@/types/news';
 import DOMPurify from 'isomorphic-dompurify';
 import { ArticleContent } from './article-content';
 import { ArticleHeader } from './article-header';
 import { ArticleImage } from './article-image';
 
 interface NewsProps {
-  article: any;
+  article: Article;
 }
 
 const Article = ({ article }: NewsProps) => {

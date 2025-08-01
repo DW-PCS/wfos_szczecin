@@ -3,7 +3,7 @@ import { HelpCircle } from 'lucide-react';
 interface FAQSectionHeaderProps {
   title?: string;
   subtitle?: string;
-  icon?: React.ComponentType<any>;
+  icon?: React.ComponentType<{ className?: string }>;
 }
 
 export function FAQSectionHeader({

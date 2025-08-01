@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button';
-import { Program } from '@/types/program';
+import { Program, ProgramPageType } from '@/types/program';
 import { Download, ExternalLink, Users } from 'lucide-react';
 import Link from 'next/link';
 
 interface ProgramActionsProps {
-  program: Program;
+  program: ProgramPageType;
 }
 
 export function ProgramActions({ program }: ProgramActionsProps) {

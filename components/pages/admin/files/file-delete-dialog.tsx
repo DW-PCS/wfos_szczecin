@@ -31,7 +31,7 @@ export function FileDeleteDialog({ fileName, onConfirm }: FileDeleteDialogProps)
         <AlertDialogHeader>
           <AlertDialogTitle>Usuń plik</AlertDialogTitle>
           <AlertDialogDescription>
-            Czy na pewno chcesz usunąć plik "{fileName}"? Ta akcja jest nieodwracalna.
+            Czy na pewno chcesz usunąć plik &ldquo;{fileName}&rdquo;? Ta akcja jest nieodwracalna.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

@@ -103,7 +103,7 @@ export function AdminStatsSectionTab({ handleSaveContent }: AdminStatsSectionTab
     <TabsContent value="stats-section" className="space-y-4 pt-4">
       <Card>
         <CardHeader>
-          <CardTitle>Sekcja "Ochrona Środowiska w Praktyce"</CardTitle>
+          <CardTitle>Sekcja &ldquo;Ochrona Środowiska w Praktyce&rdquo;</CardTitle>
           <CardDescription>
             Zarządzaj tytułem, opisem, obrazem tła i boxami w sekcji statystyk
           </CardDescription>

@@ -14,7 +14,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -60,6 +59,7 @@ const initialMenuItems: MenuItem[] = [
     target: '_blank',
   },
 ];
+
 const initialMenuItemFormData: MenuItemFormData = {
   label: '',
   url: '',
@@ -84,6 +84,7 @@ export default function MenuManagementTab() {
     setIsEditMenuMode(false);
     setEditingMenuId(null);
   };
+
   const isMenuFormValid = () =>
     menuItemFormData.label.trim() !== '' && menuItemFormData.url.trim() !== '';
 
@@ -101,6 +102,7 @@ export default function MenuManagementTab() {
     setIsAddMenuItemOpen(false);
     resetMenuForm();
   };
+
   const handleEditMenuItem = (item: MenuItem) => {
     setMenuItemFormData({
       label: item.label,
@@ -115,18 +117,22 @@ export default function MenuManagementTab() {
     setEditingMenuId(item.id);
     setIsAddMenuItemOpen(true);
   };
+
   const handleDeleteMenuItem = (itemId: number) =>
     setMenuItems(menuItems.filter(item => item.id !== itemId));
+
   const handleToggleMenuItemStatus = (itemId: number) =>
     setMenuItems(
       menuItems.map(item => (item.id === itemId ? { ...item, active: !item.active } : item))
     );
+
   const handleMoveMenuItem = (itemId: number, direction: 'up' | 'down') => {
-    /* ... move logic ... */ console.log('Move', itemId, direction);
+    console.log('Move', itemId, direction);
   };
 
   const getParentMenuItems = () =>
     menuItems.filter(item => item.parent === null && item.position === menuItemFormData.position);
+
   const filteredMenuItems = menuItems.filter(
     item => selectedMenuPositionFilter === 'all' || item.position === selectedMenuPositionFilter
   );
@@ -195,7 +201,7 @@ export default function MenuManagementTab() {
                   <AlertDialogHeader>
                     <AlertDialogTitle>Usunąć pozycję menu?</AlertDialogTitle>
                     <AlertDialogDescription>
-                      "{item.label}" zostanie usunięta.
+                      &ldquo;{item.label}&rdquo; zostanie usunięta.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
@@ -245,7 +251,6 @@ export default function MenuManagementTab() {
               </AlertDialogTitle>
             </AlertDialogHeader>
             <div className="grid gap-4 py-4">
-              {/* Menu Item Form Fields (condensed) */}
               <div className="grid gap-2">
                 <Label htmlFor="menu-label">Etykieta *</Label>
                 <Input

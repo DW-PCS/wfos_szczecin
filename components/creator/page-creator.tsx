@@ -40,11 +40,16 @@ interface ProgramCreatorProps {
 
 export default function ProgramCreator({ initialProgramData }: ProgramCreatorProps) {
   const router = useRouter();
-  const addProgram = (data: any) => {
-    console.log('add program');
+  interface AddProgramData extends Partial<Program> {}
+
+  interface UpdateProgramData extends Partial<Program> {}
+
+  const addProgram = (data: AddProgramData) => {
+    console.log('add program data:', data);
   };
-  const updateProgram = (id: any, data: any) => {
-    console.log('update program');
+
+  const updateProgram = (id: number | string, data: UpdateProgramData) => {
+    console.log('update program data:', { id, ...data });
   };
 
   const getProgramPages = () => {
@@ -134,11 +139,11 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
   };
 
   const handleBeneficiaryCategoryChange = (category: string, checked: boolean) => {
-    setFormData((prev: any) => ({
+    setFormData(prev => ({
       ...prev,
       beneficiaryCategories: checked
         ? [...(prev.beneficiaryCategories || []), category]
-        : (prev.beneficiaryCategories || []).filter((c: any) => c !== category),
+        : (prev.beneficiaryCategories || []).filter(c => c !== category),
     }));
   };
 
@@ -190,7 +195,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                 <Input
                   id="name"
                   value={formData.name}
-                  onChange={e => setFormData((prev: any) => ({ ...prev, name: e.target.value }))}
+                  onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="np. Czyste Powietrze"
                   className={cn(errors.name && 'border-red-500')}
                 />
@@ -202,9 +207,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                 <Textarea
                   id="description"
                   value={formData.description}
-                  onChange={e =>
-                    setFormData((prev: any) => ({ ...prev, description: e.target.value }))
-                  }
+                  onChange={e => setFormData(prev => ({ ...prev, description: e.target.value }))}
                   placeholder="Szczegółowy opis programu dofinansowania..."
                   rows={4}
                   className={cn(errors.description && 'border-red-500')}
@@ -218,7 +221,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                   <Select
                     value={formData.status}
                     onValueChange={value =>
-                      setFormData((prev: any) => ({ ...prev, status: value as Program['status'] }))
+                      setFormData(prev => ({ ...prev, status: value as Program['status'] }))
                     }
                   >
                     <SelectTrigger className={cn(errors.status && 'border-red-500')}>
@@ -245,9 +248,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                   <Input
                     id="budget"
                     value={formData.budget}
-                    onChange={e =>
-                      setFormData((prev: any) => ({ ...prev, budget: e.target.value }))
-                    }
+                    onChange={e => setFormData(prev => ({ ...prev, budget: e.target.value }))}
                     placeholder="np. 500 000 000 zł"
                   />
                 </div>
@@ -268,9 +269,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                   <Input
                     id="maxSupport"
                     value={formData.maxSupport}
-                    onChange={e =>
-                      setFormData((prev: any) => ({ ...prev, maxSupport: e.target.value }))
-                    }
+                    onChange={e => setFormData(prev => ({ ...prev, maxSupport: e.target.value }))}
                     placeholder="np. do 135 000 zł"
                   />
                 </div>
@@ -280,9 +279,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                   <Input
                     id="funding"
                     value={formData.funding}
-                    onChange={e =>
-                      setFormData((prev: any) => ({ ...prev, funding: e.target.value }))
-                    }
+                    onChange={e => setFormData(prev => ({ ...prev, funding: e.target.value }))}
                     placeholder="np. do 100%"
                   />
                 </div>
@@ -293,9 +290,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                 <Input
                   id="deadline"
                   value={formData.deadline}
-                  onChange={e =>
-                    setFormData((prev: any) => ({ ...prev, deadline: e.target.value }))
-                  }
+                  onChange={e => setFormData(prev => ({ ...prev, deadline: e.target.value }))}
                   placeholder="np. 31.12.2024"
                 />
               </div>
@@ -333,9 +328,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                       <Calendar
                         mode="single"
                         selected={formData.startDate}
-                        onSelect={date =>
-                          setFormData((prev: any) => ({ ...prev, startDate: date }))
-                        }
+                        onSelect={date => setFormData(prev => ({ ...prev, startDate: date }))}
                         initialFocus
                       />
                     </PopoverContent>
@@ -365,7 +358,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                       <Calendar
                         mode="single"
                         selected={formData.endDate}
-                        onSelect={date => setFormData((prev: any) => ({ ...prev, endDate: date }))}
+                        onSelect={date => setFormData(prev => ({ ...prev, endDate: date }))}
                         initialFocus
                       />
                     </PopoverContent>
@@ -391,9 +384,9 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                     id="programLink"
                     value={formData.programLink}
                     onChange={e => {
-                      setFormData((prev: any) => ({ ...prev, programLink: e.target.value }));
+                      setFormData(prev => ({ ...prev, programLink: e.target.value }));
                       if (e.target.value.trim()) {
-                        setFormData((prev: any) => ({ ...prev, linkedPageSlug: '' }));
+                        setFormData(prev => ({ ...prev, linkedPageSlug: '' }));
                       }
                     }}
                     placeholder="https://czystepowietrze.gov.pl"
@@ -410,9 +403,9 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                     value={formData.linkedPageSlug || '__none__'}
                     onValueChange={value => {
                       const actualValue = value === '__none__' ? '' : value;
-                      setFormData((prev: any) => ({ ...prev, linkedPageSlug: actualValue }));
+                      setFormData(prev => ({ ...prev, linkedPageSlug: actualValue }));
                       if (actualValue) {
-                        setFormData((prev: any) => ({ ...prev, programLink: '' }));
+                        setFormData(prev => ({ ...prev, programLink: '' }));
                       }
                     }}
                     disabled={!!formData.programLink}
@@ -489,7 +482,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                   id="showOnHomepage"
                   checked={formData.showOnHomepage || false}
                   onCheckedChange={checked =>
-                    setFormData((prev: any) => ({ ...prev, showOnHomepage: checked as boolean }))
+                    setFormData(prev => ({ ...prev, showOnHomepage: checked as boolean }))
                   }
                 />
                 <Label htmlFor="showOnHomepage" className="text-sm font-normal leading-relaxed">
@@ -543,7 +536,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                 )}
                 {formData.beneficiaryCategories && formData.beneficiaryCategories.length > 0 && (
                   <div className="flex flex-wrap gap-1 pt-2">
-                    {formData.beneficiaryCategories.map((category: any) => (
+                    {formData.beneficiaryCategories.map(category => (
                       <span
                         key={category}
                         className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"

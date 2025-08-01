@@ -13,7 +13,8 @@ export function BenefitsHeader({ onAddBenefit }: BenefitsHeaderProps) {
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Korzyści współpracy</h1>
         <p className="text-gray-600 mt-2">
-          Zarządzaj korzyściami wyświetlanymi w sekcji "Dlaczego warto z nami współpracować?"
+          Zarządzaj korzyściami wyświetlanymi w sekcji &ldquo;Dlaczego warto z nami
+          współpracować?&rdquo;
         </p>
       </div>
       <Button onClick={onAddBenefit}>

@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -17,11 +16,7 @@ interface AdminSliderTabProps {
   handleSaveHeroContent: () => void;
 }
 
-export function AdminSliderTab({
-  heroSettings,
-  updateHeroSettings,
-  handleSaveHeroContent,
-}: AdminSliderTabProps) {
+export function AdminSliderTab({ heroSettings, updateHeroSettings }: AdminSliderTabProps) {
   const [editingSlide, setEditingSlide] = useState<string | null>(null);
   const [newSlide, setNewSlide] = useState<Partial<HeroSlide>>({
     title: '',

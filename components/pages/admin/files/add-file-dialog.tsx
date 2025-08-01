@@ -41,7 +41,7 @@ interface AddFileDialogProps {
   fileInputRef: React.RefObject<HTMLInputElement | null>;
   formatFileSize: (bytes: number) => string;
   isUploading: boolean;
-  editingFile: any;
+  editingFile?: boolean;
 }
 
 export function AddFileDialog({

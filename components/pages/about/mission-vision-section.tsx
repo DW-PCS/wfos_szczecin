@@ -65,7 +65,7 @@ const defaultItems: MissionVisionItem[] = [
 export function MissionVisionSection({ items = defaultItems }: MissionVisionSectionProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-      {items.map((item, index) => (
+      {items.map((item) => (
         <div
           key={item.type}
           className={`group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl ${item.hoverBorderColor} transition-all duration-500 transform hover:scale-105`}

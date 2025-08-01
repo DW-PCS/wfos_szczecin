@@ -1,6 +1,8 @@
 'use client';
 
 import { useDashboardData } from '@/hooks/use-dashboard-data';
+import { Article } from '@/types/news';
+import { Program } from '@/types/program';
 import React from 'react';
 import { DashboardStats } from './dashboard-stats';
 import { QuickActions } from './quick-actions';
@@ -8,8 +10,8 @@ import { QuickOverview } from './quick-overview';
 import { RecentActivities } from './recent-activities';
 
 interface DashboardViewProps {
-  programs: any[];
-  articles: any[];
+  programs: Program[];
+  articles: Article[];
   activeUsersCount: number;
 }
 

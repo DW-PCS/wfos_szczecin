@@ -1,8 +1,9 @@
-import { DEFAULT_CONTACT_OPTIONS } from "@/constants/faq";
-import { FAQContactCard } from "./card/faq-contact-card";
+import { DEFAULT_CONTACT_OPTIONS } from '@/constants/faq';
+import { ContactOption } from '@/types/faq';
+import { FAQContactCard } from './card/faq-contact-card';
 
 interface FAQContactOptionsProps {
-  contactOptions?: any[];
+  contactOptions?: ContactOption[];
 }
 
 export function FAQContactOptions({

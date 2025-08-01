@@ -18,8 +18,8 @@ export function HeroTitleField({ value, onChange }: HeroTitleFieldProps) {
         rows={3}
       />
       <p className="text-sm text-gray-500">
-        Możesz używać HTML, np. &lt;span class="text-primary-green"&gt;tekst&lt;/span&gt; dla
-        kolorowego tekstu
+        Możesz używać HTML, np. &lt;span class=&quot;text-primary-green&quot;&gt;tekst&lt;/span&gt;
+        dla kolorowego tekstu
       </p>
     </div>
   );

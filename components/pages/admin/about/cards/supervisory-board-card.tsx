@@ -72,7 +72,9 @@ export function SupervisoryBoardCard({
               <Users className="h-12 w-12 mx-auto mb-4 text-gray-300" />
               <p>Brak członków rady nadzorczej</p>
               {isEditing && (
-                <p className="text-sm">Kliknij "Dodaj członka" aby dodać pierwszego członka</p>
+                <p className="text-sm">
+                  Kliknij &ldquo;Dodaj członka&rdquo; aby dodać pierwszego członka
+                </p>
               )}
             </div>
           )}

@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 
 export const getIconComponent = (iconName: string) => {
-  const icons: { [key: string]: any } = {
+  const icons: { [key: string]: React.ElementType } = {
     DollarSign,
     Calendar,
     Clock,

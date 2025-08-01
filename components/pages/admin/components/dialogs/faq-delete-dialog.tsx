@@ -35,8 +35,8 @@ export function FAQDeleteDialog({ componentName, onConfirm }: FAQDeleteDialogPro
         <AlertDialogHeader>
           <AlertDialogTitle>Czy na pewno chcesz usunąć komponent?</AlertDialogTitle>
           <AlertDialogDescription>
-            Tej akcji nie można cofnąć. Komponent "{componentName}" zostanie trwale usunięty wraz ze
-            wszystkimi pytaniami.
+            Tej akcji nie można cofnąć. Komponent &ldquo;{componentName}&rdquo; zostanie trwale
+            usunięty wraz ze wszystkimi pytaniami.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

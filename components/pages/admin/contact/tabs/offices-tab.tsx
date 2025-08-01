@@ -62,7 +62,9 @@ export function OfficesTab({
               <Building className="h-12 w-12 mx-auto mb-4 text-gray-300" />
               <p>Brak biur do wyświetlenia</p>
               {isEditing && (
-                <p className="text-sm mt-2">Kliknij "Dodaj biuro" aby dodać nowe biuro</p>
+                <p className="text-sm mt-2">
+                  Kliknij &ldquo;Dodaj biuro&rdquo; aby dodać nowe biuro
+                </p>
               )}
             </div>
           ) : (

@@ -48,8 +48,8 @@ export const AddComponentForm = ({
           <Label>Typ komponentu</Label>
           <Select
             value={newComponentType}
-            onValueChange={(value: any) => {
-              onTypeChange(value);
+            onValueChange={value => {
+              onTypeChange(value as 'faq' | 'contact-team' | 'help-section');
               onIdChange(null);
             }}
           >

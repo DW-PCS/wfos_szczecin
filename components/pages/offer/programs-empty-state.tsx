@@ -11,7 +11,9 @@ export function ProgramsEmptyState({ searchTerm }: ProgramsEmptyStateProps) {
         <Search className="h-8 w-8 text-gray-400" />
       </div>
       <h3 className="text-xl font-semibold text-gray-900 mb-2">Brak wyników</h3>
-      <p className="text-gray-600">Nie znaleziono programów pasujących do frazy "{searchTerm}"</p>
+      <p className="text-gray-600">
+        Nie znaleziono programów pasujących do frazy &ldquo;{searchTerm}&rdquo;
+      </p>
     </div>
   );
 }

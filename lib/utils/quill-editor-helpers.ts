@@ -8,7 +8,7 @@ export const processContentToHtml = (content: unknown): string => {
   }
 
   if (content && typeof content === 'object' && 'blocks' in content) {
-    const textContent = (content as any).blocks
+    const textContent = (content.blocks as unknown[])
       .map((block: any) => block.data?.text || block.data?.message || '')
       .filter(Boolean)
       .join('</p><p>');

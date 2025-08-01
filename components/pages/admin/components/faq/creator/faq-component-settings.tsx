@@ -67,7 +67,9 @@ export function FAQComponentSettings({ formData, onFormDataChange }: FAQComponen
           <Label htmlFor="placement">Miejsce wyświetlania</Label>
           <Select
             value={formData.placement}
-            onValueChange={(value: any) => onFormDataChange({ placement: value })}
+            onValueChange={value =>
+              onFormDataChange({ placement: value as ComponentFormData['placement'] })
+            }
           >
             <SelectTrigger>
               <SelectValue />

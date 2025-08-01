@@ -1,9 +1,9 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { GripVertical, Star, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { FAQItemType } from '@/types/faq';
+import { GripVertical, Star } from 'lucide-react';
 import { FAQDeleteDialog } from './faq-delete-dialog';
 
 interface FAQItemCardProps {

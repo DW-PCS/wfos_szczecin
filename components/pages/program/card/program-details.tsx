@@ -1,10 +1,10 @@
-import { Program } from '@/types/program';
+import { Program, ProgramPageType } from '@/types/program';
 import { ContactInfoCard } from './contact-info';
 import { ProgramActions } from './program-actions';
 import { ProgramInfoCard } from './program-info';
 
 interface ProgramDetailsProps {
-  program: Program;
+  program: ProgramPageType;
 }
 
 export function ProgramDetails({ program }: ProgramDetailsProps) {

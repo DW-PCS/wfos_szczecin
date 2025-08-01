@@ -2,16 +2,13 @@
 
 import { initialFAQComponents } from '@/constants/faq';
 import { useFAQState } from '@/hooks/use-faq-state';
-import { FAQComponent, FAQItemType } from '@/types/faq';
+import { flattenFAQItems } from '@/lib/utils/faq';
 import { useState } from 'react';
 import { FAQEmptyState } from './faq-empty-state';
 import { FAQHelpSection } from './faq-help-section';
 import { FAQList } from './faq-list';
 import { FAQSearchBar } from './faq-search-bar';
 import { FAQSectionHeader } from './faq-section-header';
-import { flattenFAQItems } from '@/lib/utils/faq';
-
-
 
 export default function FAQSection() {
   const [searchQuery, setSearchQuery] = useState('');
