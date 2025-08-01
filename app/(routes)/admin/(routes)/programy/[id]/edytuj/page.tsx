@@ -11,11 +11,11 @@ interface EditProgramPageProps {
 export default async function EditProgramPage({ params }: EditProgramPageProps) {
   const { id } = await params;
 
-  if (id) {
+  if (!id) {
     notFound();
   }
 
-  const program = await getProgramById(id);
+  const program = await getProgramById(Number(id));
 
   if (!program) {
     notFound();
