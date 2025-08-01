@@ -19,7 +19,7 @@ export interface ProgramPagesResult {
 
 const programPageSchema = z.object({
   name: z.string().min(1, 'Name is required').max(255),
-  content: z.string().nullish(),
+  content: z.string(),
   slug: z.string().min(1, 'Slug is required').max(255),
   metaTitle: z.string().max(160).optional(),
   metaDescription: z.string().max(300).nullish(),
@@ -61,7 +61,7 @@ const parseJsonFormValue = <T>(value: FormDataEntryValue | null, fallback: T): T
 
 const extractFormData = (formData: FormData): ProgramPageInput => ({
   name: formData.get('name') as string,
-  content: parseFormValue(formData.get('content')),
+  content: parseFormValue(formData.get('content')) as string,
   slug: formData.get('slug') as string,
   metaTitle: parseFormValue(formData.get('metaTitle')),
   metaDescription: parseFormValue(formData.get('metaDescription')),
