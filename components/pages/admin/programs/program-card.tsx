@@ -9,20 +9,6 @@ import { format } from 'date-fns';
 import { Edit, LinkIcon } from 'lucide-react';
 import { ProgramDeleteDialog } from './program-delete-dialog';
 
-interface Program {
-  id: number;
-  name: string;
-  status: string;
-  description: string;
-  showOnHomepage?: boolean;
-  budget?: string;
-  deadline?: string;
-  startDate?: Date;
-  endDate?: Date;
-  beneficiaryCategories?: string[];
-  linkedPageSlug?: string;
-}
-
 interface ProgramCardProps {
   program: ProgramPageType;
   onEdit: (id: number) => void;
