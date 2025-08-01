@@ -11,10 +11,11 @@ import { CalendarIcon } from 'lucide-react';
 
 interface DatePickerFormProps {
   formData: Partial<ProgramPageType>;
+  errors: Record<string, string>;
   onUpdate: <K extends keyof ProgramPageType>(field: K, value: ProgramPageType[K]) => void;
 }
 
-export const DatePickerForm = ({ formData, onUpdate }: DatePickerFormProps) => {
+export const DatePickerForm = ({ formData, errors, onUpdate }: DatePickerFormProps) => {
   return (
     <Card>
       <CardHeader>
@@ -83,6 +84,8 @@ export const DatePickerForm = ({ formData, onUpdate }: DatePickerFormProps) => {
             </Popover>
           </div>
         </div>
+        {errors.startDate && <p className="text-sm text-red-500">{errors.startDate}</p>}
+        {errors.endDate && <p className="text-sm text-red-500">{errors.endDate}</p>}
       </CardContent>
     </Card>
   );

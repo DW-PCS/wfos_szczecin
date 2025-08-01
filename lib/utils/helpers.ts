@@ -26,16 +26,16 @@ export const getContactIcon = (iconName: string): LucideIcon => {
 export const getFilesByCategory = (categoryId: string) => {
   return defaultFiles.filter(file => file.categoryId === categoryId);
 };
-
 export function generateSlug(text: string): string {
   return text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
     .toLowerCase()
     .trim()
     .replace(/\s+/g, '-')
     .replace(/[^\w-]+/g, '')
     .replace(/--+/g, '-');
 }
-
 export function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '');
 }
@@ -45,10 +45,11 @@ export const isFormValid = (content: string, newsData: Partial<Article>) => {
   return newsData.title?.trim() !== '' && newsData.excerpt?.trim() !== '' && contentText !== '';
 };
 
-export   const formatFileSize = (bytes: number): string => {
+export const formatFileSize = (bytes: number): string => {
   if (bytes === 0) return '0 B';
   const k = 1024;
   const sizes = ['B', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 };
+

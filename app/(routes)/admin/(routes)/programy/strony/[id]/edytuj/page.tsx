@@ -1,24 +1,19 @@
-import PageCreator from '@/components/pages/admin/pages/page-creator/page-creator';
-import { initialPages } from '@/constants/page';
-import { notFound } from 'next/navigation';
+import { PageCreator } from '@/components/pages/admin/pages/page-creator';
+import { initialProgramPages } from '@/constants/program';
 
-interface EditPageProps {
-  params: {
-    id: string;
+const EditProgramPage = async ({ params }: { params: { id: string } }) => {
+  const { id } = await params;
+
+  const getProgramById = async (id: string) => {
+    return initialProgramPages.find(page => page.id === Number(id));
   };
-}
 
-export default async function EditPage({ params }: EditPageProps) {
-  const resolvedParams = await params;
-
-  const getPage = (programId: number) => {
-    return initialPages.find(page => Number(page.id) === programId);
-  };
-  const page = getPage(Number(resolvedParams.id));
-
-  if (!page) {
-    notFound();
+  const program = await getProgramById(id);
+  if (!program) {
+    return;
   }
 
-  return <PageCreator initialPageData={page} />;
-}
+  return <PageCreator initialPageData={program} />;
+};
+
+export default EditProgramPage;

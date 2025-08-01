@@ -15,6 +15,42 @@ export interface Program {
   showOnHomepage?: boolean;
 }
 
+export interface ProgramPageType {
+  id: number;
+  name: string;
+  content?: string;
+  pdfFiles?: PdfFile[];
+  slug?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  description?: string;
+  uploadedImages?: string[];
+  selectedComponents?: any[];
+  author?: string;
+  dateAdded?: string;
+  published?: boolean;
+  type: 'general' | 'program' | undefined;
+  beneficiaryCategories: string[];
+  maxSupport?: string;
+  funding?: string;
+  deadline?: string;
+  status?: string;
+  budget?: string;
+  startDate?: Date;
+  endDate?: Date;
+  programLink?: string;
+  linkedPageSlug?: string;
+  showOnHomepage?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface PdfFile {
+  id: string;
+  displayName: string;
+  fileName: string;
+}
+
 export interface ProgramCategory {
   id: string;
   label: string;
@@ -32,37 +68,4 @@ export interface ProgramDetailState {
   isLoading: boolean;
   notFoundState: boolean;
   loadContent: (params: Promise<{ id: string }>) => void;
-}
-
-export interface ProgramPageType {
-  id: number;
-  name: string;
-  content: string;
-  pdfFiles?: PdfFile[];
-  slug: string;
-  metaTitle: string;
-  metaDescription: string;
-  description: string;
-  uploadedImages: string[];
-  selectedComponents: any[];
-  author: string;
-  dateAdded: string;
-  published: boolean;
-  type: string;
-  beneficiaryCategories: string[];
-  maxSupport?: string;
-  funding?: string;
-  deadline?: string;
-  status?: string;
-  budget?: string;
-  startDate?: Date;
-  endDate?: Date;
-  programLink: string;
-  linkedPageSlug?: string;
-  showOnHomepage?: boolean;
-}
-export interface PdfFile {
-  id: string;
-  displayName: string;
-  fileName: string;
 }
