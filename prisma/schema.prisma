@@ -28,36 +28,19 @@ model Program {
   updatedAt             DateTime @updatedAt
 }
 model ProgramPage {
-  id                   Int       @id @default(autoincrement())
-  name                 String
+  id                   Int      @id @default(autoincrement())
+  title                String
   content              String   @db.Text
-  slug                 String?   @unique
-  metaTitle            String?
-  metaDescription      String?   @db.Text
-  description          String?   @db.Text
+  metaTitle            String
+  metaDescription      String   @db.Text
   uploadedImages       String[]
-  selectedComponents   Json?
-  author               String?
-  dateAdded            String?
-  published            Boolean   @default(false)
-  type                 String
-  beneficiaryCategories String[]
-  maxSupport           String?
-  funding              String?
-  deadline             String?
-  status               String?
-  budget               String?
-  startDate            DateTime?
-  endDate              DateTime?
-  programLink          String?
-  linkedPageSlug       String?
-  showOnHomepage       Boolean   @default(false)
-  createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
-
-
   pdfFiles             PdfFile[]
-
+  author               String
+  dateAdded            String
+  published            Boolean   @default(false)
+  slug                 String?   @unique
+  selectedComponents   Json?
+  type                 String
   @@map("program_pages")
 }
 

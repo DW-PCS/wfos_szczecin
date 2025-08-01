@@ -1,7 +1,8 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
-import { ProgramPageType } from '@/types/program';
+import { Page } from '@/types/page';
+
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
@@ -13,41 +14,28 @@ export interface ActionResult<T = void> {
 }
 
 export interface ProgramPagesResult {
-  data: ProgramPageType[];
+  data: Page[];
   error?: string;
 }
 
 const programPageSchema = z.object({
-  name: z.string().min(1, 'Name is required').max(255),
+  title: z.string().min(1, 'Title is required').max(255),
   content: z.string().min(1, 'Content is required'),
-  slug: z.string().min(1, 'Slug is required').max(255),
-  metaTitle: z.string().max(160).optional(),
-  metaDescription: z.string().max(300).nullable().optional(),
-  description: z.string().optional().default(''),
+  slug: z.string().min(1, 'Slug is required').max(255).optional(),
+  metaTitle: z.string().max(160).optional().default(''),
+  metaDescription: z.string().max(300).optional().default(''),
   uploadedImages: z.array(z.string()).default([]),
   selectedComponents: z.any().nullable().optional(),
-  author: z.string().max(100).nullable().optional(),
-  dateAdded: z.string().nullable().optional(),
+  author: z.string().max(100).optional().default(''),
+  dateAdded: z.string().optional().default(''),
   published: z.boolean().default(false),
   type: z.enum(['general', 'program']).default('general'),
-  beneficiaryCategories: z.array(z.string()).min(1, 'At least one category is required'),
-  maxSupport: z.string().max(100).nullable().optional(),
-  funding: z.string().max(100).nullable().optional(),
-  deadline: z.string().max(50).nullable().optional(),
-  status: z.string().max(50).nullable().optional(),
-  budget: z.string().max(100).nullable().optional(),
-  startDate: z.string().nullable().optional(),
-  endDate: z.string().nullable().optional(),
-  programLink: z.string().nullable().optional().or(z.literal('')),
-  linkedPageSlug: z.string().max(255).nullable().optional().or(z.literal('')),
-  showOnHomepage: z.boolean().default(false),
 });
 
 type ProgramPageInput = z.infer<typeof programPageSchema>;
 
-const parseFormValue = (value: FormDataEntryValue | null): string | null => {
-  if (!value || value === '') return null;
-  return value as string;
+const parseFormValue = (value: FormDataEntryValue | null): string => {
+  return value ? (value as string) : '';
 };
 
 const parseJsonFormValue = <T>(value: FormDataEntryValue | null, fallback: T): T => {
@@ -60,62 +48,38 @@ const parseJsonFormValue = <T>(value: FormDataEntryValue | null, fallback: T): T
 };
 
 const extractFormData = (formData: FormData): Record<string, any> => ({
-  name: formData.get('name') as string,
+  title: formData.get('title') as string,
   content: formData.get('content') as string,
-  slug: formData.get('slug') as string,
+  slug: parseFormValue(formData.get('slug')),
   metaTitle: parseFormValue(formData.get('metaTitle')),
   metaDescription: parseFormValue(formData.get('metaDescription')),
-  description: parseFormValue(formData.get('description')),
   uploadedImages: parseJsonFormValue(formData.get('uploadedImages'), []),
-  selectedComponents: parseJsonFormValue(formData.get('selectedComponents'), null),
+  selectedComponents: parseJsonFormValue(formData.get('selectedComponents'), ''),
   author: parseFormValue(formData.get('author')),
   dateAdded: parseFormValue(formData.get('dateAdded')),
   published: formData.get('published') === 'true',
   type: parseFormValue(formData.get('type')) || 'general',
-  beneficiaryCategories: parseJsonFormValue(formData.get('beneficiaryCategories'), []),
-  maxSupport: parseFormValue(formData.get('maxSupport')),
-  funding: parseFormValue(formData.get('funding')),
-  deadline: parseFormValue(formData.get('deadline')),
-  status: parseFormValue(formData.get('status')),
-  budget: parseFormValue(formData.get('budget')),
-  startDate: parseFormValue(formData.get('startDate')),
-  endDate: parseFormValue(formData.get('endDate')),
-  programLink: parseFormValue(formData.get('programLink')),
-  linkedPageSlug: parseFormValue(formData.get('linkedPageSlug')),
-  showOnHomepage: formData.get('showOnHomepage') === 'true',
 });
 
 const prepareDatabaseData = (data: ProgramPageInput) => ({
-  name: data.name,
+  title: data.title,
   content: data.content,
-  slug: data.slug,
-  metaTitle: data.metaTitle || null,
-  metaDescription: data.metaDescription || null,
-  description: data.description || null,
+  slug: data.slug || null,
+  metaTitle: data.metaTitle || data.title,
+  metaDescription: data.metaDescription || '',
   uploadedImages: data.uploadedImages,
   selectedComponents: data.selectedComponents,
-  author: data.author || null,
-  dateAdded: data.dateAdded || null,
+  author: data.author || 'Admin',
+  dateAdded: data.dateAdded || new Date().toISOString(),
   published: data.published,
   type: data.type,
-  beneficiaryCategories: data.beneficiaryCategories,
-  maxSupport: data.maxSupport || null,
-  funding: data.funding || null,
-  deadline: data.deadline || null,
-  status: data.status || null,
-  budget: data.budget || null,
-  startDate: data.startDate ? new Date(data.startDate) : null,
-  endDate: data.endDate ? new Date(data.endDate) : null,
-  programLink: data.programLink === '' ? null : data.programLink,
-  linkedPageSlug: data.linkedPageSlug === '' ? null : data.linkedPageSlug,
-  showOnHomepage: data.showOnHomepage,
 });
 
 export const getProgramPages = async (): Promise<ProgramPagesResult> => {
   try {
     const programPages = await prisma.programPage.findMany({
       include: { pdfFiles: true },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { id: 'desc' },
     });
     return { data: programPages };
   } catch (error) {
@@ -129,7 +93,7 @@ export const getPublishedProgramPages = async (): Promise<ProgramPagesResult> =>
     const programPages = await prisma.programPage.findMany({
       where: { published: true },
       include: { pdfFiles: true },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { id: 'desc' },
     });
 
     return { data: programPages };
@@ -139,7 +103,7 @@ export const getPublishedProgramPages = async (): Promise<ProgramPagesResult> =>
   }
 };
 
-export const getProgramPageById = async (id: number): Promise<ProgramPageType | null> => {
+export const getProgramPageById = async (id: number): Promise<Page | null> => {
   try {
     const programPage = await prisma.programPage.findUnique({
       where: { id },
@@ -153,7 +117,7 @@ export const getProgramPageById = async (id: number): Promise<ProgramPageType | 
   }
 };
 
-export const getProgramPageBySlug = async (slug: string): Promise<ProgramPageType | null> => {
+export const getProgramPageBySlug = async (slug: string): Promise<Page | null> => {
   try {
     const programPage = await prisma.programPage.findUnique({
       where: { slug },
@@ -167,25 +131,8 @@ export const getProgramPageBySlug = async (slug: string): Promise<ProgramPageTyp
   }
 };
 
-export const getHomepageProgramPages = async (): Promise<ProgramPagesResult> => {
-  try {
-    const programPages = await prisma.programPage.findMany({
-      where: {
-        showOnHomepage: true,
-        published: true,
-      },
-      include: { pdfFiles: true },
-      orderBy: { createdAt: 'desc' },
-    });
-
-    return { data: programPages };
-  } catch (error) {
-    console.error('Database error:', error);
-    return { data: [], error: 'Failed to fetch homepage program pages' };
-  }
-};
-
 const isSlugUnique = async (slug: string, excludeId?: number): Promise<boolean> => {
+  if (!slug) return true; // Empty slug is allowed
   const whereClause = excludeId ? { slug, NOT: { id: excludeId } } : { slug };
   const existingPage = await prisma.programPage.findFirst({ where: whereClause });
   return !existingPage;
@@ -198,12 +145,14 @@ export const createProgramPage = async (
     const rawData = extractFormData(formData);
     const validatedData = programPageSchema.parse(rawData);
 
-    const isUnique = await isSlugUnique(validatedData.slug);
-    if (!isUnique) {
-      return {
-        success: false,
-        error: 'A page with this slug already exists',
-      };
+    if (validatedData.slug) {
+      const isUnique = await isSlugUnique(validatedData.slug);
+      if (!isUnique) {
+        return {
+          success: false,
+          error: 'A page with this slug already exists',
+        };
+      }
     }
 
     const databaseData = prepareDatabaseData(validatedData);
@@ -242,12 +191,14 @@ export const updateProgramPage = async (id: number, formData: FormData): Promise
     const rawData = extractFormData(formData);
     const validatedData = programPageSchema.parse(rawData);
 
-    const isUnique = await isSlugUnique(validatedData.slug, id);
-    if (!isUnique) {
-      return {
-        success: false,
-        error: 'A page with this slug already exists',
-      };
+    if (validatedData.slug) {
+      const isUnique = await isSlugUnique(validatedData.slug, id);
+      if (!isUnique) {
+        return {
+          success: false,
+          error: 'A page with this slug already exists',
+        };
+      }
     }
 
     const databaseData = prepareDatabaseData(validatedData);
@@ -258,7 +209,9 @@ export const updateProgramPage = async (id: number, formData: FormData): Promise
 
     revalidatePath('/admin/program-pages');
     revalidatePath('/programs');
-    revalidatePath(`/programs/${databaseData.slug}`);
+    if (databaseData.slug) {
+      revalidatePath(`/programs/${databaseData.slug}`);
+    }
 
     return { success: true };
   } catch (error) {
