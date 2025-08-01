@@ -27,3 +27,55 @@ model Program {
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 }
+model ProgramPage {
+  id                   Int       @id @default(autoincrement())
+  name                 String
+  content              String?   @db.Text
+  slug                 String?   @unique
+  metaTitle            String?
+  metaDescription      String?   @db.Text
+  description          String?   @db.Text
+  uploadedImages       String[]
+  selectedComponents   Json?
+  author               String?
+  dateAdded            String?
+  published            Boolean   @default(false)
+  type                 String?
+  beneficiaryCategories String[]
+  maxSupport           String?
+  funding              String?
+  deadline             String?
+  status               String?
+  budget               String?
+  startDate            DateTime?
+  endDate              DateTime?
+  programLink          String?
+  linkedPageSlug       String?
+  showOnHomepage       Boolean   @default(false)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+
+  pdfFiles             PdfFile[]
+
+  @@map("program_pages")
+}
+
+
+model PdfFile {
+  id              Int         @id @default(autoincrement())
+  url             String
+  filename        String
+  originalName    String?
+  displayName     String?
+  size            Int?
+  mimeType        String?
+  programPageId   Int
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+
+  programPage     ProgramPage @relation(fields: [programPageId], references: [id], onDelete: Cascade)
+
+  @@map("pdf_files")
+}

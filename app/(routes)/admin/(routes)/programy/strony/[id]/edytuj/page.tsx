@@ -1,5 +1,5 @@
+import { getProgramPageById } from '@/actions/program/program-page-action';
 import { PageCreator } from '@/components/pages/admin/pages/page-creator';
-import { initialProgramPages } from '@/constants/program';
 
 interface EditProgramPageProps {
   params: Promise<{
@@ -10,16 +10,12 @@ interface EditProgramPageProps {
 const EditProgramPage = async ({ params }: EditProgramPageProps) => {
   const { id } = await params;
 
-  const getProgramById = async (id: string) => {
-    return initialProgramPages.find(page => page.id === Number(id));
-  };
-
-  const program = await getProgramById(id);
+  const program = await getProgramPageById(Number(id));
   if (!program) {
     return;
   }
 
-  return <PageCreator initialPageData={program} />;
+  return <PageCreator initialPageData={program} edit={id} />;
 };
 
 export default EditProgramPage;

@@ -1,6 +1,7 @@
 'use client';
 
 import { deleteProgramById } from '@/actions/program/program-action';
+import { deleteProgramPage } from '@/actions/program/program-page-action';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useProgramsTabs } from '@/hooks/use-programs-tabs';
 import { ProgramPageType } from '@/types/program';
@@ -13,19 +14,12 @@ import { ProgramsTabHeader } from './programs-tab-header';
 
 interface ProgramsPageProps {
   programs: ProgramPageType[];
+  programPages: ProgramPageType[];
 }
 
-export default function ProgramsPage({ programs }: ProgramsPageProps) {
+export default function ProgramsPage({ programs, programPages }: ProgramsPageProps) {
   const router = useRouter();
   const { activeTab, handleTabChange } = useProgramsTabs();
-
-  const getProgramPages = () => {
-    return programs.filter(program => program.type == 'program' || []);
-  };
-
-  const deletePage = async (pageId: number) => {
-    console.log('Deleting page:', pageId);
-  };
 
   const handleCreateProgram = () => {
     router.push('/admin/programy/nowy');
@@ -54,13 +48,11 @@ export default function ProgramsPage({ programs }: ProgramsPageProps) {
 
   const handleDeleteProgramPage = async (pageId: number) => {
     try {
-      await deletePage(pageId);
+      await deleteProgramPage(pageId);
     } catch (error) {
       console.error('Error deleting program page:', error);
     }
   };
-
-  const programPages = getProgramPages();
 
   programPages.map(page => ({
     id: page.id,
@@ -80,6 +72,7 @@ export default function ProgramsPage({ programs }: ProgramsPageProps) {
 
         <TabsContent value="programs" className="pt-6">
           <ProgramsTabHeader onCreateProgram={handleCreateProgram} />
+
           <ProgramsGrid
             programs={programs}
             onEdit={handleEditProgram}
@@ -89,6 +82,7 @@ export default function ProgramsPage({ programs }: ProgramsPageProps) {
 
         <TabsContent value="pages" className="pt-6">
           <ProgramPagesTabHeader onCreatePage={handleCreateProgramPage} />
+
           <ProgramPagesGrid
             pages={programPages}
             onEdit={handleEditProgramPage}

@@ -4,16 +4,12 @@ import { notFound } from 'next/navigation';
 
 interface EditProgramPageProps {
   params: Promise<{
-    id: number;
+    id: string;
   }>;
 }
 
 export default async function EditProgramPage({ params }: EditProgramPageProps) {
   const { id } = await params;
-
-  if (!id) {
-    notFound();
-  }
 
   const program = await getProgramById(Number(id));
 

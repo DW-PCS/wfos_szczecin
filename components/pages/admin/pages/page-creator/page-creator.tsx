@@ -3,7 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { mockContactTeams, mockFAQComponents, mockHelpSections } from '@/constants/page';
 import { usePageCreator } from '@/hooks/use-page-creator';
-import { Page } from '@/types/page';
+import { ProgramPageType } from '@/types/program';
 import { PageCreatorHeader } from './page-creator-header';
 import { ComponentsTab } from './tabs/component-tab';
 import { ContentTab } from './tabs/content-tab';
@@ -11,11 +11,12 @@ import { MediaTab } from './tabs/miedia-tab';
 import { SeoTab } from './tabs/seo-tab';
 
 interface PageCreatorProps {
-  initialPageData?: Partial<Page>;
+  initialPageData?: Partial<ProgramPageType>;
   pageType?: 'general' | 'program';
+  edit?: string;
 }
 
-export default function PageCreator({ initialPageData, pageType = 'general' }: PageCreatorProps) {
+export default function PageCreator({ initialPageData, pageType = 'general', edit }: PageCreatorProps) {
   const {
     newPage,
     content,
@@ -37,6 +38,7 @@ export default function PageCreator({ initialPageData, pageType = 'general' }: P
   } = usePageCreator({
     initialPageData,
     pageType,
+    edit,
   });
 
   return (
@@ -53,10 +55,10 @@ export default function PageCreator({ initialPageData, pageType = 'general' }: P
 
         <TabsContent value="content" className="space-y-6">
           <ContentTab
-            title={newPage.title}
+            title={newPage.name}
             content={content}
             previewUrl={previewUrl}
-            onTitleChange={title => updatePageField('title', title)}
+            onTitleChange={title => updatePageField('name', title)}
             onContentChange={setContent}
           />
         </TabsContent>
@@ -73,7 +75,7 @@ export default function PageCreator({ initialPageData, pageType = 'general' }: P
 
         <TabsContent value="seo" className="space-y-6">
           <SeoTab
-            title={newPage.title}
+            title={newPage.name}
             metaTitle={newPage.metaTitle}
             metaDescription={newPage.metaDescription}
             previewUrl={previewUrl}
