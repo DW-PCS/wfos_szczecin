@@ -4,7 +4,7 @@ import { Page } from '@/types/page';
 
 export const initialPages: Page[] = [
   {
-    id: '4',
+    id: 4,
     title: 'Przykładowa Strona Tekstowa',
     slug: 'przykladowa-strona-tekstowa',
     content:
@@ -34,7 +34,7 @@ export const initialPages: Page[] = [
     type: 'general',
   },
   {
-    id: 'test-pdf-files',
+    id: 3,
     title: 'Test plików PDF ze spacjami',
     slug: 'test',
     content:
@@ -87,7 +87,7 @@ export const initialPages: Page[] = [
     type: 'general',
   },
   {
-    id: 'polityka-prywatnosci',
+    id: 2,
     title: 'Polityka Prywatności',
     slug: 'polityka-prywatnosci',
     content:
@@ -104,7 +104,7 @@ export const initialPages: Page[] = [
     type: 'general',
   },
   {
-    id: 'czyste-powietrze-szczegoly',
+    id: 1,
     title: 'Program Czyste Powietrze - Szczegóły',
     slug: 'czyste-powietrze-szczegoly',
     content:
