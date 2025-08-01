@@ -1,14 +1,13 @@
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Edit, Trash2, LinkIcon } from 'lucide-react';
-import { format } from 'date-fns';
+import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/cn';
-import { ProgramDeleteDialog } from './program-delete-dialog';
 import { ProgramPageType } from '@/types/program';
-
+import { format } from 'date-fns';
+import { Edit, LinkIcon } from 'lucide-react';
+import { ProgramDeleteDialog } from './program-delete-dialog';
 
 interface Program {
   id: number;
