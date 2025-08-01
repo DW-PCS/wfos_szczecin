@@ -32,7 +32,7 @@ const statusOptions = [
   { value: 'zakończony', label: 'Zakończony', color: 'bg-gray-100 text-gray-800' },
   { value: 'realizacja', label: 'W realizacji', color: 'bg-blue-100 text-blue-800' },
   { value: 'zamknięty', label: 'Nabór zamknięty', color: 'bg-orange-100 text-orange-800' },
-];
+] as const;
 
 interface ProgramCreatorProps {
   initialProgramData?: Partial<Program>;
@@ -40,15 +40,12 @@ interface ProgramCreatorProps {
 
 export default function ProgramCreator({ initialProgramData }: ProgramCreatorProps) {
   const router = useRouter();
-  interface AddProgramData extends Partial<Program> {}
 
-  interface UpdateProgramData extends Partial<Program> {}
-
-  const addProgram = (data: AddProgramData) => {
+  const addProgram = (data: Partial<Program>) => {
     console.log('add program data:', data);
   };
 
-  const updateProgram = (id: number | string, data: UpdateProgramData) => {
+  const updateProgram = (id: number | string, data: Partial<Program>) => {
     console.log('update program data:', { id, ...data });
   };
 
@@ -80,7 +77,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
     slug: page.slug || page.name.toLowerCase().replace(/\s+/g, '-'),
   }));
 
-  const validateForm = () => {
+  const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name?.trim()) {

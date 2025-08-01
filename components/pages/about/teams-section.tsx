@@ -1,4 +1,12 @@
-import { LucideIcon } from 'lucide-react';
+import {
+  Briefcase,
+  Building,
+  FileText,
+  Megaphone,
+  Monitor,
+  Scale,
+  type LucideIcon,
+} from 'lucide-react';
 
 interface Team {
   name: string;
@@ -16,32 +24,32 @@ const defaultTeams: Team[] = [
   {
     name: 'Zespół Finansowy',
     description: 'Odpowiada za zarządzanie finansami funduszu i rozliczanie projektów.',
-    icon: require('lucide-react').Briefcase,
+    icon: Briefcase,
   },
   {
     name: 'Zespół Projektowy',
     description: 'Zajmuje się oceną i monitorowaniem realizacji projektów ekologicznych.',
-    icon: require('lucide-react').FileText,
+    icon: FileText,
   },
   {
     name: 'Zespół Prawny',
     description: 'Zapewnia obsługę prawną i zgodność działań z obowiązującymi przepisami.',
-    icon: require('lucide-react').Scale,
+    icon: Scale,
   },
   {
     name: 'Zespół Komunikacji',
     description: 'Odpowiada za komunikację zewnętrzną i promocję działań funduszu.',
-    icon: require('lucide-react').Megaphone,
+    icon: Megaphone,
   },
   {
     name: 'Zespół IT',
     description: 'Zapewnia wsparcie technologiczne i rozwój systemów informatycznych.',
-    icon: require('lucide-react').Monitor,
+    icon: Monitor,
   },
   {
     name: 'Zespół Administracyjny',
     description: 'Odpowiada za sprawne funkcjonowanie biura i obsługę administracyjną.',
-    icon: require('lucide-react').Building,
+    icon: Building,
   },
 ];
 
