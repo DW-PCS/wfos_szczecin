@@ -43,7 +43,7 @@ export const BasicInfoForm = ({ formData, errors, onUpdate }: BasicInfoFormProps
           <Label htmlFor="description">Opis programu *</Label>
           <Textarea
             id="description"
-            value={formData.description}
+            value={formData.description || ''}
             onChange={e => onUpdate('description', e.target.value)}
             placeholder="Szczegółowy opis programu dofinansowania..."
             rows={4}
@@ -56,7 +56,7 @@ export const BasicInfoForm = ({ formData, errors, onUpdate }: BasicInfoFormProps
           <div className="space-y-2">
             <Label htmlFor="status">Status programu *</Label>
             <Select
-              value={formData.status}
+              value={formData.status || ''}
               onValueChange={value => onUpdate('status', value as Program['status'])}
             >
               <SelectTrigger className={cn(errors.status && 'border-red-500')}>
@@ -80,7 +80,7 @@ export const BasicInfoForm = ({ formData, errors, onUpdate }: BasicInfoFormProps
             <Label htmlFor="budget">Budżet programu</Label>
             <Input
               id="budget"
-              value={formData.budget}
+              value={formData.budget || ''}
               onChange={e => onUpdate('budget', e.target.value)}
               placeholder="np. 500 000 000 zł"
             />

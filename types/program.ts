@@ -40,7 +40,7 @@ export interface ProgramPageType {
   slug: string | null;
   metaTitle: string | null;
   metaDescription: string | null;
-  description: string;
+  description?: string | null;
   uploadedImages: string[];
   selectedComponents: any;
   author: string | null;
@@ -51,8 +51,8 @@ export interface ProgramPageType {
   maxSupport: string | null;
   funding: string | null;
   deadline: string | null;
-  status: string;
-  budget: string;
+  status: string | null;
+  budget: string | null;
   startDate: Date | null;
   endDate: Date | null;
   programLink: string | null;

@@ -30,7 +30,7 @@ model Program {
 model ProgramPage {
   id                   Int       @id @default(autoincrement())
   name                 String
-  content              String?   @db.Text
+  content              String   @db.Text
   slug                 String?   @unique
   metaTitle            String?
   metaDescription      String?   @db.Text
@@ -40,7 +40,7 @@ model ProgramPage {
   author               String?
   dateAdded            String?
   published            Boolean   @default(false)
-  type                 String?
+  type                 String
   beneficiaryCategories String[]
   maxSupport           String?
   funding              String?

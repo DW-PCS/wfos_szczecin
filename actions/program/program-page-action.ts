@@ -21,9 +21,9 @@ const programPageSchema = z.object({
   name: z.string().min(1, 'Name is required').max(255),
   content: z.string().nullish(),
   slug: z.string().min(1, 'Slug is required').max(255),
-  metaTitle: z.string().max(160).nullish(),
+  metaTitle: z.string().max(160).optional(),
   metaDescription: z.string().max(300).nullish(),
-  description: z.string().nullish(),
+  description: z.string().optional(),
   uploadedImages: z.array(z.string()).default([]),
   selectedComponents: z.any().nullish(),
   author: z.string().max(100).nullish(),
@@ -45,8 +45,8 @@ const programPageSchema = z.object({
 
 type ProgramPageInput = z.infer<typeof programPageSchema>;
 
-const parseFormValue = (value: FormDataEntryValue | null): string | null => {
-  if (!value || value === '') return null;
+const parseFormValue = (value: FormDataEntryValue | null): string | undefined => {
+  if (!value || value === '') return undefined;
   return value as string;
 };
 
@@ -99,7 +99,6 @@ export const getProgramPages = async (): Promise<ProgramPagesResult> => {
       include: { pdfFiles: true },
       orderBy: { createdAt: 'desc' },
     });
-
     return { data: programPages };
   } catch (error) {
     console.error('Database error:', error);
