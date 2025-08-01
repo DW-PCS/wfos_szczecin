@@ -64,10 +64,15 @@ export const PdfUploadSection = ({
                     <FileText className="w-4 h-4 text-red-600" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium">{pdf.fileName}</p>
+                    <p className="text-sm font-medium">{pdf.filename}</p>
                   </div>
                 </div>
-                <Button type="button" variant="ghost" size="sm" onClick={() => onRemovePdf(pdf.id)}>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => onRemovePdf(String(pdf.id))}
+                >
                   <X className="h-4 w-4" />
                 </Button>
               </div>
