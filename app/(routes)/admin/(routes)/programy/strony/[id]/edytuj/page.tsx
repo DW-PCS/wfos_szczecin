@@ -1,7 +1,13 @@
 import { PageCreator } from '@/components/pages/admin/pages/page-creator';
 import { initialProgramPages } from '@/constants/program';
 
-const EditProgramPage = async ({ params }: { params: { id: string } }) => {
+interface EditProgramPageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+const EditProgramPage = async ({ params }: EditProgramPageProps) => {
   const { id } = await params;
 
   const getProgramById = async (id: string) => {
