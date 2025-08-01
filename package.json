@@ -10,7 +10,7 @@
     "build-ui": "node create-ui-component.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
+    "db:migrate": "prisma migrate",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate"
   },
