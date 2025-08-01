@@ -10,7 +10,7 @@ export const getIconForProgram = (programName: string) => {
   return Home;
 };
 
-export const getStatusDisplay = (status: string | undefined): string => {
+export const getStatusDisplay = (status: string | null): string => {
   switch (status) {
     case 'otwarty':
       return 'Otwarty';

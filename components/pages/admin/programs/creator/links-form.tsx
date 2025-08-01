@@ -8,8 +8,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { ProgramPageType } from '@/types/program';
 import { initialProgramPages } from '@/constants/program';
+import { ProgramPageType } from '@/types/program';
 
 interface LinksFormProps {
   formData: Partial<ProgramPageType>;
@@ -56,7 +56,7 @@ export const LinksForm = ({ formData, onUpdate }: LinksFormProps) => {
             <Label htmlFor="programLink">Link do strony zewnętrznej</Label>
             <Input
               id="programLink"
-              value={formData.programLink}
+              value={formData.programLink || ''}
               onChange={e => handleProgramLinkChange(e.target.value)}
               placeholder="https://czystepowietrze.gov.pl"
               disabled={!!formData.linkedPageSlug}

@@ -44,6 +44,11 @@ export const initialPrograms: Program[] = [
     maxSupport: 'do 135 000 zł',
     funding: 'do 100%',
     programLink: 'https://czystepowietrze.gov.pl',
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 2,
@@ -58,6 +63,11 @@ export const initialPrograms: Program[] = [
     maxSupport: 'do 6 000 zł',
     funding: 'do 80%',
     programLink: 'https://example.com/moja-woda',
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 3,
@@ -72,6 +82,12 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2025-12-31'),
     maxSupport: 'do 20 000 zł',
     funding: 'do 90%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 4,
@@ -85,6 +101,12 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2023-12-31'),
     maxSupport: 'do 15 000 zł',
     funding: 'do 70%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 5,
@@ -98,6 +120,12 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2025-09-30'),
     maxSupport: 'do 25 000 zł',
     funding: 'do 60%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 6,
@@ -111,6 +139,12 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2026-03-31'),
     maxSupport: 'do 30 000 zł',
     funding: 'do 85%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 7,
@@ -124,6 +158,12 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2025-12-31'),
     maxSupport: 'do 40 000 zł',
     funding: 'do 75%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 8,
@@ -137,6 +177,12 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2025-06-30'),
     maxSupport: 'do 12 000 zł',
     funding: 'do 80%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 9,
@@ -150,6 +196,12 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2026-06-30'),
     maxSupport: 'do 18 000 zł',
     funding: 'do 70%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 10,
@@ -163,18 +215,21 @@ export const initialPrograms: Program[] = [
     endDate: new Date('2025-08-31'),
     maxSupport: 'do 22 000 zł',
     funding: 'do 90%',
+    programLink: null,
+    linkedPageSlug: null,
+    showOnHomepage: false,
+    type: '',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ];
-
 
 export const getCategoryById = (categoryId: string) => {
   return programCategories.find(category => category.id === categoryId);
 };
 
-
 export const getCategoriesByIds = (categoryIds: string[]) => {
   return categoryIds.map(id => getCategoryById(id)).filter(Boolean);
 };
-
 
 export type CategoryId = (typeof programCategories)[number]['id'];

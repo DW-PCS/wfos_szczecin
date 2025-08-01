@@ -1,4 +1,3 @@
-// types/program.ts
 
 export interface Program {
   id: number;
@@ -7,7 +6,7 @@ export interface Program {
   status: 'otwarty' | 'planowany' | 'zakończony' | 'realizacja' | 'zamknięty';
   budget: string;
   deadline: string;
-  beneficiaryCategories: any; // JSON type from Prisma
+  beneficiaryCategories: any;
   startDate: Date;
   endDate: Date;
   maxSupport: string;

@@ -98,7 +98,7 @@ export const useProgramForm = ({ initialData }: UseProgramFormProps = {}) => {
         const formDataObj = createFormData(formData);
 
         const result = initialData?.id
-          ? await updateProgram(initialData.id, formDataObj)
+          ? await updateProgram(Number(initialData.id), formDataObj)
           : await createProgram(formDataObj);
 
         if (result.success) {

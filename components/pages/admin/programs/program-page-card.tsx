@@ -32,11 +32,14 @@ export function ProgramPageCard({ page, onEdit, onDelete }: ProgramPageCardProps
                 variant="outline"
                 size="sm"
                 className={cn('text-blue-500 hover:text-blue-700 hover:bg-blue-50')}
-                onClick={() => onEdit(page.id)}
+                onClick={() => onEdit(Number(page.id))}
               >
                 <Edit className="h-4 w-4" />
               </Button>
-              <ProgramPageDeleteDialog pageTitle={page.name} onConfirm={() => onDelete(page.id)} />
+              <ProgramPageDeleteDialog
+                pageTitle={page.name}
+                onConfirm={() => onDelete(Number(page.id))}
+              />
             </div>
           </div>
 

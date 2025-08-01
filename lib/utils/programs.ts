@@ -1,7 +1,7 @@
 import { PROGRAM_STATUS_COLORS } from '@/constants/programs';
 import { Program, ProgramPageType } from '@/types/program';
 
-export const getStatusColor = (status: string | undefined): string => {
+export const getStatusColor = (status: string | null): string => {
   return (
     PROGRAM_STATUS_COLORS[status as keyof typeof PROGRAM_STATUS_COLORS] ||
     'bg-gray-100 text-gray-800'

@@ -379,7 +379,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
                   <Label htmlFor="programLink">Link do strony zewnętrznej</Label>
                   <Input
                     id="programLink"
-                    value={formData.programLink}
+                    value={formData.programLink || ''}
                     onChange={e => {
                       setFormData(prev => ({ ...prev, programLink: e.target.value }));
                       if (e.target.value.trim()) {

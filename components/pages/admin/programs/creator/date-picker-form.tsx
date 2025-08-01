@@ -46,8 +46,8 @@ export const DatePickerForm = ({ formData, errors, onUpdate }: DatePickerFormPro
               <PopoverContent className="w-auto p-0">
                 <Calendar
                   mode="single"
-                  selected={formData.startDate}
-                  onSelect={date => onUpdate('startDate', date)}
+                  selected={formData.startDate || undefined}
+                  onSelect={date => date && onUpdate('startDate', date)}
                   initialFocus
                 />
               </PopoverContent>
@@ -76,8 +76,8 @@ export const DatePickerForm = ({ formData, errors, onUpdate }: DatePickerFormPro
               <PopoverContent className="w-auto p-0">
                 <Calendar
                   mode="single"
-                  selected={formData.endDate}
-                  onSelect={date => onUpdate('endDate', date)}
+                  selected={formData.endDate || undefined}
+                  onSelect={date => date && onUpdate('endDate', date)}
                   initialFocus
                 />
               </PopoverContent>

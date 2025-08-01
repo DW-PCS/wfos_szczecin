@@ -71,13 +71,13 @@ export function ProgramCard({ program, onEdit, onDelete }: ProgramCardProps) {
                 variant="outline"
                 size="sm"
                 className={cn('text-blue-500 hover:text-blue-700 hover:bg-blue-50')}
-                onClick={() => onEdit(program.id)}
+                onClick={() => onEdit(Number(program.id))}
               >
                 <Edit className="h-4 w-4" />
               </Button>
               <ProgramDeleteDialog
                 programName={program.name}
-                onConfirm={() => onDelete(program.id)}
+                onConfirm={() => onDelete(Number(program.id))}
               />
             </div>
           </div>
