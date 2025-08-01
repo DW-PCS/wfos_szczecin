@@ -7,3 +7,23 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Program {
+  id                    Int      @id @default(autoincrement())
+  name                  String
+  description           String
+  status                String
+  budget                String
+  deadline              String
+  beneficiaryCategories Json
+  startDate             DateTime
+  endDate               DateTime
+  maxSupport            String
+  funding               String
+  programLink           String?
+  linkedPageSlug        String?
+  showOnHomepage        Boolean  @default(false)
+  type                  String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}

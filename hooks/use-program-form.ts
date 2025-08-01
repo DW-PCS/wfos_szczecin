@@ -1,13 +1,20 @@
-import { Program, ProgramPageType } from '@/types/program';
+import { createProgram, updateProgram } from '@/actions/program/program-action';
+import { ProgramPageType } from '@/types/program';
+
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 interface UseProgramFormProps {
   initialData?: Partial<ProgramPageType>;
 }
 
+interface FormErrors {
+  [key: string]: string;
+}
+
 export const useProgramForm = ({ initialData }: UseProgramFormProps = {}) => {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   const [formData, setFormData] = useState<Partial<ProgramPageType>>({
     name: initialData?.name || '',
@@ -25,21 +32,32 @@ export const useProgramForm = ({ initialData }: UseProgramFormProps = {}) => {
     showOnHomepage: initialData?.showOnHomepage || false,
   });
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const updateField = <K extends keyof ProgramPageType>(field: K, value: ProgramPageType[K]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
+    }
   };
 
   const validateForm = (): boolean => {
-    const newErrors: Record<string, string> = {};
-
+    const newErrors: FormErrors = {};
+    console.log(formData, 'formData for validation');
     if (!formData.name?.trim()) {
       newErrors.name = 'Nazwa programu jest wymagana';
     }
 
     if (!formData.description?.trim()) {
       newErrors.description = 'Opis programu jest wymagany';
+    }
+
+    if (!formData.startDate) {
+      newErrors.startDate = 'Data rozpoczęcia jest wymagana';
+    }
+    if (!formData.endDate) {
+      newErrors.endDate = 'Data zakończenia jest wymagana';
     }
 
     if (!formData.status) {
@@ -54,35 +72,53 @@ export const useProgramForm = ({ initialData }: UseProgramFormProps = {}) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSave = () => {
+  const createFormData = (programData: Partial<ProgramPageType>): FormData => {
+    const formDataObj = new FormData();
+
+    Object.entries(programData).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        if (key === 'beneficiaryCategories') {
+          formDataObj.append(key, JSON.stringify(value));
+        } else if (typeof value === 'boolean') {
+          formDataObj.append(key, value.toString());
+        } else {
+          formDataObj.append(key, value.toString());
+        }
+      }
+    });
+
+    return formDataObj;
+  };
+
+  const handleSave = async () => {
     if (!validateForm()) return;
 
-    const programData: Program = {
-      id: initialData?.id || Date.now(),
-      name: formData.name!,
-      description: formData.description!,
-      status: formData.status as Program['status'],
-      budget: formData.budget,
-      deadline: formData.deadline,
-      beneficiaryCategories: formData.beneficiaryCategories!,
-      startDate: formData.startDate,
-      endDate: formData.endDate,
-      maxSupport: formData.maxSupport,
-      funding: formData.funding,
-      programLink: formData.programLink,
-      linkedPageSlug: formData.linkedPageSlug,
-      showOnHomepage: formData.showOnHomepage,
-    };
+    startTransition(async () => {
+      try {
+        const formDataObj = createFormData(formData);
 
-    if (initialData?.id) {
-      // updateProgram(initialData.id, programData);
-      console.log('update program', programData);
-    } else {
-      // addProgram(programData);
-      console.log('add program', programData);
-    }
+        const result = initialData?.id
+          ? await updateProgram(initialData.id, formDataObj)
+          : await createProgram(formDataObj);
 
-    router.push('/admin/programy');
+        if (result.success) {
+          router.push('/admin/programy');
+        } else {
+          if (result.details) {
+            const serverErrors: FormErrors = {};
+            result.details.forEach((issue: any) => {
+              serverErrors[issue.path[0]] = issue.message;
+            });
+            setErrors(serverErrors);
+          } else {
+            setErrors({ general: result.error || 'Wystąpił błąd podczas zapisywania' });
+          }
+        }
+      } catch (error) {
+        console.error('Error saving program:', error);
+        setErrors({ general: 'Wystąpił nieoczekiwany błąd' });
+      }
+    });
   };
 
   const handleClose = () => {
@@ -92,6 +128,7 @@ export const useProgramForm = ({ initialData }: UseProgramFormProps = {}) => {
   return {
     formData,
     errors,
+    isPending,
     updateField,
     validateForm,
     handleSave,

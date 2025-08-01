@@ -2,7 +2,7 @@ import ComponentsView from '@/components/pages/admin/components/components-page-
 import { initialFAQComponents } from '@/constants/faq';
 import { mockContactTeams, mockHelpSections } from '@/constants/page';
 
-const page = () => {
+const page = async () => {
   return (
     <ComponentsView
       contactTeams={mockContactTeams}

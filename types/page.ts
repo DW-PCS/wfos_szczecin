@@ -2,7 +2,7 @@ import { SelectedPageComponent } from './component-selector';
 import { PdfFile } from './program';
 
 export interface Page {
-  id: string;
+  id: string | number;
   title: string;
   content: string;
   metaTitle: string;

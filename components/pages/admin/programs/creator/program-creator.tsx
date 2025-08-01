@@ -32,7 +32,7 @@ export default function ProgramCreator({ initialProgramData }: ProgramCreatorPro
 
           <FinancialDetailsForm formData={formData} onUpdate={updateField} />
 
-          <DatePickerForm formData={formData} onUpdate={updateField} />
+          <DatePickerForm formData={formData} errors={errors} onUpdate={updateField} />
 
           <LinksForm formData={formData} onUpdate={updateField} />
         </div>
