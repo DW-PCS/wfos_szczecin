@@ -17,14 +17,13 @@ export interface ProgramPagesResult {
   error?: string;
 }
 
-
 const programPageSchema = z.object({
   name: z.string().min(1, 'Name is required').max(255),
   content: z.string().min(1, 'Content is required'),
   slug: z.string().min(1, 'Slug is required').max(255),
   metaTitle: z.string().max(160).optional(),
   metaDescription: z.string().max(300).nullable().optional(),
-  description: z.string().optional(),
+  description: z.string().optional().default(''),
   uploadedImages: z.array(z.string()).default([]),
   selectedComponents: z.any().nullable().optional(),
   author: z.string().max(100).nullable().optional(),
@@ -39,13 +38,12 @@ const programPageSchema = z.object({
   budget: z.string().max(100).nullable().optional(),
   startDate: z.string().nullable().optional(),
   endDate: z.string().nullable().optional(),
-  programLink: z.string().url().nullable().optional().or(z.literal('')),
+  programLink: z.string().nullable().optional().or(z.literal('')),
   linkedPageSlug: z.string().max(255).nullable().optional().or(z.literal('')),
   showOnHomepage: z.boolean().default(false),
 });
 
 type ProgramPageInput = z.infer<typeof programPageSchema>;
-
 
 const parseFormValue = (value: FormDataEntryValue | null): string | null => {
   if (!value || value === '') return null;
@@ -87,7 +85,6 @@ const extractFormData = (formData: FormData): Record<string, any> => ({
   showOnHomepage: formData.get('showOnHomepage') === 'true',
 });
 
-
 const prepareDatabaseData = (data: ProgramPageInput) => ({
   name: data.name,
   content: data.content,
@@ -113,7 +110,6 @@ const prepareDatabaseData = (data: ProgramPageInput) => ({
   linkedPageSlug: data.linkedPageSlug === '' ? null : data.linkedPageSlug,
   showOnHomepage: data.showOnHomepage,
 });
-
 
 export const getProgramPages = async (): Promise<ProgramPagesResult> => {
   try {
@@ -194,7 +190,6 @@ const isSlugUnique = async (slug: string, excludeId?: number): Promise<boolean> 
   const existingPage = await prisma.programPage.findFirst({ where: whereClause });
   return !existingPage;
 };
-
 
 export const createProgramPage = async (
   formData: FormData
