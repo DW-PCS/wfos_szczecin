@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Program, ProgramPageType } from '@/types/program';
+import { ProgramPageType } from '@/types/program';
 import { Download, ExternalLink, Users } from 'lucide-react';
 import Link from 'next/link';
 

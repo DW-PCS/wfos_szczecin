@@ -1,8 +1,8 @@
 import { Breadcrumbs } from '@/components/features/breadcrumbs';
+import { ProgramPageType } from '@/types/program';
 import { ProgramDetails } from './card/program-details';
 import { ProgramHeader } from './program-header';
 import { ProgramImage } from './program-image';
-import { Program, ProgramPageType } from '@/types/program';
 
 interface ProgramPageProps {
   program: ProgramPageType;

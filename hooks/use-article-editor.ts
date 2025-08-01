@@ -2,7 +2,7 @@ import { isFormValid } from '@/lib/utils/helpers';
 import { processContentToHtml } from '@/lib/utils/quill-editor-helpers';
 import { Article } from '@/types/news';
 import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useCallback, useState, useTransition } from 'react';
 
 interface ArticleFormData {
   title: string;
@@ -20,7 +20,23 @@ interface UseArticleEditorProps {
   onSave?: (article: Article) => void;
 }
 
-async function createArticle(data: ArticleFormData): Promise<Article> {
+interface ArticleEditorState {
+  newsData: {
+    title: string;
+    excerpt: string;
+    imageUrl: string;
+  };
+  settings: {
+    category: string;
+    author: string;
+    featured: boolean;
+    published: boolean;
+  };
+  content: string;
+}
+
+// API functions with proper error handling
+const createArticle = async (data: ArticleFormData): Promise<Article> => {
   const response = await fetch('/api/articles', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -28,13 +44,14 @@ async function createArticle(data: ArticleFormData): Promise<Article> {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to create article');
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || 'Failed to create article');
   }
 
   return response.json();
-}
+};
 
-async function updateArticle(id: string, data: ArticleFormData): Promise<Article> {
+const updateArticle = async (id: string, data: ArticleFormData): Promise<Article> => {
   const response = await fetch(`/api/articles/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -42,83 +59,104 @@ async function updateArticle(id: string, data: ArticleFormData): Promise<Article
   });
 
   if (!response.ok) {
-    throw new Error('Failed to update article');
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || 'Failed to update article');
   }
 
   return response.json();
-}
+};
 
-export function useArticleEditor({ article }: UseArticleEditorProps) {
+export const useArticleEditor = ({ article }: UseArticleEditorProps) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const [newsData, setNewsData] = useState({
-    title: article?.title || '',
-    excerpt: article?.excerpt || '',
-    imageUrl: article?.imageUrl || '',
+  const [state, setState] = useState<ArticleEditorState>({
+    newsData: {
+      title: article?.title ?? '',
+      excerpt: article?.excerpt ?? '',
+      imageUrl: article?.imageUrl ?? '',
+    },
+    settings: {
+      category: article?.category ?? '',
+      author: article?.author ?? 'Admin',
+      featured: article?.featured ?? false,
+      published: article?.published ?? false,
+    },
+    content: processContentToHtml(article?.content),
   });
 
-  const [settings, setSettings] = useState({
-    category: article?.category || '',
-    author: article?.author || 'Admin',
-    featured: article?.featured || false,
-    published: article?.published || false,
-  });
-
-  const [content, setContent] = useState(processContentToHtml(article?.content));
-
-  const isValid = isFormValid(content, newsData);
+  const isValid = isFormValid(state.content, state.newsData);
   const isEditing = Boolean(article?.id);
 
-  const handleNewsDataChange = (data: Partial<typeof newsData>) => {
-    setNewsData(prev => ({ ...prev, ...data }));
-  };
+  const updateNewsData = useCallback((data: Partial<ArticleEditorState['newsData']>) => {
+    setState(prev => ({
+      ...prev,
+      newsData: { ...prev.newsData, ...data },
+    }));
+  }, []);
 
-  const handleSettingsChange = (newSettings: Partial<typeof settings>) => {
-    setSettings(prev => ({ ...prev, ...newSettings }));
-  };
+  const updateSettings = useCallback((settings: Partial<ArticleEditorState['settings']>) => {
+    setState(prev => ({
+      ...prev,
+      settings: { ...prev.settings, ...settings },
+    }));
+  }, []);
 
-  const handleCancel = () => {
+  const updateContent = useCallback((content: string) => {
+    setState(prev => ({ ...prev, content }));
+  }, []);
+
+  const handleCancel = useCallback(() => {
     router.push('/admin/aktualnosci');
-  };
+  }, [router]);
 
-  const handleSave = (shouldPublish: boolean) => {
-    if (!isValid) return;
+  const handleSave = useCallback(
+    (shouldPublish: boolean) => {
+      if (!isValid) return;
 
-    const formData: ArticleFormData = {
-      ...newsData,
-      ...settings,
-      content,
-      published: shouldPublish,
-    };
+      const formData: ArticleFormData = {
+        ...state.newsData,
+        ...state.settings,
+        content: state.content,
+        published: shouldPublish,
+      };
 
-    startTransition(async () => {
-      try {
-        const savedArticle =
-          isEditing && article?.id
-            ? await updateArticle(article.id, formData)
-            : await createArticle(formData);
+      startTransition(async () => {
+        try {
+          const savedArticle =
+            isEditing && article?.id
+              ? await updateArticle(article.id, formData)
+              : await createArticle(formData);
 
-        savedArticle && router.push('/admin/aktualnosci');
-      } catch (error) {
-        console.error('Failed to save article:', error);
-        // TODO: Add proper error handling/toast notification
-      }
-    });
-  };
+          if (savedArticle) {
+            router.push('/admin/aktualnosci');
+          }
+        } catch (error) {
+          console.error('Failed to save article:', error);
+          // TODO: Implement proper error handling with toast notifications
+          // Consider using a global error state or toast library
+        }
+      });
+    },
+    [isValid, state, isEditing, article?.id, router]
+  );
 
   return {
-    newsData,
-    settings,
-    content,
+    // State
+    newsData: state.newsData,
+    settings: state.settings,
+    content: state.content,
+
+    // Status
     isPending,
     isValid,
     isEditing,
 
-    handleNewsDataChange,
-    handleSettingsChange,
-    setContent,
+    // Actions
+    updateNewsData,
+    updateSettings,
+    updateContent,
     handleCancel,
     handleSave,
-  };
-}
+  } as const;
+};

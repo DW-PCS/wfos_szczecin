@@ -37,7 +37,7 @@ export function PageDeleteDialog({ pageTitle, isPending, onConfirm }: PageDelete
         <AlertDialogHeader>
           <AlertDialogTitle>Czy na pewno chcesz usunąć stronę?</AlertDialogTitle>
           <AlertDialogDescription>
-            Tej akcji nie można cofnąć. Strona "{pageTitle}" zostanie trwale usunięta.
+            Tej akcji nie można cofnąć. Strona &quot;{pageTitle}&quot; zostanie trwale usunięta.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

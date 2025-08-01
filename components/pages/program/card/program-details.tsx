@@ -1,4 +1,4 @@
-import { Program, ProgramPageType } from '@/types/program';
+import { ProgramPageType } from '@/types/program';
 import { ContactInfoCard } from './contact-info';
 import { ProgramActions } from './program-actions';
 import { ProgramInfoCard } from './program-info';
