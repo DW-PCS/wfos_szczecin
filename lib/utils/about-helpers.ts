@@ -25,6 +25,9 @@ export const createNewAchievement = (existingAchievements: Achievement[]): Achie
   icon: 'BarChart3',
   active: true,
   order: 1,
+  placement: '',
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
 });
 
 export const createNewPerson = (existingPersons: Person[]): Person => ({
