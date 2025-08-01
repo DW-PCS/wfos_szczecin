@@ -1,7 +1,7 @@
 interface PageParams {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const pages = async ({ params }: PageParams) => {

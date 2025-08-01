@@ -4,9 +4,9 @@ import { newsArticles } from '@/constants';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const ArticlePage = async ({ params }: PageProps) => {

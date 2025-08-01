@@ -2,7 +2,9 @@ import FAQCreator from '@/components/pages/admin/components/faq/creator/faq-crea
 import { mockFAQComponents } from '@/constants/page';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{
+    id: string;
+  }>;
 }
 
 const page = async ({ params }: PageProps) => {

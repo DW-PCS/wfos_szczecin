@@ -3,9 +3,9 @@ import ProgramCreator from '@/components/pages/admin/programs/creator/program-cr
 import { notFound } from 'next/navigation';
 
 interface EditProgramPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditProgramPage({ params }: EditProgramPageProps) {

@@ -3,15 +3,15 @@ import { initialProgramPages } from '@/constants/program';
 import { getPageById } from '@/lib/utils/programs';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 const page = async ({ params }: PageProps) => {
   const resolvedParams = await params;
 
   const program = getPageById({ id: Number(resolvedParams.id), programs: initialProgramPages });
-  
+
   if (!program) {
     return;
   }

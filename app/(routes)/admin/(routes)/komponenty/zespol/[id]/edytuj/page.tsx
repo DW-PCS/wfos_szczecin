@@ -2,7 +2,9 @@ import ContactTeamCreator from '@/components/pages/admin/components/team/creator
 import { mockContactTeams } from '@/constants/page';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{
+    id: string;
+  }>;
 }
 
 const page = async ({ params }: PageProps) => {
