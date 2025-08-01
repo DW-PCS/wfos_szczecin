@@ -21,7 +21,7 @@ const newsCategories = [
   'Informacje',
 ];
 
-interface NewsSettings {
+export interface NewsSettings {
   category: string;
   author: string;
   featured: boolean;

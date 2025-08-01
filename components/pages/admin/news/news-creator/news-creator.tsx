@@ -5,25 +5,28 @@ import { Article } from '@/types/news';
 import { NewsContentForm } from './news-content-form';
 import { NewsCreatorHeader } from './news-creator-header';
 import { NewsPreviewCard } from './news-preview-card';
-import { NewsSettingsSidebar } from './news-settings-sidebar';
+import { NewsSettings, NewsSettingsSidebar } from './news-settings-sidebar';
 
 interface NewsCreatorProps {
   article?: Article;
 }
 
 export default function NewsCreator({ article }: NewsCreatorProps) {
-  const {
-    newsData,
-    settings,
-    content,
-    isPending,
-    isValid,
-    handleNewsDataChange,
-    handleSettingsChange,
-    setContent,
-    handleCancel,
-    handleSave,
-  } = useArticleEditor({ article });
+  const { newsData, settings, content, isPending, isValid, handleCancel, handleSave } =
+    useArticleEditor({ article });
+
+  function handleNewsDataChange(data: Partial<Article>): void {
+    console.log(data, 'data');
+    throw new Error('Function not implemented.');
+  }
+
+  function handleSettingsChange(settings: Partial<NewsSettings>): void {
+    console.log('Settings changed:', settings);
+  }
+
+  function handleContentChange(data: string): void {
+    console.log(data);
+  }
 
   return (
     <div className="space-y-6">
@@ -40,7 +43,7 @@ export default function NewsCreator({ article }: NewsCreatorProps) {
           <NewsContentForm
             newsData={newsData}
             onNewsDataChange={handleNewsDataChange}
-            onContentChange={setContent}
+            onContentChange={handleContentChange}
             disabled={isPending}
             content={content}
           />
