@@ -1,4 +1,4 @@
-import { Article } from '@/components/pages/article';
+import Article from '@/components/pages/article/article';
 import { newsArticles } from '@/constants';
 
 import { notFound } from 'next/navigation';
