@@ -12,7 +12,7 @@ interface PageProps {
 const ArticlePage = async ({ params }: PageProps) => {
   const resolvedParams = await params;
 
-  const article = newsArticles.find(a => Number(a?.id) === Number(resolvedParams.id));
+const article = newsArticles.find(a => Number(a?.id) === Number(resolvedParams.id));
 
   if (!article) {
     notFound();

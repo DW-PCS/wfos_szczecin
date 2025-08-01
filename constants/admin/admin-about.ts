@@ -1,5 +1,4 @@
 import { AboutContent, AboutTabValue } from '@/types/admin/admin-about';
-import { ContactTabValue } from '@/types/admin/admin-contact';
 
 export const initialAboutPageContent: AboutContent = {
   hero: {
@@ -45,6 +44,9 @@ export const initialAboutPageContent: AboutContent = {
       icon: 'BarChart3',
       order: 1,
       active: true,
+      placement: '1',
+      createdAt: '2024-01-15T10:00:00Z',
+      updatedAt: '2024-01-15T10:00:00Z',
     },
     {
       id: 2,
@@ -53,6 +55,9 @@ export const initialAboutPageContent: AboutContent = {
       icon: 'DollarSign',
       order: 2,
       active: true,
+      placement: '2',
+      createdAt: '2024-01-15T10:00:00Z',
+      updatedAt: '2024-01-15T10:00:00Z',
     },
     {
       id: 3,
@@ -61,8 +66,21 @@ export const initialAboutPageContent: AboutContent = {
       icon: 'Users',
       order: 3,
       active: true,
+      placement: '3',
+      createdAt: '2024-01-15T10:00:00Z',
+      updatedAt: '2024-01-15T10:00:00Z',
     },
-    { id: 4, number: '30+', label: 'Lat doświadczenia', icon: 'Leaf', order: 4, active: true },
+    {
+      id: 4,
+      number: '30+',
+      label: 'Lat doświadczenia',
+      icon: 'Leaf',
+      order: 4,
+      active: true,
+      placement: '4',
+      createdAt: '2024-01-15T10:00:00Z',
+      updatedAt: '2024-01-15T10:00:00Z',
+    },
   ],
   managementBoard: [
     {
@@ -171,8 +189,6 @@ export const initialAboutPageContent: AboutContent = {
   createdAt: '2024-01-15T10:00:00Z',
   updatedAt: '2024-01-15T10:00:00Z',
 };
-
-
 
 export const VALID_TABS: readonly AboutTabValue[] = [
   'hero',
