@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { FileCategory } from '@/types/file';
 
 interface CategoryFormData {
   title: string;
@@ -33,7 +34,7 @@ interface AddCategoryDialogProps {
   categoryForm: CategoryFormData;
   onCategoryFormChange: (data: Partial<CategoryFormData>) => void;
   onSubmit: () => void;
-  editingCategory?: boolean;
+  editingCategory: FileCategory | null;
 }
 
 export function AddCategoryDialog({

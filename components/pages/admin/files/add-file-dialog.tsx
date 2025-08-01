@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { FileCategory } from '@/types/file';
+import { FileCategory, FileItem } from '@/types/file';
 
 interface FileFormData {
   name: string;
@@ -41,7 +41,7 @@ interface AddFileDialogProps {
   fileInputRef: React.RefObject<HTMLInputElement | null>;
   formatFileSize: (bytes: number) => string;
   isUploading: boolean;
-  editingFile?: boolean;
+  editingFile: FileItem | null;
 }
 
 export function AddFileDialog({
