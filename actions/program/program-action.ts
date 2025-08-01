@@ -51,14 +51,18 @@ function prepareDatabaseData(validatedData: z.infer<typeof createProgramSchema>)
   };
 }
 
-export async function getPrograms(): Promise<ProgramPageType[]> {
+export async function getPrograms(): Promise<{
+  data: ProgramPageType[];
+  error?: string;
+}> {
   try {
     const programs = await prisma.program.findMany({
       orderBy: { createdAt: 'desc' },
     });
-    return programs as ProgramPageType[];
+    return { data: programs as ProgramPageType[] };
   } catch (error) {
-    throw new Error('Failed to fetch programs');
+    console.error('Database error:', error);
+    return { data: [], error: 'Failed to fetch programs' };
   }
 }
 
