@@ -3,9 +3,10 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { ProgramPageType } from '@/types/program';
 import { ProgramPageCard } from './program-page-card';
+import { Page } from '@/types/page';
 
 interface ProgramPagesGridProps {
-  pages: ProgramPageType[];
+  pages: Page[];
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
 }

@@ -4,6 +4,7 @@ import { deleteProgramById } from '@/actions/program/program-action';
 import { deleteProgramPage } from '@/actions/program/program-page-action';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useProgramsTabs } from '@/hooks/use-programs-tabs';
+import { Page } from '@/types/page';
 import { ProgramPageType } from '@/types/program';
 import { useRouter } from 'next/navigation';
 import { ProgramPagesGrid } from './program-pages-grid';
@@ -14,7 +15,7 @@ import { ProgramsTabHeader } from './programs-tab-header';
 
 interface ProgramsPageProps {
   programs: ProgramPageType[];
-  programPages: ProgramPageType[];
+  programPages: Page[];
 }
 
 export default function ProgramsPage({ programs, programPages }: ProgramsPageProps) {
@@ -56,8 +57,8 @@ export default function ProgramsPage({ programs, programPages }: ProgramsPagePro
 
   programPages.map(page => ({
     id: page.id,
-    title: page.name,
-    slug: page.slug || page.name.toLowerCase().replace(/\s+/g, '-'),
+    title: page.title,
+    slug: page.slug || page.title.toLowerCase().replace(/\s+/g, '-'),
   }));
 
   return (
