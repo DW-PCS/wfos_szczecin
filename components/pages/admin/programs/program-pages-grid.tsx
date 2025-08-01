@@ -1,9 +1,8 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
-import { ProgramPageType } from '@/types/program';
-import { ProgramPageCard } from './program-page-card';
 import { Page } from '@/types/page';
+import { ProgramPageCard } from './program-page-card';
 
 interface ProgramPagesGridProps {
   pages: Page[];
